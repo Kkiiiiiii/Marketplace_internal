@@ -8,6 +8,6 @@ class Produk extends Model
 {
     //
     protected $fillable = [
-        "nama_produk","harga","stok","deskripsi","tanggal_upload"
+        'nama_produk','harga','stok','deskripsi','tanggal_upload'
     ];
 }
