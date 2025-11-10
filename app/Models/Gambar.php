@@ -11,4 +11,10 @@ class Gambar extends Model
     [
         'nama_gambar'
     ];
+
+    public function produk()
+    {
+        return $this->belongsTo(Produk::class, 'id_produk', 'id');
+    }
+
 }
