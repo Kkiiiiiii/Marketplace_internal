@@ -106,11 +106,11 @@
                     <h5>SMK Marketplace  Admin</h5>
                 </div>
 
-                <a href=""
+                <a href="{{ route('dashboard') }}"
                 class="nav-link">Dashboard</a>
                 <a href=""
                 class="nav-link ">User</a>
-                <a href=""
+                <a href="{{ route('admin-toko') }}"
                 class="nav-link">Toko</a>
                 <a href="{{ route('admin-produk') }}"
                 class="nav-link">Produk</a>

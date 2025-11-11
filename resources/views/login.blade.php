@@ -29,16 +29,18 @@
         .btn-login {
             width: 100%;
         }
+        .logo { background-color: #1b3b6f;  color: white; width: 75px;}
     </style>
 </head>
 <body>
     <div class="d-flex justify-content-center align-items-center vh-100">
         <div class="login-box">
-            <div class="logo text-center">
-                <i class="bi bi-basket" style="font-size: 50px"></i>
-            </div>
             <h2>Login</h2>
-            <form action="" method="POST">
+            <div class="logo text-center rounded mx-auto">
+                <i class="bi bi-door-open-fill"  style="font-size: 50px"></i>
+                {{-- <i class="bi bi-basket" style="font-size: 50px"></i> --}}
+            </div>
+            <form action="{{ route('login') }}" method="POST">
                 @csrf
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
@@ -50,7 +52,8 @@
                     <input type="password" name="password" id="password" class="form-control" placeholder="Masukkan password" required>
                 </div>
 
-                <button type="submit" class="btn btn-primary btn-login">Login</button>
+                <button type="submit" class="btn btn-primary btn-login mb-2">Login</button>
+                <a href="" class="text-center text-decoration-none text-black">Belum Punya Akun? Regis Disini!</a>
             </form>
         </div>
     </div>

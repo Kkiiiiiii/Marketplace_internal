@@ -18,14 +18,18 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         User::create([
-            'username' => 'Admin01',
-            'password' => 'admin123',
-            'role' => 'admin'
+            'name' => 'Admin',         // Pastikan memberikan nilai pada kolom 'name'
+            'username' => 'Admin11',
+            'password' => bcrypt('admin123'),
+            'kontak' => '08734275626',
+            'role' => 'admin',
         ]);
 
         User::create([
+            'name' => 'Member01',
             'username' => 'Member1',
-            'password' => 'member123',
+            'password' => bcrypt('member123'),
+            'kontak' => '08734275627',
             'role' => 'member'
         ]);
     }
