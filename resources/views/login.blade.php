@@ -53,7 +53,9 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary btn-login mb-2">Login</button>
-                <a href="{{ route('register') }}" class="text-center text-decoration-none text-black">Belum Punya Akun? Regis Disini!</a>
+                <div class="text-center">
+                    <a href="{{ route('register-tampil') }}" class="text-center text-decoration-none text-black">Belum Punya Akun? Regis Disini!</a>
+                </div>
             </form>
         </div>
     </div>

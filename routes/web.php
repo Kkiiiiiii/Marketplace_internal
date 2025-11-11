@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[BerandaController::class, 'index'])->name('beranda');
 Route::get('/login/tampil',[AuthController::class, 'indexLog'])->name('indexLog');
 Route::post('/login',[AuthController::class, 'login'])->name('login');
-Route::get('/register/tampil',[AuthController::class, 'regis'])->name('register');
+Route::get('/register/tampil',[AuthController::class, 'regis'])->name('register-tampil');
 Route::post('/register',[AuthController::class, 'register'])->name('register-post');
 
 Route::get('/admin/dash',[AdminController::class, 'dash'])->name('dashboard');
