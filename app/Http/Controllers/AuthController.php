@@ -49,4 +49,9 @@ class AuthController extends Controller
     return redirect()->route('indexLog');
     }
 
+    public function regis()
+    {
+        return view('register');
+    }
+
 }

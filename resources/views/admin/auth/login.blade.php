@@ -35,12 +35,12 @@
 <body>
     <div class="d-flex justify-content-center align-items-center vh-100">
         <div class="login-box">
-            <h2>Login</h2>
+            <h2>Login - Admin</h2>
             <div class="logo text-center rounded mx-auto">
                 <i class="bi bi-door-open-fill"  style="font-size: 50px"></i>
                 {{-- <i class="bi bi-basket" style="font-size: 50px"></i> --}}
             </div>
-            <form action="{{ route('login') }}" method="POST">
+            <form action="{{ route('login-admin') }}" method="POST">
                 @csrf
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
@@ -53,7 +53,7 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary btn-login mb-2">Login</button>
-                <a href="{{ route('register') }}" class="text-center text-decoration-none text-black">Belum Punya Akun? Regis Disini!</a>
+                <a href="" class="text-center text-decoration-none text-black">Belum Punya Akun? Regis Disini!</a>
             </form>
         </div>
     </div>

@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Page</title>
+    <title>Register - Page</title>
     <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <style>
+         <style>
         body {
             background-color: #f8f9fa;
         }
@@ -31,16 +32,17 @@
         }
         .logo { background-color: #1b3b6f;  color: white; width: 75px;}
     </style>
+    </style>
 </head>
 <body>
     <div class="d-flex justify-content-center align-items-center vh-100">
         <div class="login-box">
-            <h2>Login</h2>
+            <h2>Register</h2>
             <div class="logo text-center rounded mx-auto">
-                <i class="bi bi-door-open-fill"  style="font-size: 50px"></i>
-                {{-- <i class="bi bi-basket" style="font-size: 50px"></i> --}}
+                <i class="bi bi-person-fill" style="font-size: 50px"></i>
             </div>
-            <form action="{{ route('login') }}" method="POST">
+
+            <form action="{{ route('register') }}" method="POST">
                 @csrf
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
@@ -52,8 +54,16 @@
                     <input type="password" name="password" id="password" class="form-control" placeholder="Masukkan password" required>
                 </div>
 
-                <button type="submit" class="btn btn-primary btn-login mb-2">Login</button>
-                <a href="{{ route('register') }}" class="text-center text-decoration-none text-black">Belum Punya Akun? Regis Disini!</a>
+                <div class="mb-3">
+                    <label for="password_confirmation" class="form-label">Konfirmasi Password</label>
+                    <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="Konfirmasi password" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-login mb-2">Register</button>
+
+                <div class="text-center">
+                    <a href="{{ route('login') }}" class="text-decoration-none text-black">Sudah Punya Akun? Login Disini!</a>
+                </div>
             </form>
         </div>
     </div>
