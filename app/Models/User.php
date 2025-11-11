@@ -24,6 +24,7 @@ class User extends Authenticatable
         'password',
     ];
 
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -46,4 +47,10 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+      public function toko()
+    {
+        return $this->hasOne(Toko::class, 'id_user');
+    }
+
 }

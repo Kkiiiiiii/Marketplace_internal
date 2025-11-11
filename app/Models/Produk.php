@@ -7,9 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Produk extends Model
 {
     //
+    protected $table = 'produk';
+
     protected $fillable = [
-        'nama_produk','harga','stok','deskripsi','tanggal_upload'
+        'nama_produk','harga','stok','deskripsi','tanggal_upload','id_kategori','id_toko'
     ];
+
+    public $timestamps = false;
 
      public function toko()
     {

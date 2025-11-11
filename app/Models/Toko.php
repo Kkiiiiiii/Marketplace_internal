@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Toko extends Model
 {
     //
+    protected $table = 'toko';
+    
     protected $fillable = [
         'nama_toko','deskripsi','gambar','kontak_toko','alamat',
     ];
@@ -14,6 +16,11 @@ class Toko extends Model
     public function produk()
     {
         return $this->hasMany(Produk::class, 'id_toko');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user');
     }
 
 }

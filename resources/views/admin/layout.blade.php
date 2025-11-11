@@ -5,12 +5,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Panel</title>
-
     <!-- Bootstrap & Icons -->
     <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/all.min.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap5.min.css" />
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 
     <style>
         body {
@@ -112,10 +112,10 @@
                 class="nav-link ">User</a>
                 <a href=""
                 class="nav-link">Toko</a>
-                <a href=""
-                class="nav-link ">Produk</a>
-                <a href=""
-                class="nav-link ">Kategori</a>
+                <a href="{{ route('admin-produk') }}"
+                class="nav-link">Produk</a>
+                <a href="{{ route('admin-kategori') }}"
+                class="nav-link">Kategori</a>
 
                 <hr>
                 <form id="logout-form" action="" method="POST">

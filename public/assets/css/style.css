@@ -2,30 +2,64 @@
     margin-top: 10px;
     margin-bottom: 10px;
 }
-.grid-content{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-}
 
 .bg-utama{
-    background-color: rgb(0, 117, 137);
+    /* background-color: #485696; */
+    background-color: #1b3b6f;
 }
 
-.bg-kedua{
-    background-color: gray   ;
+/* Ubah warna background header tabel */
+.table-cust thead {
+    background-color: #21295c; /* Warna background header */
+    color: white; /* Warna teks header */
+    text-align: center; /* Meratakan teks ke tengah */
 }
+
+/* Atau jika ingin warna untuk setiap th (elemen kolom header) */
+.table-cust th {
+    background-color: #21295c;
+    color: white;
+    text-align: center;
+    padding: 15px; /* Padding agar lebih nyaman dilihat */
+}
+
+/* Warna latar belakang untuk baris tabel */
+.table-cust tbody tr {
+    background-color: #f8f9fa; /* Warna latar belakang baris */
+}
+
+/* Mengubah warna baris yang dipilih */
+.table-cust tbody tr.selected {
+    background-color: #a2d9f7;
+}
+
+/* Menggunakan warna berbeda untuk baris genap dan ganjil */
+.table-cust tbody tr:nth-child(even) {
+    background-color: #e9ecef; /* Warna untuk baris genap */
+}
+
+.table-cust tbody tr:nth-child(odd) {
+    background-color: #ffffff; /* Warna untuk baris ganjil */
+}
+/* Warna saat hover pada baris tabel */
+.table-cust tbody tr:hover {
+    background-color: #f1f1f1; /* Warna saat mouse hover */
+}
+/* Memberikan border pada tabel */
+.table-cust {
+    border: 1px solid #ddd; /* Border untuk tabel */
+    border-collapse: collapse;
+}
+
+/* Memberikan border pada sel tabel */
+.table-cust th, .table-cust td {
+    border: 1px solid #ddd; /* Border pada setiap cell */
+    padding: 8px;
+    text-align: left;
+}
+
 
 .mt-10{
     margin-top: 117px;
     margin-bottom: 150px;
-}
-
-.beli{
-    background-color: rebeccapurple;
-    width: 500px;
-}
-
-.bg-ijo{
-    background-color: green;
 }
