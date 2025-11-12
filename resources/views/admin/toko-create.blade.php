@@ -3,8 +3,9 @@
 <div class="container mt-4">
     <h2>Tambah Toko</h2>
 
-    <form action="{{ route('toko-store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('toko-store') }}" method="POST" enctype="multipart/form-data" id="formToko">
         @csrf
+
         <div class="form-group">
             <label for="nama_toko">Nama Toko</label>
             <input type="text" name="nama_toko" id="nama_toko" class="form-control" value="{{ old('nama_toko') }}" required>
@@ -42,7 +43,7 @@
             @enderror
         </div>
 
-        <button type="submit" class="btn btn-primary mt-4">Simpan Toko</button>
+        <button type="submit" class="btn btn-primary mt-4 w-100">Simpan Toko</button>
     </form>
 </div>
 @endsection

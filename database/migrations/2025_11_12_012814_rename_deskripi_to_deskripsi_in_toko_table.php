@@ -11,15 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('toko', function (Blueprint $table) {
+        Schema::table('toko', function (Blueprint $table) {
             //
-            $table->id('id_toko');
-            $table->string('nama_toko');
-            $table->text('deskripsi');
-            $table->string('gambar');
-            $table->foreignId('id_user')->constrained('users','id_user')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->string('kontak_toko');
-            $table->text('alamat');
+            $table->renameColumn('deskripi', 'deskripsi');
         });
     }
 
@@ -30,6 +24,7 @@ return new class extends Migration
     {
         Schema::table('toko', function (Blueprint $table) {
             //
+            $table->renameColumn('deskripi', 'deskripsi');
         });
     }
 };

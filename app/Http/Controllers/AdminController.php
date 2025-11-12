@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kategori;
 use App\Models\Produk;
+use App\Models\Toko;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -11,7 +12,10 @@ class AdminController extends Controller
     //
     public function dash()
     {
-        return view('admin.dashboard');
+        $data['produk'] = Produk::all();
+        $data['kategori'] = Kategori::all();
+        $data['toko'] = Toko::all();
+        return view('admin.dashboard', $data);
     }
 
     public function produk()
@@ -30,6 +34,7 @@ class AdminController extends Controller
 
     public function toko()
     {
-        return view('admin.toko');
+        $toko = Toko::all();
+        return view('admin.toko', compact('toko'));
     }
 }

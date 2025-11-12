@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('kontak');
             $table->string('username');
             $table->string('password');
-            $table->enum('role', ['admin','member']);
+            $table->enum('role', ['admin','member'])->default('member');
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {

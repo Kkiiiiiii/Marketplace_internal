@@ -33,7 +33,7 @@
 
         .sidebar .nav-link.active,
         .sidebar .nav-link:hover {
-            background-color: #6F9496;
+            background-color: #1b3b6f;
             color: #fff;
         }
 
@@ -102,7 +102,7 @@
             <!-- Sidebar -->
             <div class="col-md-2 sidebar bg-light" id="sidebar">
                 <div class="brand-logo">
-                    {{-- <img src="{{ asset('assets/image/logo_sekolah.png') }}" alt="Logo"> --}}
+                    <i class="bi bi-shop-window" style="font-size: 50px;"></i>
                     <h5>SMK Marketplace  Admin</h5>
                 </div>
 
@@ -118,7 +118,7 @@
                 class="nav-link">Kategori</a>
 
                 <hr>
-                <form id="logout-form" action="" method="POST">
+                <form id="logout-form" action="{{ route('admin-logout') }}" method="POST">
                     @csrf
                     <a class="nav-link text-danger" href="#"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -135,9 +135,9 @@
     </div>
 
     <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="{{ asset('assets/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/fontawesome/js/all.min.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js"></script>
 

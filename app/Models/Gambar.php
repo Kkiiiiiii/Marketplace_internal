@@ -8,7 +8,8 @@ class Gambar extends Model
 {
     //
     protected $table = 'gambar_produk';
-
+    public $timestamps = false;
+    
     protected $fillable =
     [
         'id_produk',

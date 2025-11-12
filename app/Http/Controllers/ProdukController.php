@@ -64,8 +64,8 @@ class ProdukController extends Controller
     $data['tanggal_upload'] = now();
 
     // Jika produk terkait dengan toko user login
-    // $data['id_toko'] = Auth::user()->toko->id ?? 1;
-    $data['id_toko'] = 1;
+    $data['id_toko'] = optional(Auth::user()->toko)->id ?? 1;
+    // $data['id_toko'] = 1;
 
     // 4️⃣ Simpan produk
     $produk = Produk::create($data);
@@ -80,7 +80,7 @@ class ProdukController extends Controller
         }
     }
 
-    return redirect()->route('produk')->with('success', 'Produk berhasil ditambahkan!');
+    return redirect()->route('admin-produk')->with('success', 'Produk berhasil ditambahkan!');
 }
 
 

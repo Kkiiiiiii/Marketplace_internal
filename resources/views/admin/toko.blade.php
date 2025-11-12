@@ -2,7 +2,8 @@
 @section('content')
 <div class="container mt-4">
     <h2>Tabel Toko</h2>
-    <a href="{{ route('toko-create') }}" class="btn btn-primary mb-3">Tambah Toko</a>
+    <a href="{{ route('toko-create') }}" class="btn btn-primary mb-3">
+        <i class="bi bi-plus-circle"></i> Tambah Toko</a>
 
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
@@ -21,17 +22,26 @@
             </tr>
         </thead>
         <tbody>
-            {{-- @foreach($toko as $t) --}}
+            @foreach($toko as $t)
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>{{ $loop->iteration }}</td>
+                <td>{{ $t->nama_toko }}</td>
+                <td>{{ $t->deskripsi }}</td>
+                <td>
+                        @if($t->gambar)
+                            <img src="{{ asset('storage/' . $t->gambar) }}" alt="{{ $t->nama_toko }}" width="80">
+                         @else
+                            <span class="text-muted">Tidak ada</span>
+                        @endif
+                    </td>
+                    <td>{{ $t->kontak_toko }}</td>
+                    <td>{{ $t->alamat }}</td>
                 <td>
                     <a href="" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="" class="btn btn-danger btn-sm">Hapus</a>
                 </td>
             </tr>
-            {{-- @endforeach --}}
+            @endforeach
         </tbody>
     </table>
 </div>

@@ -2,7 +2,8 @@
 @section('content')
 <div class="container mt-5">
     <h1 class="mb-4 text-center">📦 Daftar Produk</h1>
-    <a href="{{ route('produk-create') }}" class="btn btn-md btn-success mb-3">Tambah Produk</a>
+    <a href="{{ route('produk-create') }}" class="btn btn-md btn-success mb-3">
+        <i class="bi bi-plus-circle"></i> Tambah Produk</a>
     <table class="table table-bordered table-striped shadow-sm table-cust">
         <thead class="table-dark">
             <tr>
@@ -18,21 +19,21 @@
         <tbody>
             @forelse ($produk as $p)
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>Rp</td>
-                    <td></td>
-                    <td></td>
+                    <td>{{ $p->nama_produk }}</td>
+                    <td>{{ $p->deskripsi }}</td>
+                    <td>Rp.{{ $p->harga }}</td>
+                    <td>{{ $p->stok }}</td>
+                    <td>{{ $p->kategori->nama_kategori }}</td>
                     <td>
-                        @if($produk->gambar)
-                            <img src="{{ asset('storage/' . $produk->gambar) }}" alt="{{ $produk->nama_produk }}" width="80">
+                        @if($p->gambar)
+                            <img src="{{ asset('storage/' . $p->gambar_produk) }}" alt="{{ $p->nama_produk }}" width="80">
                          @else
                             <span class="text-muted">Tidak ada</span>
                         @endif
                     </td>
                     <td>
-                        <a href="{{ route('produk-create') }}">Edit</a>
+                        <a href="" class="btn btn-sm btn-warning">Edit</a>
+                        <a href="" class="btn btn-sm btn-danger">Hapus</a>
                     </td>
                 </tr>
             @empty

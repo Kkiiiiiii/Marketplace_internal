@@ -8,9 +8,11 @@ class Toko extends Model
 {
     //
     protected $table = 'toko';
-    
+    protected $primaryKey = 'id_toko';
+    public $timestamps = false;
+
     protected $fillable = [
-        'nama_toko','deskripsi','gambar','kontak_toko','alamat',
+        'nama_toko','deskripsi','gambar','kontak_toko','alamat','id_user'
     ];
 
     public function produk()
@@ -20,7 +22,7 @@ class Toko extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'id_user');
+        return $this->belongsTo(User::class, 'id_user', 'id_user');
     }
 
 }
