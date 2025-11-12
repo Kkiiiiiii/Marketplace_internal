@@ -36,6 +36,15 @@
                     <a class="nav-link {{ request()->routeIs('kategori') ? 'active' : '' }}"
                        href="{{ route('kategori') }}">Kategori</a>
                 </li>
+                <li class="nav-item">
+                         <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <a class="nav-link {{ request()->routeIs('logout') ? 'active' : '' }}" href="#"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        Logout
+                    </a>
+                </form>
+                </li>
             </ul>
         </div>
     </div>

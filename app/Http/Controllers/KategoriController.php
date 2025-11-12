@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Kategori;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
+use Illuminate\Http\Request as HttpRequest;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Request as FacadesRequest;
 
@@ -13,7 +14,8 @@ class KategoriController extends Controller
     //
     public function index()
     {
-        return view('kategori');
+        $kategori = kategori::all();
+        return view('kategori', compact('kategori'));
 
     }
     public function store(Request $request)
