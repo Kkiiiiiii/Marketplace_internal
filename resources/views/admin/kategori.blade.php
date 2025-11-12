@@ -1,7 +1,7 @@
 @extends('admin.layout')
 @section('content')
     <div class="container mt-4">
-        <h2 class="mb-4 text-center">📂 Daftar Kategori</h2>
+        <h2 class="mb-4"> Daftar Kategori</h2>
 
         @if (session('success'))
             <div class="alert alert-success">{{ session('success') }}</div>

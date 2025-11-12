@@ -6,7 +6,8 @@
     use App\Http\Controllers\KategoriController;
     use App\Http\Controllers\ProdukController;
     use App\Http\Controllers\TokoController;
-    use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Route;
 
     Route::get('/',[BerandaController::class, 'index'])->name('beranda');
     // Login / Register - Member
@@ -22,25 +23,43 @@
 
     Route::middleware(['admin'])->group(function(){
         Route::get('/admin/dash',[AdminController::class, 'dash'])->name('dashboard');
+        //Produk
         Route::get('/admin/produk',[AdminController::class, 'produk'])->name('admin-produk');
-        Route::get('/produk/detail',[ProdukController::class, 'detail'])->name('produk-detail');
         Route::get('/admin/produk/create',[ProdukController::class, 'create'])->name('produk-create');
         Route::post('/admin/produk/store',[ProdukController::class, 'store'])->name('produk-store');
 
+        //User
+        Route::get('/admin/user', [AdminController::class, 'user'])->name('admin-user');
+        Route::get('/admin/user/create',[UserController::class, 'create'])->name('user-create');
+        Route::post('/admin/user/store',[UserController::class, 'store'])->name('user-store');
+        Route::get('/admin/user/edit',[UserController::class, 'edit'])->name('user-edit');
+        Route::post('/admin/user/update',[UserController::class, 'update'])->name('user-update');
+        Route::post('/admin/user/delete',[UserController::class, 'delete'])->name('user-delete');
+
+        //Kategori
         Route::get('/admin/kategori',[AdminController::class, 'kategori'])->name('admin-kategori');
         Route::post('/admin/kategori/store',[KategoriController::class, 'store'])->name('kategori-store');
         Route::post('/admin/kategori/update{id}',[KategoriController::class, 'update'])->name('kategori-update');
         Route::post('/admin/kategori/delete{id}',[KategoriController::class, 'delete'])->name('kategori-delete');
 
+        //Toko
         Route::get('/admin/toko',[AdminController::class, 'toko'])->name('admin-toko');
         Route::get('/admin/toko/create',[TokoController::class, 'create'])->name('toko-create');
         Route::post('/admin/toko/store',[TokoController::class, 'store'])->name('toko-store');
+        Route::get('/admin/toko/edit',[TokoController::class, 'edit'])->name('toko-edit');
+        Route::post('/admin/toko/update',[TokoController::class, 'update'])->name('toko-update');
+        Route::post('/admin/toko/delete',[TokoController::class, 'delete'])->name('toko-delete');
     });
 
-    Route::get('/admin/logout', [AuthController::class, 'Alogout'])->name('admin-logout');
+    Route::post('/admin/logout', [AuthController::class, 'Alogout'])->name('admin-logout');
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+    Route::get('/produk',[ProdukController::class, 'index'])->name('produk');
+    Route::get('/kategori',[KategoriController::class, 'index'])->name('kategori');
+    Route::get('/produk/detail/{id}',[ProdukController::class, 'detail'])->name('produk-detail');
 
     Route::middleware( ['member'])->group( function(){
-        Route::get('/produk',[ProdukController::class, 'index'])->name('produk');
+        Route::get('/toko',[TokoController::class, 'index'])->name('toko');
 
     });
 

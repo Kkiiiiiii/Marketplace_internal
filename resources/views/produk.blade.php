@@ -1,41 +1,46 @@
 @extends('layout')
 @section('content')
-@foreach($produk as $p)
-<section class="mb-5">
-    <h3>{{ $p->nama_produk }}</h3>
-
-    @if($p->gambarProduk->count() > 0)
-    <div id="carousel{{ $p->id_produk }}" class="carousel slide" data-bs-ride="carousel">
-
-        <!-- Indicators -->
-        <div class="carousel-indicators">
-            @foreach($p->gambarProduk as $gambar)
-                <button type="button" data-bs-target="#carousel{{ $p->id_produk }}" data-bs-slide-to="{{ $loop->index }}" class="{{ $loop->first ? 'active' : '' }}" aria-current="{{ $loop->first ? 'true' : 'false' }}" aria-label="Slide {{ $loop->iteration }}"></button>
+<div class="mb-4">
+    <form action="{{ route('produk') }}" method="GET" class="d-flex">
+        <select name="kategori" class="form-select me-2">
+            <option value="">-- Semua Kategori --</option>
+            @foreach($kategori as $k)
+                <option value="{{ $k->id_kategori }}"
+                    {{ request('kategori') == $k->id_kategori ? 'selected' : '' }}>
+                    {{ $k->nama_kategori }}
+                </option>
             @endforeach
-        </div>
+        </select>
+        <button type="submit" class="btn btn-primary">Filter</button>
+    </form>
+</div>
+    <div class="row">
+    @foreach ($produk as $p)
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                @if ($p->gambarProduk->count() > 0)
+                    <img src="{{ asset('storage/' . $p->gambarProduk->first()->nama_gambar) }}"
+                         class="card-img-top" alt="{{ $p->nama_produk }}">
+                @else
+                    <img src="{{ asset('assets/img/no-image.png') }}" class="card-img-top" alt="No Image">
+                @endif
 
-        <!-- Slides -->
-        <div class="carousel-inner">
-            @foreach($p->gambarProduk as $gambar)
-            <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
-                <img src="{{ asset('storage/' . $gambar->gambar_produk) }}" class="d-block w-100" alt="Gambar Produk">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">{{ $p->nama_produk }}</h5>
+                    <p class="card-text"><strong>Harga:</strong> Rp {{ number_format($p->harga,0,',','.') }}</p>
+                    <p class="card-text"><strong>Deskripsi:</strong> {{ Str::limit($p->deskripsi, 80) }}</p>
+                    <p class="card-text"><strong>Stok:</strong> {{ $p->stok }}</p>
+                    <p class="card-text">
+                        <small class="text-muted">
+                            Upload: {{ \Carbon\Carbon::parse($p->tanggal_upload)->format('d M Y') }}
+                        </small>
+                    </p>
+                    <a href="{{ route('produk-detail', $p->id_produk) }}" class="btn btn-primary mt-auto">
+                        Detail Produk
+                    </a>
+                </div>
             </div>
-            @endforeach
         </div>
-
-        <!-- Controls -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#carousel{{ $p->id_produk }}" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carousel{{ $p->id_produk }}" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
-    @else
-        <p class="text-muted">Tidak ada gambar untuk produk ini</p>
-    @endif
-</section>
-@endforeach
+    @endforeach
+</div>
 @endsection

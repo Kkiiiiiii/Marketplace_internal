@@ -1,0 +1,58 @@
+@extends('admin.layout')
+@section('content')
+<div class="container mt-4">
+    <h3 class="mb-4">👤 Daftar User</h3>
+
+    @if(session('success'))
+        <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
+
+    <div class="mb-3">
+        <a href="{{ route('user-create') }}" class="btn btn-success">
+            <i class="bi bi-plus-circle"></i> Tambah User
+        </a>
+    </div>
+
+    <table class="table table-bordered table-striped" id="userTable">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Nama</th>
+                <th>Kontak</th>
+                <th>Username</th>
+                <th>Role</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($user as $u)
+            <tr>
+                <td>{{ $loop->iteration }}</td>
+                <td>{{ $u->name }}</td>
+                <td>{{ $u->kontak }}</td>
+                <td>{{ $u->username }}</td>
+                <td>{{ $u->role }}</td>
+                <td>
+                    <a href="{{ route('user-edit', $u->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                    <form action="{{ route('user-delete', $u->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Yakin ingin hapus?')">
+                        @csrf
+                        <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+                    </form>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+
+@push('scripts')
+<script>
+    $(document).ready(function() {
+        $('#userTable').DataTable({
+        "ordering": false,
+        "searching": true,
+        });
+    });
+</script>
+@endpush
+@endsection

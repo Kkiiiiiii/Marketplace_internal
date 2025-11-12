@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Kategori;
 use App\Models\Produk;
 use App\Models\Toko;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -36,5 +37,11 @@ class AdminController extends Controller
     {
         $toko = Toko::all();
         return view('admin.toko', compact('toko'));
+    }
+
+    public function user()
+    {
+        $user = User::all();
+        return view('admin.User.user', compact('user'));
     }
 }

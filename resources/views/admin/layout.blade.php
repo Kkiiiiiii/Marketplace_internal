@@ -108,7 +108,7 @@
 
                 <a href="{{ route('dashboard') }}"
                 class="nav-link">Dashboard</a>
-                <a href=""
+                <a href="{{ route('admin-user') }}"
                 class="nav-link ">User</a>
                 <a href="{{ route('admin-toko') }}"
                 class="nav-link">Toko</a>

@@ -11,32 +11,36 @@
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-utama">
-        <div class="container">
-            <a class="navbar-brand" href="#">Marketplace SMK</a>
-            <!-- button untuk mobile -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+    <div class="container">
+        <a class="navbar-brand" href="{{ route('beranda') }}">Marketplace SMK</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Beranda</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" >Toko</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Produk</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Kategori</a>
-                    </li>
-                </ul>
-            </div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('beranda') ? 'active' : '' }}"
+                       href="{{ route('beranda') }}">Beranda</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('toko') ? 'active' : '' }}"
+                       href="{{ route('toko') }}">Toko</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('produk') ? 'active' : '' }}"
+                       href="{{ route('produk') }}">Produk</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('kategori') ? 'active' : '' }}"
+                       href="{{ route('kategori') }}">Kategori</a>
+                </li>
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
+
 
     <div class="container mt-4">
         @yield('content')

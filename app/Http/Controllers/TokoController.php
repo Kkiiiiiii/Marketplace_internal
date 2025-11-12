@@ -15,7 +15,7 @@ class TokoController extends Controller
      public function index()
     {
         $toko = Toko::all();
-        return view('admin.toko', compact('toko'));
+        return view('toko', compact('toko'));
     }
 
     public function create()
@@ -52,7 +52,7 @@ class TokoController extends Controller
     public function edit(String $id)
     {
         $toko = Toko::findOrFail($id);
-        return view('admin.toko-edit', compact('toko'));
+        return view('admin.', compact('toko'));
     }
 
     public function update(Request $request, String $id)
@@ -69,4 +69,13 @@ class TokoController extends Controller
 
         return redirect()->route('admin-toko')->with('success', 'Toko berhasil diperbarui!');
     }
+
+    public function delete($id)
+    {
+        $toko = Toko::findOrFail($id);
+        $toko->delete();
+
+        return redirect()->back()->with('success', 'Kategori berhasil dihapus!');
+    }
+
 }

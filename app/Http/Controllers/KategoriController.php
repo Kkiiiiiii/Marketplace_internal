@@ -13,7 +13,7 @@ class KategoriController extends Controller
     //
     public function index()
     {
-        return view('admin.kategori');
+        return view('kategori');
 
     }
     public function store(Request $request)

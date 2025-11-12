@@ -37,8 +37,8 @@
                     <td>{{ $t->kontak_toko }}</td>
                     <td>{{ $t->alamat }}</td>
                 <td>
-                    <a href="" class="btn btn-warning btn-sm">Edit</a>
-                    <a href="" class="btn btn-danger btn-sm">Hapus</a>
+                    <a href="{{ route('toko-edit') }}" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="{{ route('toko-delete') }}" class="btn btn-danger btn-sm">Hapus</a>
                 </td>
             </tr>
             @endforeach

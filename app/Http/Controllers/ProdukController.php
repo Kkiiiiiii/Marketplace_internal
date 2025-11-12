@@ -14,29 +14,26 @@ class ProdukController extends Controller
     //
     public function index(Request $request)
     {
-        $toko = Produk::with('toko')->get();
+        $produkQuery = Produk::with(['gambarProduk', 'toko']);
 
-        // Ambil semua kategori
-        $kategori = Kategori::all();
-
-        // Query produk
-        $produkQuery = Produk::query();
-
-        // Filter berdasarkan kategori jika ada request
-        if ($request->has('kategori')) {
+        // Filter kategori jika ada
+        if ($request->kategori) {
             $produkQuery->where('id_kategori', $request->kategori);
         }
 
         // Ambil hasil query
-        $produk = $produkQuery->with('gambarProduk')->get();
+        $produk = $produkQuery->get();
 
-        // Kirim ke view
-        return view('produk', compact('produk', 'toko', 'kategori'));
+        // Ambil semua kategori
+        $kategori = Kategori::all();
+
+        return view('produk', compact('produk', 'kategori'));
     }
 
-    public function detail()
+    public function detail($id)
     {
-        return view('detail-produk');
+        $produk = Produk::with('gambarProduk')->findOrFail($id);
+        return view('detail-produk', compact('produk'));
     }
 
      public function create()
