@@ -89,7 +89,7 @@ class AuthController extends Controller
     public function Alogout()
     {
         Auth::logout();
-        return redirect()->route('AdminLog')->with('messages', 'Logout Berhasil');
+        return redirect()->route('beranda')->with('messages', 'Logout Berhasil');
     }
 
 }
