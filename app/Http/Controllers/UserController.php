@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Http\Request as HttpRequest;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Request as FacadesRequest;
 
 class UserController extends Controller
@@ -37,6 +39,7 @@ class UserController extends Controller
 
     public function edit($id)
     {
+        $id = Crypt::decrypt($id);
         $user = User::findOrFail($id);
         return view('admin.User.user-edit', compact('user'));
     }
@@ -69,9 +72,10 @@ class UserController extends Controller
 
     public function delete($id)
     {
+        $id = Crypt::decrypt($id);
         $user = User::findOrFail($id);
         $user->delete();
 
-        return redirect()->back()->with('success', 'User berhasil dihapus!');
+        return redirect()->route('admin-user')->with('success', 'User berhasil dihapus!');
     }
 }

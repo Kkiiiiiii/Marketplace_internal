@@ -37,8 +37,11 @@
                     <td>{{ $t->kontak_toko }}</td>
                     <td>{{ $t->alamat }}</td>
                 <td>
-                    <a href="{{ route('toko-edit') }}" class="btn btn-warning btn-sm">Edit</a>
-                    <a href="{{ route('toko-delete') }}" class="btn btn-danger btn-sm">Hapus</a>
+                    <a href="{{ route('toko-edit', Crypt::encrypt($t->id_toko)) }}" class="btn btn-warning btn-sm">Edit</a>
+                      <form action="{{ route('toko-delete', Crypt::encrypt($t->id_toko)) }}" method="POST" style="display:inline;" onsubmit="return confirm('Yakin ingin hapus?')">
+                        @csrf
+                        <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+                    </form>
                 </td>
             </tr>
             @endforeach

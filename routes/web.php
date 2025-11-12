@@ -32,23 +32,23 @@ use Illuminate\Support\Facades\Route;
         Route::get('/admin/user', [AdminController::class, 'user'])->name('admin-user');
         Route::get('/admin/user/create',[UserController::class, 'create'])->name('user-create');
         Route::post('/admin/user/store',[UserController::class, 'store'])->name('user-store');
-        Route::get('/admin/user/edit',[UserController::class, 'edit'])->name('user-edit');
-        Route::post('/admin/user/update',[UserController::class, 'update'])->name('user-update');
-        Route::post('/admin/user/delete',[UserController::class, 'delete'])->name('user-delete');
+        Route::get('/admin/user/edit/{id}',[UserController::class, 'edit'])->name('user-edit');
+        Route::post('/admin/user/update/{id}',[UserController::class, 'update'])->name('user-update');
+        Route::post('/admin/user/delete/{id}',[UserController::class, 'delete'])->name('user-delete');
 
         //Kategori
         Route::get('/admin/kategori',[AdminController::class, 'kategori'])->name('admin-kategori');
         Route::post('/admin/kategori/store',[KategoriController::class, 'store'])->name('kategori-store');
-        Route::post('/admin/kategori/update{id}',[KategoriController::class, 'update'])->name('kategori-update');
-        Route::post('/admin/kategori/delete{id}',[KategoriController::class, 'delete'])->name('kategori-delete');
+        Route::post('/admin/kategori/update/{id}',[KategoriController::class, 'update'])->name('kategori-update');
+        Route::post('/admin/kategori/delete/{id}',[KategoriController::class, 'delete'])->name('kategori-delete');
 
         //Toko
         Route::get('/admin/toko',[AdminController::class, 'toko'])->name('admin-toko');
         Route::get('/admin/toko/create',[TokoController::class, 'create'])->name('toko-create');
         Route::post('/admin/toko/store',[TokoController::class, 'store'])->name('toko-store');
-        Route::get('/admin/toko/edit',[TokoController::class, 'edit'])->name('toko-edit');
-        Route::post('/admin/toko/update',[TokoController::class, 'update'])->name('toko-update');
-        Route::post('/admin/toko/delete',[TokoController::class, 'delete'])->name('toko-delete');
+        Route::get('/admin/toko/edit/{id}',[TokoController::class, 'edit'])->name('toko-edit');
+        Route::post('/admin/toko/update/{id}',[TokoController::class, 'update'])->name('toko-update');
+        Route::post('/admin/toko/delete/{id}',[TokoController::class, 'delete'])->name('toko-delete');
     });
 
     Route::post('/admin/logout', [AuthController::class, 'Alogout'])->name('admin-logout');

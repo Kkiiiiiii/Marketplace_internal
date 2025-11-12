@@ -6,6 +6,7 @@ use App\Models\Toko;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Request as FacadesRequest;
 use PhpParser\Node\Scalar\String_;
 
@@ -51,8 +52,9 @@ class TokoController extends Controller
 
     public function edit(String $id)
     {
+        $id = Crypt::decrypt($id);
         $toko = Toko::findOrFail($id);
-        return view('admin.', compact('toko'));
+        return view('admin.toko-edit', compact('toko'));
     }
 
     public function update(Request $request, String $id)
@@ -72,7 +74,9 @@ class TokoController extends Controller
 
     public function delete($id)
     {
+        $id = Crypt::decrypt($id);
         $toko = Toko::findOrFail($id);
+        $toko->produk()->delete();
         $toko->delete();
 
         return redirect()->back()->with('success', 'Kategori berhasil dihapus!');
