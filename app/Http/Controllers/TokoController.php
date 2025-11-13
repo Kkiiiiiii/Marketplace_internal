@@ -51,7 +51,7 @@ class TokoController extends Controller
     {
         $id = Crypt::decrypt($id);
         $toko = Toko::findOrFail($id);
-        return view('admin.toko-edit', compact('toko'));
+        return view('toko.edit-toko', compact('toko'));
     }
 
     public function update(Request $request, String $id)
@@ -66,7 +66,7 @@ class TokoController extends Controller
         $toko = Toko::findOrFail($id);
         $toko->update($request->all());
 
-        return redirect()->route('admin-toko')->with('success', 'Toko berhasil diperbarui!');
+        return redirect()->route('toko')->with('success', 'Toko berhasil diperbarui!');
     }
 
     public function delete($id)
