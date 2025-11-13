@@ -2,8 +2,9 @@
 @section('content')
 <div class="container mt-5">
     <h3 class="mb-4">📦 Daftar Produk</h3>
-    <a href="{{ route('produk-create') }}" class="btn btn-md btn-success mb-3">
-        <i class="bi bi-plus-circle"></i> Tambah Produk</a>
+    <hr>
+    {{-- <a href="{{ route('produk-create') }}" class="btn btn-md btn-success mb-3">
+        <i class="bi bi-plus-circle"></i> Tambah Produk</a> --}}
     <table class="table table-bordered table-striped shadow-sm table-cust">
         <thead class="table-dark">
             <tr>
@@ -37,8 +38,10 @@
                         @endif
                     </td>
                     <td>
-                        <a href="" class="btn btn-sm btn-warning">Edit</a>
-                        <a href="" class="btn btn-sm btn-danger">Hapus</a>
+                        <a href="" class="btn btn-sm btn-warning">
+                            <i class="bi bi-pencil"></i> Edit</a>
+                        <a href="" class="btn btn-sm btn-danger">
+                            <i class="bi bi-trash"></i> Hapus</a>
                     </td>
                 </tr>
             @empty

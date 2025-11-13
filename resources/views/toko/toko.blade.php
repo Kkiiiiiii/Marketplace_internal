@@ -1,15 +1,18 @@
 @extends('layout')
 @section('content')
 <div class="container mt-4">
-    <h2 class="mb-4">Toko</h2>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Toko</h2>
+            <a href="{{ route('buka-toko') }}" class="btn btn-success btn-sm">Buka Toko</a>
+    </div>
+
     <div class="row">
         @foreach ($toko as $t)
         <div class="col-md-6 mb-4">
-            <a href="{{ route('buka-toko') }}" class="btn btn-success btn-sm">Buka Toko</a>
-            <div class="card h-100 mt-3">
+            <div class="card h-100">
                 <div class="row g-0">
                     <div class="col-md-4 d-flex justify-content-center align-items-center p-3">
-                        <img src="{{ asset('storage/'.$t->gambar) }}" alt="Logo Toko" class="rounded-circle img-fluid ">
+                        <img src="{{ asset('storage/'.$t->gambar) }}" alt="Logo Toko" class="rounded-circle img-fluid">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
@@ -19,7 +22,9 @@
                             <p class="mb-1"><i class="fa fa-phone"></i> {{ $t->kontak_toko }}</p>
                             <p class="mb-3"><i class="fa fa-user"></i> {{ $t->user->name }}</p>
                             <a href="{{ route('produk', $t->id) }}" class="btn btn-primary btn-sm">Lihat Produk</a>
-                            <a href="{{ route('bproduk', $t->id) }}" class="btn btn-warning btn-sm text-white">Tambah Produk</a>
+                            @if(Auth::check() && Auth::user()->id == $t->id_user)
+                                <a href="{{ route('bproduk', $t->id) }}" class="btn btn-warning btn-sm text-white">Tambah Produk</a>
+                            @endif
                         </div>
                     </div>
                 </div>

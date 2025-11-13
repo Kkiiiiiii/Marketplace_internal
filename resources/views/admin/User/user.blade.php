@@ -2,6 +2,7 @@
 @section('content')
 <div class="container mt-4">
     <h3 class="mb-4">👤 Daftar User</h3>
+    <hr>
 
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>

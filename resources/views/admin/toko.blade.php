@@ -1,9 +1,10 @@
 @extends('admin.layout')
 @section('content')
 <div class="container mt-4">
-    <h2>Tabel Toko</h2>
-    <a href="{{ route('toko-create') }}" class="btn btn-primary mb-3">
-        <i class="bi bi-plus-circle"></i> Tambah Toko</a>
+    <h2 class="mb-4">Tabel Toko</h2>
+    <hr>
+    {{-- <a href="{{ route('toko-create') }}" class="btn btn-primary mb-3">
+        <i class="bi bi-plus-circle"></i> Tambah Toko</a> --}}
 
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
