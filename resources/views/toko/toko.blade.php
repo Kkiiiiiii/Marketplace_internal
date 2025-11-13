@@ -2,7 +2,6 @@
 @section('content')
 <div class="container mt-4">
     <h2 class="mb-4">Toko</h2>
-
     <div class="row">
         @foreach ($toko as $t)
         <div class="col-md-6 mb-4">

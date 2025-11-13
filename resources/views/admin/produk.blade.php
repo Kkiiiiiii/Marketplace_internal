@@ -20,14 +20,19 @@
             @forelse ($produk as $p)
                 <tr>
                     <td>{{ $p->nama_produk }}</td>
-                    <td>{{ $p->deskripsi }}</td>
+                    <td>{{ Str::limit($p->deskripsi, 50) }}</td>
                     <td>Rp.{{ $p->harga }}</td>
                     <td>{{ $p->stok }}</td>
                     <td>{{ $p->kategori->nama_kategori }}</td>
                     <td>
-                        @if($p->gambar)
-                            <img src="{{ asset('storage/' . $p->gambar_produk) }}" alt="{{ $p->nama_produk }}" width="80">
-                         @else
+                        @if($p->gambarProduk->count() > 0)
+                            @foreach($p->gambarProduk as $g)
+                                <img src="{{ asset('storage/' . $g->nama_gambar) }}"
+                                     alt="{{ $p->nama_produk }}"
+                                     width="80"
+                                     class="me-1 mb-1 rounded">
+                            @endforeach
+                        @else
                             <span class="text-muted">Tidak ada</span>
                         @endif
                     </td>

@@ -60,11 +60,13 @@
 
                                 {{-- Aksi --}}
                                 <td>
-                                    <button type="button" class="btn btn-warning btn-sm edit-btn">Edit</button>
+                                    <button type="button" class="btn btn-warning btn-sm edit-btn">
+                                        <i class="bi bi-pencil"></i> Edit</button>
                                     <form action="{{ route('kategori-delete',  Crypt::encrypt($k->id_kategori)) }}" method="POST"
                                         style="display:inline;" onsubmit="return confirm('Yakin ingin hapus?')">
                                         @csrf
-                                        <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+                                        <button type="submit" class="btn btn-danger btn-sm">
+                                            <i class="bi bi-trash"></i> Hapus</button>
                                     </form>
                                 </td>
                             </tr>
