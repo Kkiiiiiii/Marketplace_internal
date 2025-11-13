@@ -39,6 +39,18 @@ class ProdukController extends Controller
         return view('produk', compact('produk', 'kategori'));
     }
 
+    public function produkByToko($id)
+{
+    // Ambil toko berdasarkan ID
+    $toko = Toko::findOrFail($id);
+
+    // Ambil semua produk dari toko ini
+    $produk = Produk::where('id_toko', $id)->with('kategori', 'toko', 'gambarProduk')->get();
+
+    return view('toko.produk-toko', compact('produk', 'toko'));
+}
+
+
     public function detail($id)
     {
         $produk = Produk::with('gambarProduk')->findOrFail($id);

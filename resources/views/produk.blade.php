@@ -19,7 +19,7 @@
         <div class="col-md-4 mb-4">
             <div class="card h-100 shadow-sm">
                 @if ($p->gambarProduk->count() > 0)
-                    <img src="{{ asset('storage/' . $p->gambarProduk->first()->nama_gambar) }}"
+                    <img src="{{ asset('storage/' . $p->gambarProduk->first()->nama_gambar) }}" height="200px" style="object-fit: cover"
                          class="card-img-top" alt="{{ $p->nama_produk }}">
                 @else
                     <img src="{{ asset('assets/img/no-image.png') }}" class="card-img-top" alt="No Image">

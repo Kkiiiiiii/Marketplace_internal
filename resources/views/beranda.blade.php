@@ -1,12 +1,47 @@
 @extends('layout')
 @section('content')
 
-<div class="container mt-5">
-    <h2 class="mb-4">Produk Terbaru</h2>
+{{-- Banner --}}
+<div class="container-fluid p-0">
+    <div class="banner position-relative text-center text-white" style="background: url('{{ asset('image/beranda.jpeg') }}') no-repeat center center; background-size: cover; height: 400px;">
+        <div class="overlay position-absolute w-100 h-100" style="background: rgba(0,0,0,0.5); top:0; left:0;"></div>
+        <div class="banner-content position-relative d-flex flex-column justify-content-center align-items-center h-100">
+            <h1 class="display-4 fw-bold">Selamat Datang di Marketplace SMK</h1>
+            <p class="lead">Tempat untuk menjual dan menemukan produk yang anda inginkan</p>
+            <a href="#produk-terbaru" class="btn btn-primary btn-lg mt-3">Belanja Sekarang</a>
+        </div>
+    </div>
+</div>
 
+{{-- Kategori Section --}}
+<div class="container my-5">
+    <h2 class="mb-4 text-center">Kategori</h2>
+    <div class="row g-4 justify-content-center">
+        @foreach($kategori as $k)
+        <div class="col-6 col-md-3 text-center">
+            <a href="{{ route('kategori', $k->id) }}" class="text-decoration-none text-dark">
+                <div class="card h-100 shadow-sm">
+                    {{-- <img src="{{ $k->gambar ? asset('storage/'.$k->gambar) : asset('image/no_image.png') }}"
+                         class="card-img-top"
+                         alt="{{ $k->nama_kategori }}"
+                         style="height:150px; object-fit:cover;"> --}}
+                    <div class="card-body">
+                        <i class="bi bi-box-seam fs-1"></i>
+                        <h5 class="card-title">{{ $k->nama_kategori }}</h5>
+                    </div>
+                </div>
+            </a>
+        </div>
+        @endforeach
+    </div>
+</div>
+
+{{-- Produk Terbaru --}}
+<div class="container my-5" id="produk-terbaru">
+    <h2 class="mb-4 text-center">Produk Terbaru</h2>
     <div class="row g-4">
         @foreach($produk as $p)
-        <div class="col-md-3">
+        <div class="col-6 col-md-3">
             <div class="card h-100 shadow-sm">
                 {{-- Gambar Produk --}}
                 @if($p->gambarProduk->first())
@@ -23,18 +58,13 @@
 
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">{{ $p->nama_produk }}</h5>
-
                     <p class="text-primary fw-bold mb-1">Rp. {{ number_format($p->harga, 0, ',', '.') }}</p>
-
                     <p class="text-muted mb-1">Stok: {{ $p->stok }}</p>
-
                     <p class="card-text text-truncate" style="max-height: 3.6em; overflow: hidden;">
                         {{ $p->deskripsi }}
                     </p>
-
                     <p class="mb-1"><small class="text-muted">{{ $p->kategori->nama_kategori }}</small></p>
                     <p class="mb-2"><small class="text-muted">{{ $p->toko->nama_toko }}</small></p>
-
                     <a href="{{ route('produk') }}" class="btn btn-success btn-sm mt-auto">Beli</a>
                 </div>
             </div>

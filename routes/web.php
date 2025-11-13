@@ -58,12 +58,15 @@ use Illuminate\Support\Facades\Route;
 
     Route::get('/toko',[TokoController::class, 'index'])->name('toko');
     Route::middleware( ['member'])->group( function(){
-        Route::get('/toko/buat', [TokoController::class, 'buka'])->name('buka-toko');
-        Route::post('/toko/store', [TokoController::class,  'buat' ])->name('store-toko');
-        Route::get('/toko/edit/{id}',[TokoController::class, 'edit'])->name('toko-edit');
-        Route::post('/toko/update/{id}',[TokoController::class, 'update'])->name('toko-update');
-        Route::get('/produk/buat',[ProdukController::class, 'bproduk'])->name('bproduk');
-        Route::post('/produk/store',[ProdukController::class, 'sproduk'])->name('Sproduk');
+    Route::get('/toko/buat', [TokoController::class, 'buka'])->name('buka-toko');
+    Route::post('/toko/store', [TokoController::class,  'buat' ])->name('store-toko');
+    Route::get('/toko/edit/{id}',[TokoController::class, 'edit'])->name('toko-edit');
+    Route::post('/toko/update/{id}',[TokoController::class, 'update'])->name('toko-update');
+    Route::get('/produk/buat',[ProdukController::class, 'bproduk'])->name('bproduk');
+    Route::post('/produk/store',[ProdukController::class, 'sproduk'])->name('Sproduk');
+    // Route untuk menampilkan produk berdasarkan toko
+    Route::get('/toko/produk/{id}', [ProdukController::class, 'produkByToko'])->name('produk.toko');
+
 
     });
 
