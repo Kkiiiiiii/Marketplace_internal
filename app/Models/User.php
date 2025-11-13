@@ -55,7 +55,7 @@ class User extends Authenticatable
 
       public function toko()
     {
-        return $this->hasOne(Toko::class, 'id_user');
+        return $this->hasOne(Toko::class, 'id_user', 'id');
     }
 
 }

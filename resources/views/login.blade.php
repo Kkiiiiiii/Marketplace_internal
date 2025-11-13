@@ -33,12 +33,14 @@
     </style>
 </head>
 <body>
+           @if (session('success'))
+            <div class="alert alert-success">{{ session('success') }}</div>
+        @endif
     <div class="d-flex justify-content-center align-items-center vh-100">
         <div class="login-box">
             <h2>Login</h2>
             <div class="logo text-center rounded mx-auto">
                 <i class="bi bi-door-open-fill"  style="font-size: 50px"></i>
-                {{-- <i class="bi bi-basket" style="font-size: 50px"></i> --}}
             </div>
             <form action="{{ route('login') }}" method="POST">
                 @csrf

@@ -29,15 +29,15 @@
                 </select>
                 </div>
 
-            {{-- <div class="mb-3">
+            <div class="mb-3">
                    <label for="id_toko" class="form-label">Toko</label>
-                   <select name="id_toko" id="id_kategori" class="form-control" required>
+                   <select name="id_toko" id="id_toko" class="form-control" required>
                     <option value="">-- Pilih Toko --</option>
                     @foreach($toko as $t)
-                        <option value="{{ $t->id }}">{{ $t->nama_toko }}</option>
+                        <option value="{{ $t->id_toko }}">{{ $t->nama_toko }}</option>
                     @endforeach
                 </select>
-                </div> --}}
+                </div>
 
             <div class="mb-3">
                 <label for="harga" class="form-label">Harga</label>

@@ -13,8 +13,8 @@
         </a>
     </div>
 
-    <table class="table table-bordered table-striped" id="userTable">
-        <thead>
+    <table class="table table-bordered table-striped table-cust" id="userTable">
+        <thead class="table">
             <tr>
                 <th>No</th>
                 <th>Nama</th>

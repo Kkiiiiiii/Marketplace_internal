@@ -29,7 +29,7 @@
         <div class="card shadow-sm">
             <div class="card-body">
                 <table class="table table-bordered table-striped table-cust" id="kategoriTable">
-                    <thead class="table" style="background-color: #21295c; color: white;">
+                    <thead class="table">
                         <tr>
                             <th>No</th>
                             <th>Nama Kategori</th>

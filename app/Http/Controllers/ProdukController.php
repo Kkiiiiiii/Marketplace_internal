@@ -8,6 +8,7 @@ use App\Models\Produk;
 use App\Models\Toko;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ProdukController extends Controller
 {
@@ -43,57 +44,103 @@ class ProdukController extends Controller
         return view('admin.produk-create',  $data);
     }
 
-    public function store(Request $request)
+   public function store(Request $request)
 {
-
-    // dd($request->all());
-    $request->validate([
+    // Validasi
+    $validated = $request->validate([
         'nama_produk' => 'required|string|max:255',
         'id_kategori' => 'required|exists:kategori,id_kategori',
+        'id_toko' => 'required|exists:toko,id_toko',
         'harga' => 'required|numeric',
         'stok' => 'required|integer',
         'deskripsi' => 'nullable|string',
-        'gambar_produk.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048', // multiple images
+        'gambar_produk.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
     ]);
 
+    // Tambahkan tanggal upload
+    $validated['tanggal_upload'] = now();
 
-    $data = $request->all();
-    $data['tanggal_upload'] = now();
+    $produk = Produk::create($validated);
 
-    // Jika produk terkait dengan toko user login
-    $data['id_toko'] = optional(Auth::user()->toko)->id ?? 1;
-    // $data['id_toko'] = 1;
-
-    // 4️⃣ Simpan produk
-    $produk = Produk::create($data);
-
-    // 5️⃣ Simpan gambar jika ada
     if ($request->hasFile('gambar_produk')) {
         foreach ($request->file('gambar_produk') as $gambar) {
-            $gambarProduk = new Gambar();
-            $gambarProduk->id_produk = $produk->id;
-            $gambarProduk->nama_gambar = $gambar->store('gambar_produk', 'public'); // simpan di storage/app/public/gambar_produk
-            $gambarProduk->save();
+            $namaFile = $gambar->store('gambar_produk', 'public');
+
+            Gambar::create([
+                'id_produk' => $produk->id_produk,
+                'nama_gambar' => $namaFile,
+            ]);
         }
     }
 
-    return redirect()->route('admin-produk')->with('success', 'Produk berhasil ditambahkan!');
+    return redirect()->route('admin-produk')
+        ->with('success', 'Produk berhasil ditambahkan!');
 }
 
+    public function edit($id)
+    {
+        $data['produk'] = Produk::findOrFail(id: $id);
+        $data['kategori'] = Kategori::all();
+        $data['toko'] = Toko::all();
+        return view('admin.produk-edit', $data);
+    }
 
-    // public function store(Request $request)
-    // {
-    //     $produk = Produk::create($request->all());
-    //     if ($request->hasFile('gambar_produk')) {
-    //         foreach ($request->file('gambar_produk') as $gambar) {
-    //             $gambarProduk = new Gambar();
-    //             $gambarProduk->id_produk = $produk->id;
-    //             $gambarProduk->nama_gambar = $gambar->store('gambar_produk');
-    //             $gambarProduk->save();
-    //         }
-    //     }
-    //     return redirect()->route('produk')->with('success', 'Produk berhasil Ditambah');
-    // }
+    public function update(Request $request, $id)
+    {
+        // Validasi
+        $validated = $request->validate([
+            'nama_produk' => 'required|string|max:255',
+            'id_kategori' => 'required|exists:kategori,id_kategori',
+            'id_toko' => 'required|exists:toko,id_toko',
+            'harga' => 'required|numeric',
+            'stok' => 'required|integer',
+            'deskripsi' => 'nullable|string',
+            'gambar_produk.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $produk = Produk::findOrFail($id);
+        $produk->update($validated);
+
+        if ($request->hasFile('gambar_produk')) {
+            // Hapus gambar lama jika ada
+            foreach ($produk->gambarProduk as $gambar) {
+                // Hapus file fisik
+                Storage::disk('public')->delete($gambar->nama_gambar);
+                // Hapus data di database
+                $gambar->delete();
+            }
+
+            // Simpan gambar baru
+            foreach ($request->file('gambar_produk') as $gambar) {
+                $namaFile = $gambar->store('gambar_produk', 'public');
+
+                Gambar::create([
+                    'id_produk' => $produk->id_produk,
+                    'nama_gambar' => $namaFile,
+                ]);
+            }
+        }
+
+        return redirect()->route('admin-produk')
+            ->with('success', 'Produk berhasil diperbarui!');
+    }
+
+    public function delete($id)
+    {
+        $produk = Produk::findOrFail($id);
+
+        // Hapus gambar terkait
+        foreach ($produk->gambarProduk as $gambar) {
+            // Hapus file fisik
+            Storage::disk('public')->delete($gambar->nama_gambar);
+            // Hapus data di database
+            $gambar->delete();
+        }
+        $produk->delete();
+
+        return redirect()->route('admin-produk')
+            ->with('success', 'Produk berhasil dihapus!');
+    }
 
 
 }

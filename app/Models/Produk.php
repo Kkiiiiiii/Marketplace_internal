@@ -17,7 +17,7 @@ class Produk extends Model
 
      public function toko()
     {
-        return $this->belongsTo(Toko::class, 'id_toko');
+        return $this->belongsTo(Toko::class, 'id_toko', 'id_toko');
     }
 
     public function kategori()
