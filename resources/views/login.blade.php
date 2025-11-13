@@ -38,7 +38,7 @@
         @endif
     <div class="d-flex justify-content-center align-items-center vh-100">
         <div class="login-box">
-            <h2>Login</h2>
+            <h2>Marketplace SMK</h2>
             <div class="logo text-center rounded mx-auto">
                 <i class="bi bi-door-open-fill"  style="font-size: 50px"></i>
             </div>

@@ -44,5 +44,4 @@
         <button type="submit" class="btn btn-primary mt-4 w-100">Buka Toko</button>
     </form>
 </div>
-
 @endsection

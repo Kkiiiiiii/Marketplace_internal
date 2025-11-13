@@ -6,9 +6,12 @@ use App\Models\Gambar;
 use App\Models\Kategori;
 use App\Models\Produk;
 use App\Models\Toko;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Storage;
+use Ramsey\Uuid\Type\Decimal;
 
 class ProdukController extends Controller
 {
@@ -18,8 +21,13 @@ class ProdukController extends Controller
         $produkQuery = Produk::with(['gambarProduk', 'toko']);
 
         // Filter kategori jika ada
-        if ($request->kategori) {
-            $produkQuery->where('id_kategori', $request->kategori);
+       if ($request->kategori) {
+            try {
+                $id_kategori = Crypt::decrypt($request->kategori);
+                $produkQuery->where('id_kategori', $id_kategori);
+            } catch (Exception $e) {
+                abort(400, 'Kategori tidak valid');
+            }
         }
 
         // Ambil hasil query
@@ -76,6 +84,45 @@ class ProdukController extends Controller
     return redirect()->route('admin-produk')
         ->with('success', 'Produk berhasil ditambahkan!');
 }
+
+     public function bproduk()
+    {
+        $data['kategori'] = Kategori::all();
+        $data['toko'] = Toko::all();
+        return view('buat-produk', $data);
+    }
+
+    public function sproduk(Request $request)
+    {
+         $validated = $request->validate([
+        'nama_produk' => 'required|string|max:255',
+        'id_kategori' => 'required|exists:kategori,id_kategori',
+        'id_toko' => 'required|exists:toko,id_toko',
+        'harga' => 'required|numeric',
+        'stok' => 'required|integer',
+        'deskripsi' => 'nullable|string',
+        'gambar_produk.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+    ]);
+
+    // Tambahkan tanggal upload
+    $validated['tanggal_upload'] = now();
+
+    $produk = Produk::create($validated);
+
+    if ($request->hasFile('gambar_produk')) {
+        foreach ($request->file('gambar_produk') as $gambar) {
+            $namaFile = $gambar->store('gambar_produk', 'public');
+
+            Gambar::create([
+                'id_produk' => $produk->id_produk,
+                'nama_gambar' => $namaFile,
+            ]);
+        }
+    }
+
+    return redirect()->route('produk')
+        ->with('success', 'Produk berhasil ditambahkan!');
+    }
 
     public function edit($id)
     {

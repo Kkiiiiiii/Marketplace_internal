@@ -5,7 +5,7 @@
         <select name="kategori" class="form-select me-2">
             <option value="">-- Semua Kategori --</option>
             @foreach($kategori as $k)
-                <option value="{{ $k->id_kategori }}"
+                <option value="{{  Crypt::encrypt($k->id_kategori) }}"
                     {{ request('kategori') == $k->id_kategori ? 'selected' : '' }}>
                     {{ $k->nama_kategori }}
                 </option>

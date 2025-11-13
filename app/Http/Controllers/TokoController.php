@@ -26,7 +26,7 @@ class TokoController extends Controller
     }
 
     public function store(Request $request)
-{
+    {
     $validated = $request->validate([
         'nama_toko' => 'required|string|max:255',
         'deskripsi' => 'nullable|string',
@@ -40,7 +40,6 @@ class TokoController extends Controller
         $validated['gambar'] = $request->file('gambar')->store('toko', 'public');
     }
 
-    //  $validated['id_user'] = auth()->user()->id_user;
     $validated['id_user'] = Auth::id();
 
     // Simpan ke database
@@ -48,9 +47,6 @@ class TokoController extends Controller
 
     return redirect()->route('admin-toko')->with('success', 'Toko berhasil ditambahkan!');
 }
-
-
-
     public function edit(String $id)
     {
         $id = Crypt::decrypt($id);

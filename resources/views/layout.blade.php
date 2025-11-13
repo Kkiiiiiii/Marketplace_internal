@@ -12,7 +12,9 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-utama">
     <div class="container">
-        <a class="navbar-brand" href="{{ route('beranda') }}">Marketplace SMK</a>
+        <a class="navbar-brand" href="{{ route('beranda') }}">
+                    <i class="bi bi-shop-window" style="font-size: 20px;"></i>
+            Marketplace SMK</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

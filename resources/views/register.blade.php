@@ -49,7 +49,7 @@
 <body>
     <div class="d-flex justify-content-center align-items-center vh-100">
         <div class="login-box">
-            <h2>Register</h2>
+            <h2>Registrasi</h2>
             <div class="logo text-center rounded mx-auto">
                 <i class="bi bi-person-fill" style="font-size: 30px;"></i>
             </div>
