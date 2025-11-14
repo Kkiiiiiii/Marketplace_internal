@@ -55,11 +55,6 @@
                 <textarea name="deskripsi" class="form-control" id="deskripsi" rows="4" required></textarea>
             </div>
 
-            {{-- <div class="mb-3">
-                <label for="tanggal_upload" class="form-label">tanggal_upload</label>
-                <input type="date" name="tanggal_upload" class="form-control" id="tanggal_upload" required>
-            </div> --}}
-
             <div class="mb-3">
                 <label for="gambar_produk" class="form-label">Gambar Produk</label>
                 <input type="file" name="gambar_produk[]" class="form-control" id="gambar_produk" multiple required>
