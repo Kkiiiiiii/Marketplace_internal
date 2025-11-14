@@ -48,14 +48,14 @@
                                 <i class="bi bi-heart text-danger" style="font-size: 20px"  id="wish"></i></a>
                         </div>
 
-                        <div class="text-warning mb-2 d-flex align-items-center">
+                        {{-- <div class="text-warning mb-2 d-flex align-items-center">
                             <i class="bi bi-star-fill"></i>
                             <i class="bi bi-star-fill"></i>
                             <i class="bi bi-star-fill"></i>
                             <i class="bi bi-star-fill"></i>
                             <i class="bi bi-star-half"></i>
                             <span class="text-muted ms-1">(4.5) | 123 Terjual</span>
-                        </div>
+                        </div> --}}
 
                         <div class="d-flex align-items-center gap-3 mb-3">
                             <h2 class="fw-bold text-success mb-0">

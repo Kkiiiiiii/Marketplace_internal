@@ -46,7 +46,7 @@
                     <p class="mb-1"><small class="text-muted">{{ $p->kategori->nama_kategori }}</small></p>
                     <a href="{{ route('produk-detail', Crypt::encrypt($p->id_produk)) }}" class="btn btn-success btn-sm mt-auto">Detail Produk</a>
                         @if (Auth::check() && Auth::id() == $toko->id_user)
-                        <a href="{{ route('produk-edit', Crypt::encrypt($p->id_produk)) }}" class="btn btn-warning btn-sm mt-2 text-white">Edit Produk</a>
+                        <a href="{{ route('pEdit', Crypt::encrypt($p->id_produk)) }}" class="btn btn-warning btn-sm mt-2 text-white">Edit Produk</a>
                     <form action="{{ route('pdelete', Crypt::encrypt($p->id_produk)) }}" method="POST" class="mt-2">
                         @csrf
                         <button type="submit" class="btn btn-danger btn-sm"

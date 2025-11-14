@@ -76,7 +76,12 @@
                                     </button>
                                 </form>
                                 @endif
+                                @guest
+                                <a href="{{ route('indexLog') }}" class="dropdown-item">    
+                                <i class="bi bi-door-open-fill"></i> Login</a>
+                                @endguest
                             </li>
+
                         </ul>
                     </li>
                 </ul>

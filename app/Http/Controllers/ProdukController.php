@@ -202,13 +202,58 @@ class ProdukController extends Controller
             ->with('success', 'Produk berhasil dihapus!');
     }
 
-    public function pdelete($id)
+     public function proEdit($id)
+    {
+        $id = Crypt::decrypt($id);
+        $data['produk'] = Produk::findOrFail(id: $id);
+        $data['kategori'] = Kategori::all();
+        $data['toko'] = Toko::all();
+        return view('edit-produk', $data);
+    }
+
+    public function pUpdate(Request $request, $id)
+    {
+        $validasi = $request->validate([
+            'nama_produk' => 'required|string|max:255',
+            'id_kategori' => 'required|exists:kategori,id_kategori',
+            'id_toko' => 'required|exists:toko,id_toko',
+            'harga' => 'required|numeric',
+            'stok' => 'required|integer',
+            'deskripsi' => 'nullable|string',
+            'gambar_produk.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $produk = Produk::findOrFail($id);
+        $produk->update($validasi);
+
+        if ($request->hasFile('gambar_produk')) {
+            foreach ($produk->gambarProduk as $gambar) {
+                Storage::disk('public')->delete($gambar->nama_gambar);
+                // Hapus data di database
+                $gambar->delete();
+            }
+
+            // Simpan gambar baru
+            foreach ($request->file('gambar_produk') as $gambar) {
+                $namaFile = $gambar->store('gambar_produk', 'public');
+
+                Gambar::create([
+                    'id_produk' => $produk->id_produk,
+                    'nama_gambar' => $namaFile,
+                ]);
+            }
+        }
+
+        return redirect()->route('produk',)
+            ->with('success', 'Produk berhasil diperbarui!');
+    }
+
+    public function pDelete($id)
     {
         $id = Crypt::decrypt($id);
         $produk = Produk::findOrFail($id);
         // Hapus gambar terkait
         foreach ($produk->gambarProduk as $gambar) {
-            // Hapus file fisik
             Storage::disk('public')->delete($gambar->nama_gambar);
             // Hapus data di database
             $gambar->delete();
@@ -218,6 +263,4 @@ class ProdukController extends Controller
         return redirect()->route('produk')
             ->with('success', 'Produk berhasil dihapus!');
     }
-
-
 }

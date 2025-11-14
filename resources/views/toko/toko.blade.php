@@ -2,7 +2,8 @@
 @section('content')
 <div class="container mt-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2>Toko</h2>    </div>
+        <h2>Toko</h2>
+    </div>
 
     <div class="row">
         @foreach ($toko as $t)
