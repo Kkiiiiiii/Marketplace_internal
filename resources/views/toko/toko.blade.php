@@ -20,10 +20,6 @@
                             <p class="mb-1"><i class="fa fa-map-marker"></i> {{ $t->alamat }}</p>
                             <p class="mb-3"><i class="fa fa-user"></i> {{ $t->user->name }}</p>
                             <a href="{{ route('produk.toko', Crypt::encrypt($t->id_toko)) }}" class="btn btn-primary btn-sm">Lihat Produk</a>
-                            @if(Auth::check() && Auth::id() == $t->id_user)
-                            <a href="{{ route('toko-edit', Crypt::encrypt($t->id_toko)) }}" class="btn btn-warning btn-sm text-white">Edit Toko</a>
-                            <a href="{{ route('bproduk', $t->id) }}" class="btn btn-warning btn-sm text-white">Tambah Produk</a>
-                            @endif
                         </div>
                     </div>
                 </div>

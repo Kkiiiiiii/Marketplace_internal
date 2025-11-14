@@ -55,10 +55,16 @@
 
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                             <li>
-                                <a class="dropdown-item" href="{{ route('buka-toko') }}">
-                                    <i class="bi bi-shop me-2"></i> Buka Toko
-                                </a>
+                            @if(Auth::check() && auth()->user()->toko)
+                                    <a class="dropdown-item" href="{{ route('produk.toko', Crypt::encrypt(auth()->user()->toko->id_toko)) }}">
+                                        <i class="bi bi-shop me-2"></i> Toko Saya
+                                    </a>
+                                @endif
+                                    <a class="dropdown-item" href="{{ route('buka-toko') }}">
+                                        <i class="bi bi-shop me-2"></i> Buka Toko
+                                    </a>
                             </li>
+
                             @if(Auth::check())
                             <li>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST">

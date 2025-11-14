@@ -1,6 +1,5 @@
 @extends('layout')
 @section('content')
-
 <div class="container my-5 product-detail-page">
     <div class="row justify-content-center">
         <div class="col-lg-10">
@@ -43,8 +42,11 @@
                     </div>
 
                     <div class="col-lg-6 ps-lg-4">
-
-                        <h1 class="fw-bold">{{ $produk->nama_produk }}</h1>
+                        <div class="d-flex justify-content-between">
+                            <h1 class="fw-bold">{{ $produk->nama_produk }}</h1>
+                            <a href="" onclick="toggleWishlist()">
+                                <i class="bi bi-heart text-danger" style="font-size: 20px"  id="wish"></i></a>
+                        </div>
 
                         <div class="text-warning mb-2 d-flex align-items-center">
                             <i class="bi bi-star-fill"></i>
@@ -121,6 +123,12 @@
         thumbnails.forEach(thumb => thumb.classList.remove('border', 'border-primary'));
 
         thumbnailElement.classList.add('border', 'border-primary');
+    }
+
+    function toggleWishlist() {
+        const wishIcon = document.getElementById('wish');
+        wishIcon.classList.toggle('bi-heart');
+        wishIcon.classList.toggle('bi-heart-fill');
     }
 </script>
 

@@ -62,7 +62,10 @@ class TokoController extends Controller
             'alamat' => 'nullable|string',
             'deskripsi' => 'nullable|string',
         ]);
-
+           if ($request->hasFile('gambar')) {
+        $validated['gambar'] = $request->file('gambar')->store('toko', 'public');
+    }
+    
         $toko = Toko::findOrFail($id);
         $toko->update($request->all());
 

@@ -3,15 +3,22 @@
 
 <div class="container mt-5">
     <div class="d-flex mb-4 align-items-center flex-column ms-4">
+        @if (Auth::check() && Auth::id() == $toko->id_user)
+        <h2>Toko Saya</h2>
+        @endif
         <img src="{{ asset('storage/'. $toko->gambar) }}" alt="" class="rounded-circle img-thumbnail" style="width: 150px; height: 150px; object-fit: cover;">
-        <h2 class="ms-2">Produk dari {{ $toko->nama_toko }}</h2>
+        <h2 class="ms-2">{{ $toko->nama_toko }}</h2>
         <p>{{ Str::limit($toko->deskripsi, 100) }}</p>
         <h5>Kontak : {{ $toko->kontak_toko }}</h5>
         <p class="text-muted">Alamat Toko : {{ $toko->alamat }}</p>
+        <div class="d-flex align-content-center gap-2 mb-5">
+            @if(Auth::check() && Auth::id() == $toko->id_user)
+            <a href="{{ route('bproduk', $toko->id) }}" class="btn btn-success btn-sm text-white">Tambah Produk</a>
+        <a href="{{ route('toko-edit', Crypt::encrypt($toko->id_toko)) }}" class="btn btn-warning btn-sm text-white">Edit Toko</a>
+        @endif
+        </div>
     </div>
 
-    <div class="d-flex flex-column ms-4">
-    </div>
 
     <div class="row g-4">
         @foreach($produk as $p)
@@ -37,7 +44,7 @@
                         {{ $p->deskripsi }}
                     </p>
                     <p class="mb-1"><small class="text-muted">{{ $p->kategori->nama_kategori }}</small></p>
-                    <a href="{{ route('produk-detail', Crypt::encrypt($p->id_produk)) }}" class="btn btn-success btn-sm mt-auto">Beli</a>
+                    <a href="{{ route('produk-detail', Crypt::encrypt($p->id_produk)) }}" class="btn btn-success btn-sm mt-auto">Detail Produk</a>
                 </div>
             </div>
         </div>
