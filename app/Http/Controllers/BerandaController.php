@@ -15,4 +15,9 @@ class BerandaController extends Controller
         $data['produk'] = Produk::all();
         return view('beranda', $data);
     }
+
+    public function wish()
+    {
+        return view('wish');
+    }
 }

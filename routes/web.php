@@ -69,6 +69,7 @@ use Illuminate\Support\Facades\Route;
         Route::get('/produk/edit/{id}',[ProdukController::class, 'proEdit'])->name('pEdit');
         Route::post('/produk/update/{id}',[ProdukController::class, 'pUpdate'])->name('pUpdate');
         Route::post('/produk/delete/{id}',[ProdukController::class, 'pdelete'])->name('pdelete');
+        Route::get('/wishlist', [BerandaController::class, 'wish'])->name('wishlist');
     });
     Route::get('/toko',[TokoController::class, 'index'])->name('toko');
     // Route untuk menampilkan produk berdasarkan toko

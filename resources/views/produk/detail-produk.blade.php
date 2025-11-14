@@ -44,7 +44,7 @@
                     <div class="col-lg-6 ps-lg-4">
                         <div class="d-flex justify-content-between">
                             <h1 class="fw-bold">{{ $produk->nama_produk }}</h1>
-                            <a href="" onclick="toggleWishlist()">
+                            <a href="{{ route('wishlist') }}" onclick="toggleWishlist()">
                                 <i class="bi bi-heart text-danger" style="font-size: 20px"  id="wish"></i></a>
                         </div>
 

@@ -23,20 +23,21 @@ class UserController extends Controller
             'name' => 'required|string|max:255',
             'kontak' => 'required|string|max:20',
             'username' => 'required|string|unique:users,username',
-            'password' => 'required|confirmed|min:6',
+            'password' => 'required|confirmed|max:6',
+            'role' => 'required|in:admin,member', 
         ]);
 
-       User::create([
+        User::create([
             'name' => $request->name,
             'kontak' => $request->kontak,
             'username' => $request->username,
             'password' => bcrypt($request->password),
-            'role' => 'member',
+            'role' => $request->role,
         ]);
-
 
         return redirect()->route('admin-user')->with('success', 'User berhasil ditambahkan!');
     }
+
 
     public function edit($id)
     {
