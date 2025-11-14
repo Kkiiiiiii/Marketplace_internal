@@ -36,7 +36,7 @@ class ProdukController extends Controller
         // Ambil semua kategori
         $kategori = Kategori::all();
 
-        return view('produk', compact('produk', 'kategori'));
+        return view('produk.produk', compact('produk', 'kategori'));
     }
 
     public function produkByToko($id)
@@ -55,14 +55,14 @@ class ProdukController extends Controller
     {
         $id = Crypt::decrypt($id);
         $produk = Produk::with('gambarProduk')->findOrFail($id);
-        return view('detail-produk', compact('produk'));
+        return view('produk.detail-produk', compact('produk'));
     }
 
      public function create()
     {
         $data['kategori'] = Kategori::all();
         $data['toko'] = Toko::all();
-        return view('admin.produk-create',  $data);
+        return view('admin.produk.produk-create',  $data);
     }
 
    public function store(Request $request)
@@ -102,7 +102,7 @@ class ProdukController extends Controller
     {
         $data['kategori'] = Kategori::all();
         $data['toko'] = Toko::all();
-        return view('buat-produk', $data);
+        return view('produk.buat-produk', $data);
     }
 
     public function sproduk(Request $request)
@@ -142,7 +142,7 @@ class ProdukController extends Controller
         $data['produk'] = Produk::findOrFail(id: $id);
         $data['kategori'] = Kategori::all();
         $data['toko'] = Toko::all();
-        return view('admin.produk-edit', $data);
+        return view('admin.produk.produk-edit', $data);
     }
 
     public function update(Request $request, $id)
@@ -208,7 +208,7 @@ class ProdukController extends Controller
         $data['produk'] = Produk::findOrFail(id: $id);
         $data['kategori'] = Kategori::all();
         $data['toko'] = Toko::all();
-        return view('edit-produk', $data);
+        return view('produk.edit-produk', $data);
     }
 
     public function pUpdate(Request $request, $id)
@@ -244,7 +244,7 @@ class ProdukController extends Controller
             }
         }
 
-        return redirect()->route('produk',)
+        return redirect()->route('produk')
             ->with('success', 'Produk berhasil diperbarui!');
     }
 

@@ -22,7 +22,7 @@ class TokoController extends Controller
 
     public function create()
     {
-        return view('admin.toko-create');
+        return view('admin.toko.toko-create');
     }
 
     public function store(Request $request)
@@ -65,7 +65,7 @@ class TokoController extends Controller
            if ($request->hasFile('gambar')) {
         $validated['gambar'] = $request->file('gambar')->store('toko', 'public');
     }
-    
+
         $toko = Toko::findOrFail($id);
         $toko->update($request->all());
 

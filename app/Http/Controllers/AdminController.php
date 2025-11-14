@@ -24,7 +24,7 @@ class AdminController extends Controller
         $data ['produk'] = Produk::all();
         $data ['kategori'] = Kategori::all();
 
-        return view('admin.produk', $data);
+        return view('admin.produk.produk', $data);
     }
 
     public function kategori()
@@ -36,7 +36,7 @@ class AdminController extends Controller
     public function toko()
     {
         $toko = Toko::all();
-        return view('admin.toko', compact('toko'));
+        return view('admin.toko.toko', compact('toko'));
     }
 
     public function user()
