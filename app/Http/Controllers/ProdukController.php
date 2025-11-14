@@ -139,6 +139,7 @@ class ProdukController extends Controller
 
     public function edit($id)
     {
+        $id = Crypt::decrypt($id);
         $data['produk'] = Produk::findOrFail(id: $id);
         $data['kategori'] = Kategori::all();
         $data['toko'] = Toko::all();

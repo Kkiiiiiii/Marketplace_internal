@@ -39,9 +39,9 @@
                         @endif
                     </td>
                     <td>
-                        <a href="{{ route('produk-edit', $p->id_produk) }}" class="btn btn-sm btn-warning">
+                        <a href="{{ route('produk-edit', Crypt::encrypt($p->id_produk)) }}" class="btn btn-sm btn-warning">
                             <i class="bi bi-pencil"></i> Edit</a>
-                        <a href="{{ route('produk-delete', $p->id_produk) }}" class="btn btn-sm btn-danger"
+                        <a href="{{ route('produk-delete', Crypt::encrypt($p->id_produk)) }}" class="btn btn-sm btn-danger"
                            onclick="return confirm('Yakin ingin menghapus produk ini?')">
                             <i class="bi bi-trash"></i> Hapus</a>
                     </td>
