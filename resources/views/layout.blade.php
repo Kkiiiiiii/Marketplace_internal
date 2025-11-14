@@ -59,11 +59,13 @@
                                     <a class="dropdown-item" href="{{ route('produk.toko', Crypt::encrypt(auth()->user()->toko->id_toko)) }}">
                                         <i class="bi bi-shop me-2"></i> Toko Saya
                                     </a>
-                                @endif
+
+                                @elseif(Auth::check() && !auth()->user()->toko)
                                     <a class="dropdown-item" href="{{ route('buka-toko') }}">
                                         <i class="bi bi-shop me-2"></i> Buka Toko
                                     </a>
-                            </li>
+                                </li>
+                                @endif
 
                             @if(Auth::check())
                             <li>
