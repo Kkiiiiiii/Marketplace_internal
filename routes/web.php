@@ -1,11 +1,11 @@
     <?php
 
-    use App\Http\Controllers\AdminController;
-    use App\Http\Controllers\AuthController;
-    use App\Http\Controllers\BerandaController;
-    use App\Http\Controllers\KategoriController;
-    use App\Http\Controllers\ProdukController;
-    use App\Http\Controllers\TokoController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BerandaController;
+use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\TokoController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Route;
     Route::post('/register',[AuthController::class, 'register'])->name('register-post');
 
     // Login - Admin
-
     Route::get('/admin/login/tampil',[AuthController::class, 'AdminLog'])->name('AdminLog');
     Route::post('/admin/login',[AuthController::class, 'Alogin'])->name('Alogin');
 
