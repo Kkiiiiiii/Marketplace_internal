@@ -27,6 +27,9 @@ use Illuminate\Support\Facades\Route;
         Route::get('/admin/produk',[AdminController::class, 'produk'])->name('admin-produk');
         Route::get('/admin/produk/create',[ProdukController::class, 'create'])->name('produk-create');
         Route::post('/admin/produk/store',[ProdukController::class, 'store'])->name('produk-store');
+        Route::get('/admin/produk/edit/{id}',[ProdukController::class, 'edit'])->name('produk-edit');
+        Route::post('/admin/produk/update/{id}',[ProdukController::class, 'update'])->name('produk-update');
+        Route::post('/admin/produk/delete/{id}',[ProdukController::class, 'delete'])->name('produk-delete');
 
         //User
         Route::get('/admin/user', [AdminController::class, 'user'])->name('admin-user');

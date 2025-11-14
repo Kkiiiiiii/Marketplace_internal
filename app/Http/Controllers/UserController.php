@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Request as HttpRequest;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Request as FacadesRequest;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -74,7 +75,25 @@ class UserController extends Controller
     {
         $id = Crypt::decrypt($id);
         $user = User::findOrFail($id);
-        $user->delete();
+         if ($user->toko) {
+        // Hapus semua produk toko
+        $user->toko->produk()->each(function ($produk) {
+            // Hapus gambar jika ada
+            foreach ($produk->gambarProduk as $gambar) {
+                if (Storage::exists($gambar->nama_gambar)) {
+                    Storage::delete($gambar->nama_gambar);
+                }
+                $gambar->delete();
+            }
+            $produk->delete();
+        });
+
+        // Hapus tokonya
+        $user->toko()->delete();
+    }
+
+    // Hapus user
+    $user->delete();
 
         return redirect()->route('admin-user')->with('success', 'User berhasil dihapus!');
     }

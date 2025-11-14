@@ -27,7 +27,7 @@
             <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $t->nama_toko }}</td>
-                <td>{{ $t->deskripsi }}</td>
+                <td>{{ Str::limit($t->deskripsi, 50) }}</td>
                 <td>
                         @if($t->gambar)
                             <img src="{{ asset('storage/' . $t->gambar) }}" alt="{{ $t->nama_toko }}" width="80">

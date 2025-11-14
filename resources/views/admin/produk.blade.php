@@ -3,9 +3,10 @@
 <div class="container mt-5">
     <h3 class="mb-4">📦 Daftar Produk</h3>
     <hr>
-    {{-- <a href="{{ route('produk-create') }}" class="btn btn-md btn-success mb-3">
-        <i class="bi bi-plus-circle"></i> Tambah Produk</a> --}}
-    <table class="table table-bordered table-striped shadow-sm table-cust">
+    <a href="{{ route('produk-create') }}" class="btn btn-md btn-success mb-3">
+        <i class="bi bi-plus-circle"></i> Tambah Produk</a>
+
+    <table id="produkTable" class="table table-bordered table-striped shadow-sm table-cust">
         <thead class="table-dark">
             <tr>
                 <th>Nama Produk</th>
@@ -22,7 +23,7 @@
                 <tr>
                     <td>{{ $p->nama_produk }}</td>
                     <td>{{ Str::limit($p->deskripsi, 50) }}</td>
-                    <td>Rp.{{ $p->harga }}</td>
+                    <td>Rp.{{ number_format($p->harga,0,',','.') }}</td>
                     <td>{{ $p->stok }}</td>
                     <td>{{ $p->kategori->nama_kategori }}</td>
                     <td>
@@ -38,9 +39,10 @@
                         @endif
                     </td>
                     <td>
-                        <a href="" class="btn btn-sm btn-warning">
+                        <a href="{{ route('produk-edit', $p->id_produk) }}" class="btn btn-sm btn-warning">
                             <i class="bi bi-pencil"></i> Edit</a>
-                        <a href="" class="btn btn-sm btn-danger">
+                        <a href="{{ route('produk-delete', $p->id_produk) }}" class="btn btn-sm btn-danger"
+                           onclick="return confirm('Yakin ingin menghapus produk ini?')">
                             <i class="bi bi-trash"></i> Hapus</a>
                     </td>
                 </tr>
@@ -53,4 +55,18 @@
     </table>
 </div>
 @endsection
+
+@push('scripts')
+    <script>
+        $(document).ready(function () {
+            $('#produkTable').DataTable({
+                "paging": false,
+                "searching": true,
+                "ordering": false,
+                "info": true,
+                "lengthChange": false
+            });
+        });
+    </script>
+@endpush
 
