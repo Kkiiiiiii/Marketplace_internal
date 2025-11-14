@@ -202,5 +202,22 @@ class ProdukController extends Controller
             ->with('success', 'Produk berhasil dihapus!');
     }
 
+    public function pdelete($id)
+    {
+        $id = Crypt::decrypt($id);
+        $produk = Produk::findOrFail($id);
+        // Hapus gambar terkait
+        foreach ($produk->gambarProduk as $gambar) {
+            // Hapus file fisik
+            Storage::disk('public')->delete($gambar->nama_gambar);
+            // Hapus data di database
+            $gambar->delete();
+        }
+        $produk->delete();
+
+        return redirect()->route('produk')
+            ->with('success', 'Produk berhasil dihapus!');
+    }
+
 
 }
