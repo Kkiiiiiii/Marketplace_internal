@@ -35,7 +35,7 @@
                             Upload: {{ \Carbon\Carbon::parse($p->tanggal_upload)->format('d M Y') }}
                         </small>
                     </p>
-                    <a href="{{ route('produk-detail', $p->id_produk) }}" class="btn btn-primary mt-auto">
+                    <a href="{{ route('produk-detail', Crypt::encrypt($p->id_produk  )) }}" class="btn btn-primary mt-auto">
                         Detail Produk
                     </a>
                 </div>

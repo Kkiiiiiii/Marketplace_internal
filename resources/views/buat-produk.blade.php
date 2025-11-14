@@ -32,7 +32,7 @@
                         <option value="{{ $t->id_toko }}">{{ $t->nama_toko }}</option>
                     @endforeach
                 </select>
-                </div>
+            </div>
 
             <div class="mb-3">
                 <label for="harga" class="form-label">Harga</label>

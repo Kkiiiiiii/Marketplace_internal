@@ -28,7 +28,7 @@
                         {{ $p->deskripsi }}
                     </p>
                     <p class="mb-1"><small class="text-muted">{{ $p->kategori->nama_kategori }}</small></p>
-                    <a href="{{ route('produk-detail', $p->id_produk) }}" class="btn btn-success btn-sm mt-auto">Beli</a>
+                    <a href="{{ route('produk-detail', Crypt::encrypt($p->id_produk)) }}" class="btn btn-success btn-sm mt-auto">Beli</a>
                 </div>
             </div>
         </div>

@@ -2,9 +2,7 @@
 @section('content')
 <div class="container mt-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2>Toko</h2>
-            <a href="{{ route('buka-toko') }}" class="btn btn-success btn-sm">Buka Toko</a>
-    </div>
+        <h2>Toko</h2>    </div>
 
     <div class="row">
         @foreach ($toko as $t)
@@ -18,8 +16,8 @@
                         <div class="card-body">
                             <h4 class="card-title"><b>{{ $t->nama_toko }}</b></h4>
                             <p class="card-text">{{ $t->deskripsi }}</p>
-                            <p class="mb-1"><i class="fa fa-map-marker"></i> {{ $t->alamat }}</p>
                             <p class="mb-1"><i class="fa fa-phone"></i> {{ $t->kontak_toko }}</p>
+                            <p class="mb-1"><i class="fa fa-map-marker"></i> {{ $t->alamat }}</p>
                             <p class="mb-3"><i class="fa fa-user"></i> {{ $t->user->name }}</p>
                             <a href="{{ route('produk.toko', $t->id_toko) }}" class="btn btn-primary btn-sm">Lihat Produk</a>
                             @if(Auth::check() && Auth::id() == $t->id_user)

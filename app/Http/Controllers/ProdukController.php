@@ -53,6 +53,7 @@ class ProdukController extends Controller
 
     public function detail($id)
     {
+        $id = Crypt::decrypt($id);
         $produk = Produk::with('gambarProduk')->findOrFail($id);
         return view('detail-produk', compact('produk'));
     }

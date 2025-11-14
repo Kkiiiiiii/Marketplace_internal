@@ -14,8 +14,8 @@
 </div>
 
 {{-- Kategori Section --}}
-<div class="container my-5">
-    <h2 class="mb-4 text-center">Kategori</h2>
+<div class="container my-5 bg-light p-4 rounded" id="kategori">
+    <h2 class="mb-5 text-center">Kategori</h2>
     <div class="row g-4 justify-content-center">
         @foreach($kategori as $k)
         <div class="col-6 col-md-3 text-center">
@@ -38,7 +38,7 @@
 
 {{-- Produk Terbaru --}}
 <div class="container my-5" id="produk-terbaru">
-    <h2 class="mb-4 text-center">Produk Terbaru</h2>
+    <h2 class="mb-5 text-center">Produk Terbaru</h2>
     <div class="row g-4">
         @foreach($produk as $p)
         <div class="col-6 col-md-3">
