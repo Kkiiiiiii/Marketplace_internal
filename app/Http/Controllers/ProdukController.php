@@ -41,9 +41,9 @@ class ProdukController extends Controller
 
     public function produkByToko($id)
 {
+    $id = Crypt::decrypt($id);
     // Ambil toko berdasarkan ID
     $toko = Toko::findOrFail($id);
-
     // Ambil semua produk dari toko ini
     $produk = Produk::where('id_toko', $id)->with('kategori', 'toko', 'gambarProduk')->get();
 

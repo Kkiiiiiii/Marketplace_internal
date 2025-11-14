@@ -57,6 +57,7 @@ use Illuminate\Support\Facades\Route;
     Route::get('/produk/detail/{id}',[ProdukController::class, 'detail'])->name('produk-detail');
 
     Route::get('/toko',[TokoController::class, 'index'])->name('toko');
+    
     Route::middleware( ['member'])->group( function(){
     Route::get('/toko/buat', [TokoController::class, 'buka'])->name('buka-toko');
     Route::post('/toko/store', [TokoController::class,  'buat' ])->name('store-toko');

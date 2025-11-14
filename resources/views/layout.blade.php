@@ -47,7 +47,6 @@
                     </li>
 
                     <!-- DROPDOWN USER -->
-                    @if(Auth::check())
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown"
                             role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -60,7 +59,7 @@
                                     <i class="bi bi-shop me-2"></i> Buka Toko
                                 </a>
                             </li>
-
+                            @if(Auth::check())
                             <li>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST">
                                     @csrf

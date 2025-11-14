@@ -2,7 +2,16 @@
 @section('content')
 
 <div class="container mt-5">
-    <h2 class="mb-4">Produk dari {{ $toko->nama_toko }}</h2>
+    <div class="d-flex mb-4 align-items-center flex-column ms-4">
+        <img src="{{ asset('storage/'. $toko->gambar) }}" alt="" class="rounded-circle img-thumbnail" style="width: 150px; height: 150px; object-fit: cover;">
+        <h2 class="ms-2">Produk dari {{ $toko->nama_toko }}</h2>
+        <p>{{ Str::limit($toko->deskripsi, 100) }}</p>
+        <h5>Kontak : {{ $toko->kontak_toko }}</h5>
+        <p class="text-muted">Alamat Toko : {{ $toko->alamat }}</p>
+    </div>
+
+    <div class="d-flex flex-column ms-4">
+    </div>
 
     <div class="row g-4">
         @foreach($produk as $p)
@@ -22,7 +31,7 @@
 
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">{{ $p->nama_produk }}</h5>
-                    <p class="text-primary fw-bold mb-1">Rp. {{ number_format($p->harga, 0, ',', '.') }}</p>
+                    <p class="text-success fw-bold mb-1">Rp. {{ number_format($p->harga, 0, ',', '.') }}</p>
                     <p class="text-muted mb-1">Stok: {{ $p->stok }}</p>
                     <p class="card-text text-truncate" style="max-height: 3.6em; overflow: hidden;">
                         {{ $p->deskripsi }}

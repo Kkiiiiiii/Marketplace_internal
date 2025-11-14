@@ -8,6 +8,12 @@
     background-color: #1b3b6f;
 }
 
+.btn-utama{
+    /* background-color: #485696; */
+    background-color: #1b3b6f;
+    color: white;
+}
+
 /* Ubah warna background header tabel */
 .table-cust thead {
     background-color: #21295c; /* Warna background header */

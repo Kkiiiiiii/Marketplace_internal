@@ -1,6 +1,5 @@
 @extends('layout')
 @section('content')
-
 {{-- Banner --}}
 <div class="container-fluid p-0">
     <div class="banner position-relative text-center text-white" style="background: url('{{ asset('image/beranda.jpeg') }}') no-repeat center center; background-size: cover; height: 400px;">
@@ -21,10 +20,6 @@
         <div class="col-6 col-md-3 text-center">
             <a href="{{ route('kategori', $k->id) }}" class="text-decoration-none text-dark">
                 <div class="card h-100 shadow-sm">
-                    {{-- <img src="{{ $k->gambar ? asset('storage/'.$k->gambar) : asset('image/no_image.png') }}"
-                         class="card-img-top"
-                         alt="{{ $k->nama_kategori }}"
-                         style="height:150px; object-fit:cover;"> --}}
                     <div class="card-body">
                         <i class="bi bi-box-seam fs-1"></i>
                         <h5 class="card-title">{{ $k->nama_kategori }}</h5>
@@ -58,14 +53,15 @@
 
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">{{ $p->nama_produk }}</h5>
-                    <p class="text-primary fw-bold mb-1">Rp. {{ number_format($p->harga, 0, ',', '.') }}</p>
+                    <p class="text-success fw-bold mb-1">Rp. {{ number_format($p->harga, 0, ',', '.') }}</p>
                     <p class="text-muted mb-1">Stok: {{ $p->stok }}</p>
                     <p class="card-text text-truncate" style="max-height: 3.6em; overflow: hidden;">
                         {{ $p->deskripsi }}
                     </p>
                     <p class="mb-1"><small class="text-muted">{{ $p->kategori->nama_kategori }}</small></p>
                     <p class="mb-2"><small class="text-muted">{{ $p->toko->nama_toko }}</small></p>
-                    <a href="{{ route('produk') }}" class="btn btn-success btn-sm mt-auto">Beli</a>
+                    <a href="{{ route('produk.toko', Crypt::encrypt($p->id_toko)) }}" class="btn btn-primary btn-sm">Beli</a>
+                    {{-- <a href="{{ route('produk') }}" class="btn btn-primary btn-sm mt-auto">Beli</a> --}}
                 </div>
             </div>
         </div>
