@@ -142,6 +142,8 @@
                         <i class="fas fa-sign-out-alt"></i> Logout
                     </a>
                 </form>
+
+                <input type="checkbox" onclick="document.body.classList.toggle('dark')">
             </div>
 
             <!-- Content -->

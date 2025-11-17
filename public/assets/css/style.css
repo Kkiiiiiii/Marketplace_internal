@@ -3,6 +3,10 @@
     margin-bottom: 10px;
 }
 
+body.dark{
+    background: #111;
+}
+
 .bg-utama{
     /* background-color: #485696; */
     background-color: #1b3b6f;
