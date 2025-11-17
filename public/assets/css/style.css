@@ -12,6 +12,13 @@
     background-color: #21295c;
 }
 
+.copyright-bar {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #21295c; /* GANTI WARNA DI SINI */
+}
+
+
 .footer-social-icon {
     padding: 12px;
     font-size: 1.5rem;
@@ -22,12 +29,12 @@
     align-items: center;
     margin: 0 10px;
     border-radius: 20%;
-    background: linear-gradient(135deg, #ffff,#e1c2c2);
+    background: linear-gradient(135deg, #1b3b6f,#f1f1f1);
     /* text-emphasis-color: white; */
 }
 
 .footer-social-icon:hover {
-    background: linear-gradient(135deg,  #ffff,#40585a);
+    background: linear-gradient(135deg,  #ffff,#1b3b6f);
 
 }
 
