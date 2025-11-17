@@ -1,6 +1,5 @@
 @extends('layout')
 @section('content')
-
 <div class="container mt-5">
     <div class="d-flex mb-4 align-items-center flex-column text-center">
         @if (Auth::check() && Auth::id() == $toko->id_user)

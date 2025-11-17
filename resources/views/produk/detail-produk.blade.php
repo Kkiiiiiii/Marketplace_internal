@@ -101,7 +101,7 @@
                             <a href="https://wa.me/1234567890?text=Halo%2C+saya+tertarik+dengan+produk+{{ urlencode($produk->nama_produk) }}"
                                class="btn btn-success w-100 fw-semibold py-2"
                                target="_blank">
-                                <i class="bi bi-whatsapp"></i> Pesan via WhatsApp
+                                <i class="bi bi-whatsapp"></i> Pesan Via WhatsApp
                             </a>
                         </div>
 

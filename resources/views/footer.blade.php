@@ -8,21 +8,21 @@
 
             <div class="d-flex gap-4">
                 <div class="footer-social-icon">
-                    <a href="https://www.facebook.com/share/1ZZrxKnyzo/"
+                    <a href=""
                        class="text-dark text-decoration-none" aria-label="Facebook">
                         <i class="fab fa-facebook-f"></i>
                     </a>
                 </div>
 
                 <div class="footer-social-icon">
-                    <a href="https://youtube.com/?si=9KtIhuPxcLjHKNQl"
+                    <a href=""
                        class="text-dark text-decoration-none" aria-label="Youtube">
                         <i class="fab fa-youtube"></i>
                     </a>
                 </div>
 
                 <div class="footer-social-icon">
-                    <a href="https://www.instagram.com/smpn.duagunungputri?igsh=N3JqcTk4YzRkZ2ww"
+                    <a href=""
                        class="text-dark text-decoration-none" aria-label="Instagram">
                         <i class="fab fa-instagram"></i>
                     </a>
@@ -52,7 +52,7 @@
         </div>
 
     </div>
-
+    <hr>
     <div class="container-fluid bg-cust copyright-bar">
         <p class="m-0 small text-center py-3">
             <strong>Copyright</strong> © 2025 -

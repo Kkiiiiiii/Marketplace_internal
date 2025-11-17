@@ -14,6 +14,7 @@
         <button type="submit" class="btn btn-primary">Filter</button>
     </form>
 </div>
+<section class="py-5 my-5">
     <div class="row">
     @foreach ($produk as $p)
         <div class="col-md-4 mb-4">
@@ -43,4 +44,5 @@
         </div>
     @endforeach
 </div>
+</section>
 @endsection
