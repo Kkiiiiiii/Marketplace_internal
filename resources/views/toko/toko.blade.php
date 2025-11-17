@@ -1,6 +1,6 @@
 @extends('layout')
 @section('content')
-<h2 class="">Toko</h2>
+<h2>Toko</h2>
 <section class="py-5 my-5">
     <div class="container">
         <div class="row">

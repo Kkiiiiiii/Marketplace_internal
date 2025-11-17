@@ -1,6 +1,6 @@
 @extends('layout')
 @section('content')
-<div class="container">
+<div class="container my-5">
     <h2>Buka Toko</h2>
       <form action="{{ route('store-toko') }}" method="POST" enctype="multipart/form-data" id="formToko">
         @csrf

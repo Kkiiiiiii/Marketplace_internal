@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/all.min.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{{ asset('image/logo_hd.png') }}">
 </head>
-
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-utama">
@@ -66,7 +66,6 @@
                                     </a>
                                 </li>
                                 @endif
-
                             @if(Auth::check())
                             <li>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST">

@@ -44,7 +44,7 @@
                         </p>
                         <p class="mb-1"><small class="text-muted">{{ $p->kategori->nama_kategori }}</small></p>
                         <p class="mb-2"><small class="text-muted">{{ $p->toko->nama_toko }}</small></p>
-                        <a href="{{ route('produk.toko', Crypt::encrypt($p->id_toko)) }}" class="btn btn-primary btn-sm">Beli</a>
+                        <a href="{{ route('produk.toko', Crypt::encrypt($p->id_toko)) }}" class="btn btn-primary btn-sm">Kunjungi Toko</a>
                     </div>
                 </div>
             </div>

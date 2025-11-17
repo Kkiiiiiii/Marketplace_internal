@@ -15,7 +15,7 @@
                 </div>
 
                 <div class="footer-social-icon">
-                    <a href=""
+                    <a href="https://youtube.com/@smkypctasikmalaya?si=9KtIhuPxcLjHKNQl"
                        class="text-dark text-decoration-none" aria-label="Youtube">
                         <i class="fab fa-youtube"></i>
                     </a>
