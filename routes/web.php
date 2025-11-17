@@ -66,6 +66,7 @@ use Illuminate\Support\Facades\Route;
         Route::post('/toko/update/{id}',[TokoController::class, 'update'])->name('toko-update');
 
         Route::get('/produk/buat',[ProdukController::class, 'bproduk'])->name('bproduk');
+        Route::post('/produk/store', [ProdukController::class,  'sproduk' ])->name('Sproduk');
         Route::get('/produk/edit/{id}',[ProdukController::class, 'proEdit'])->name('pEdit');
         Route::post('/produk/update/{id}',[ProdukController::class, 'pUpdate'])->name('pUpdate');
         Route::post('/produk/delete/{id}',[ProdukController::class, 'pdelete'])->name('pdelete');

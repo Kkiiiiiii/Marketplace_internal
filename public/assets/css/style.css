@@ -8,6 +8,29 @@
     background-color: #1b3b6f;
 }
 
+.bg-cust{
+    background-color: #21295c;
+}
+
+.footer-social-icon {
+    padding: 12px;
+    font-size: 1.5rem;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 10px;
+    border-radius: 20%;
+    background: linear-gradient(135deg, #ffff,#e1c2c2);
+    /* text-emphasis-color: white; */
+}
+
+.footer-social-icon:hover {
+    background: linear-gradient(135deg,  #ffff,#40585a);
+
+}
+
 .btn-utama{
     /* background-color: #485696; */
     background-color: #1b3b6f;

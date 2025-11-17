@@ -77,7 +77,7 @@
                                 </form>
                                 @endif
                                 @guest
-                                <a href="{{ route('indexLog') }}" class="dropdown-item">    
+                                <a href="{{ route('indexLog') }}" class="dropdown-item">
                                 <i class="bi bi-door-open-fill"></i> Login</a>
                                 @endguest
                             </li>
@@ -94,6 +94,8 @@
     <div class="container mt-4">
         @yield('content')
     </div>
+
+    @include('footer')
 
     <script src="{{ asset('assets/bootstrap/js/bootstrap.bundle.js') }}"></script>
 </body>
