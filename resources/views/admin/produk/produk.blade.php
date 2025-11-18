@@ -11,6 +11,7 @@
                 <th>Harga</th>
                 <th>Stok</th>
                 <th>Kategori</th>
+                <th>Tanggal Upload</th>
                 <th>Gambar</th>
                 <th>Aksi</th>
             </tr>
@@ -23,6 +24,7 @@
                     <td>Rp.{{ number_format($p->harga,0,',','.') }}</td>
                     <td>{{ $p->stok }}</td>
                     <td>{{ $p->kategori->nama_kategori }}</td>
+                    <td>{{ $p->tanggal_upload }}</td>
                     <td>
                         @if($p->gambarProduk->count() > 0)
                             @foreach($p->gambarProduk as $g)
