@@ -28,7 +28,7 @@
                     </div>
                 </div>
             @empty
-                <p class="text-center">Belum ada produk untuk kategori ini.</p>
+                <p class="text-center rounded-pill bg-warning w-25 mw-5"><i class="fa-solid fa-triangle-exclamation"></i> Belum ada produk untuk kategori ini.</p>
             @endforelse
         </div>
     </div>

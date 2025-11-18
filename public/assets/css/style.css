@@ -2,6 +2,9 @@
     margin-top: 10px;
     margin-bottom: 10px;
 }
+.mw-5{
+    margin-bottom: 250px;
+}
 .animate {
     opacity: 0;
     transform: translateY(20px);
