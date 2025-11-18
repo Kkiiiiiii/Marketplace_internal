@@ -26,7 +26,6 @@
                 @else
                     <img src="{{ asset('assets/img/no-image.png') }}" class="card-img-top" alt="No Image">
                 @endif
-
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">{{ $p->nama_produk }}</h5>
                     <p class="card-text text-success"><strong> Rp {{ number_format($p->harga,0,',','.') }}</strong></p>

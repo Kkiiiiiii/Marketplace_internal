@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kategori;
+use App\Models\Produk;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
 use Illuminate\Http\Request as HttpRequest;
@@ -53,6 +54,15 @@ class KategoriController extends Controller
         }
         Kategori::find($id)->delete();
         return redirect()->back()->with('success','data berhasil dihapus');
+    }
+
+    public function show($id)
+    {
+        $id = Crypt::decrypt($id);
+        $kategori = Kategori::findOrFail($id); // Ambil kategori berdasarkan ID
+        $produk = Produk::where('id_kategori', $id)->get(); // Ambil produk sesuai kategori
+
+        return view('kategori.show', compact('kategori', 'produk'));
     }
 
 }

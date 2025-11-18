@@ -11,8 +11,8 @@ class BerandaController extends Controller
     //
     public function index()
     {
-        $data['kategori'] = Kategori::all();
-        $data['produk'] = Produk::all();
+        $data['kategori'] = Kategori::with('produk')->get();
+        $data['produk'] = Produk::orderBy('id_produk','desc')->take(8)->get();
         return view('beranda', $data);
     }
 

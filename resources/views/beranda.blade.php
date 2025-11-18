@@ -21,8 +21,8 @@
     </div>
 </section>
 
-<h2 class="mt-5 text-center ma-2 animate-up">Produk Terbaru</h2>
-<section class="py-4 my-2 bg-light" id="produk-terbaru">
+<section class="py-4 my-5 bg-light" id="produk-terbaru">
+    <h2 class="mt-5 text-center ma-2 animate-up">Produk Terbaru</h2>
     <div class="container">
         <div class="row g-4">
             @foreach($produk as $p)
@@ -58,13 +58,13 @@
     </div>
 </section>
 
-<section class="py-2 my-5">
+   <section class="py-2 my-5">
     <div class="container rounded" id="kategori">
         <h2 class="mb-5 text-center ma-2 animate">Kategori</h2>
         <div class="row g-4 justify-content-center">
             @foreach($kategori as $k)
             <div class="col-6 col-md-3 text-center animate-fade">
-                <a href="{{ route('kategori', $k->id) }}" class="text-decoration-none text-dark">
+                <a href="{{ route('kategori-show', Crypt::encrypt($k->id_kategori)) }}" class="text-decoration-none text-dark">
                     <div class="card h-100 shadow-sm">
                         <div class="card-body">
                             <i class="bi bi-box-seam fs-1"></i>
@@ -77,5 +77,4 @@
         </div>
     </div>
 </section>
-
 @endsection

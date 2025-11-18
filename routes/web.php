@@ -58,6 +58,7 @@ use Illuminate\Support\Facades\Route;
 
     Route::get('/produk',[ProdukController::class, 'index'])->name('produk');
     Route::get('/kategori',[KategoriController::class, 'index'])->name('kategori');
+    Route::get('/kategori/{id}', [KategoriController::class, 'show'])->name('kategori-show');
     Route::get('/produk/detail/{id}',[ProdukController::class, 'detail'])->name('produk-detail');
 
 
