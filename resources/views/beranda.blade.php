@@ -1,28 +1,26 @@
 @extends('layout')
 @section('content')
-{{-- Banner --}}
 <section>
     <div class="container-fluid p-0">
-        <div class="banner position-relative text-center text-white" style="background: url('{{ asset('image/beranda.jpeg') }}') no-repeat center center; background-size: cover; height: 400px;">
+        <div class="banner position-relative text-center text-white animate-fade"
+            style="background: url('{{ asset('image/beranda.jpeg') }}') no-repeat center center; background-size: cover; height: 400px;">
             <div class="overlay position-absolute w-100 h-100" style="background: rgba(0,0,0,0.5); top:0; left:0;"></div>
             <div class="banner-content position-relative d-flex flex-column justify-content-center align-items-center h-100">
-                <h1 class="display-4 fw-bold">Selamat Datang di Marketplace SMK</h1>
-                <p class="lead">Tempat untuk menjual dan menemukan produk yang anda inginkan</p>
-                <a href="#produk-terbaru" class="btn btn-primary btn-lg mt-3">Belanja Sekarang</a>
+                <h1 class="display-4 fw-bold animate-up">Selamat Datang di Marketplace SMK</h1>
+                <p class="lead animate-up" style="animation-delay: .2s">Tempat untuk menjual dan menemukan produk yang anda inginkan</p>
+                <a href="#produk-terbaru" class="btn btn-primary btn-lg mt-3 animate-up" style="animation-delay: .4s">Belanja Sekarang</a>
             </div>
         </div>
     </div>
 </section>
 
-{{-- Produk Terbaru --}}
-<section class="py-3 my-3" id="produk-terbaru">
+<h2 class="mt-5 text-center ma-2 animate-up">Produk Terbaru</h2>
+<section class="py-4 my-2 bg-light" id="produk-terbaru">
     <div class="container">
-        <h2 class="mb-5 text-center ma-2">Produk Terbaru</h2>
         <div class="row g-4">
             @foreach($produk as $p)
             <div class="col-6 col-md-3">
-                <div class="card h-100 shadow-sm">
-                    {{-- Gambar Produk --}}
+                <div class="card h-100 shadow-sm animate">
                     @if($p->gambarProduk->first())
                     <img src="{{ asset('storage/'.$p->gambarProduk->first()->nama_gambar) }}"
                          class="card-img-top"
@@ -53,13 +51,12 @@
     </div>
 </section>
 
-{{-- Kategori Section --}}
-<section class="py-2 my-5 bg-light ">
-    <div class="container-fluid rounded" id="kategori">
-        <h2 class="mb-5 text-center ma-2">Kategori</h2>
+<section class="py-2 my-5">
+    <div class="container rounded" id="kategori">
+        <h2 class="mb-5 text-center ma-2 animate">Kategori</h2>
         <div class="row g-4 justify-content-center">
             @foreach($kategori as $k)
-            <div class="col-6 col-md-3 text-center">
+            <div class="col-6 col-md-3 text-center animate-fade">
                 <a href="{{ route('kategori', $k->id) }}" class="text-decoration-none text-dark">
                     <div class="card h-100 shadow-sm">
                         <div class="card-body">
@@ -69,8 +66,9 @@
                     </div>
                 </a>
             </div>
-        @endforeach
+            @endforeach
         </div>
     </div>
 </section>
+
 @endsection

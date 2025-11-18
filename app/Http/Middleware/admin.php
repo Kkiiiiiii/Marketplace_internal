@@ -23,6 +23,5 @@ class admin
             return redirect('admin');
         }
         return redirect()->route('AdminLog');
-        // return redirect('/admin/login/tampil');
     }
 }

@@ -97,7 +97,6 @@ class TokoController extends Controller
             $validated['gambar'] = $request->file('gambar')->store('toko', 'public');
         }
 
-        //  $validated['id_user'] = auth()->user()->id_user;
         $validated['id_user'] = Auth::id();
 
         Toko::create($validated);

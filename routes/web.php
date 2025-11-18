@@ -24,8 +24,8 @@ use Illuminate\Support\Facades\Route;
         Route::get('/admin/dash',[AdminController::class, 'dash'])->name('dashboard');
         //Produk
         Route::get('/admin/produk',[AdminController::class, 'produk'])->name('admin-produk');
-        Route::get('/admin/produk/create',[ProdukController::class, 'create'])->name('produk-create');
-        Route::post('/admin/produk/store',[ProdukController::class, 'store'])->name('produk-store');
+        // Route::get('/admin/produk/create',[ProdukController::class, 'create'])->name('produk-create');
+        // Route::post('/admin/produk/store',[ProdukController::class, 'store'])->name('produk-store');
         Route::get('/admin/produk/edit/{id}',[ProdukController::class, 'edit'])->name('produk-edit');
         Route::post('/admin/produk/update/{id}',[ProdukController::class, 'update'])->name('produk-update');
         Route::post('/admin/produk/delete/{id}',[ProdukController::class, 'delete'])->name('produk-delete');
@@ -46,8 +46,8 @@ use Illuminate\Support\Facades\Route;
 
         //Toko
         Route::get('/admin/toko',[AdminController::class, 'toko'])->name('admin-toko');
-        Route::get('/admin/toko/create',[TokoController::class, 'create'])->name('toko-create');
-        Route::post('/admin/toko/store',[TokoController::class, 'store'])->name('toko-store');
+        // Route::get('/admin/toko/create',[TokoController::class, 'create'])->name('toko-create');
+        // Route::post('/admin/toko/store',[TokoController::class, 'store'])->name('toko-store');
         Route::post('/admin/toko/delete/{id}',[TokoController::class, 'delete'])->name('toko-delete');
     });
 

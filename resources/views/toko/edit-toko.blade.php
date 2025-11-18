@@ -1,6 +1,6 @@
 @extends('layout')
 @section('content')
-<div class="container mt-4">
+<div class="container mt-4 mb-5">
     <h2>Edit Toko</h2>
 
     <form action="{{ route('toko-update', Crypt::encrypt($toko->id_toko)) }}" method="POST" enctype="multipart/form-data" id="formToko">

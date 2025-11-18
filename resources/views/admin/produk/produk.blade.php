@@ -3,9 +3,6 @@
 <div class="container mt-5">
     <h3 class="mb-4">📦 Daftar Produk</h3>
     <hr>
-    <a href="{{ route('produk-create') }}" class="btn btn-md btn-success mb-3">
-        <i class="bi bi-plus-circle"></i> Tambah Produk</a>
-
     <table id="produkTable" class="table table-bordered table-striped shadow-sm table-cust">
         <thead class="table-dark">
             <tr>
@@ -60,11 +57,11 @@
     <script>
         $(document).ready(function () {
             $('#produkTable').DataTable({
-                "paging": false,
+                "paging": true,
                 "searching": true,
                 "ordering": false,
                 "info": true,
-                "lengthChange": false
+                "lengthChange": true,
             });
         });
     </script>

@@ -1,6 +1,6 @@
 @extends('layout')
 @section('content')
-<div class="container">
+<div class="container mb-5">
     <h2>Buat Produk</h2>
     <form action="{{ route('Sproduk') }}" method="POST" enctype="multipart/form-data">
         @csrf

@@ -1,12 +1,12 @@
 @extends('layout')
 @section('content')
-<h2>Toko</h2>
 <section class="py-5 my-5">
     <div class="container">
+        <h2>Toko</h2>
         <div class="row">
             @foreach ($toko as $t)
             <div class="col-md-6 mb-4">
-                <div class="card h-100">
+                <div class="card h-100 animate">
                     <div class="row g-0">
                         <div class="col-md-4 d-flex justify-content-center align-items-center p-3">
                             <img src="{{ asset('storage/'.$t->gambar) }}" alt="Logo Toko" class="rounded-circle img-thumbnail" style="width: 150px; height: 150px; object-fit: cover;">

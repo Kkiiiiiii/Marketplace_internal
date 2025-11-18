@@ -84,19 +84,30 @@
                         </ul>
                     </li>
                 </ul>
-
             </div>
         </div>
     </nav>
 
 
-    <div class="container mt-4">
+    <div class="container p-0 mt-4">
         @yield('content')
     </div>
-
     @include('footer')
-
     <script src="{{ asset('assets/bootstrap/js/bootstrap.bundle.js') }}"></script>
-</body>
 
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(ent => {
+            if (ent.isIntersecting) {
+                ent.target.classList.add('show');
+            }
+        });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+});
+</script>
+@stack('scripts')
+</body>
 </html>

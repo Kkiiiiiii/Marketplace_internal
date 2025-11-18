@@ -16,7 +16,7 @@
 
         @if(Auth::check() && Auth::id() == $toko->id_user)
             <div class="d-flex gap-2 mt-3 flex-wrap justify-content-center">
-                <a href="{{ route('bproduk', $toko->id) }}" class="btn btn-success btn-sm text-white">Tambah Produk</a>
+                <a href="{{ route('bproduk', Crypt::encrypt($toko->id)) }}" class="btn btn-success btn-sm text-white">Tambah Produk</a>
                 <a href="{{ route('toko-edit', Crypt::encrypt($toko->id_toko)) }}" class="btn btn-warning btn-sm text-white">Edit Toko</a>
             </div>
         @endif

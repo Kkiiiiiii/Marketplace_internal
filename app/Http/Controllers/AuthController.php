@@ -73,11 +73,8 @@ class AuthController extends Controller
 
         // Cek login menggunakan Auth
         if (Auth::attempt($validasi)) {
-            // Redirect ke dashboard atau halaman yang sesuai
             return redirect()->route('dashboard');
         }
-
-        // Jika gagal login
         return redirect()->route('AdminLog')->with('error', 'Username atau Password salah.');
     }
 

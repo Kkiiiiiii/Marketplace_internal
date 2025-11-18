@@ -1,6 +1,6 @@
 @extends('layout')
 @section('content')
-<div class="container">
+<div class="container mb-5">
     <h2>Edit Produk</h2>
     <form action="{{ route('pUpdate', $produk->id_produk) }}" method="POST" enctype="multipart/form-data">
         @csrf
@@ -13,7 +13,6 @@
                          width="100" class="mb-2 me-1">
                 @endforeach
             @endif
-            <label for="gambar_produk" class="form-label">Ganti / Tambah Gambar Produk</label>
             <input type="file" name="gambar_produk[]" class="form-control" id="gambar_produk" multiple>
             <small class="text-muted">Kosongkan jika tidak ingin mengganti gambar.</small>
         </div>

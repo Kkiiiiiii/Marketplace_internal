@@ -10,7 +10,7 @@
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
 
-    <table class="table table-striped table-cust">
+    <table class="table table-striped table-cust" id="tableToko">
         <thead>
             <tr>
                 <th>ID Toko</th>
@@ -49,4 +49,16 @@
         </tbody>
     </table>
 </div>
+@push('scripts')
+<script>
+    $(document).ready(function() {
+        $('#tableToko').DataTable({
+        "ordering": false,
+        "searching": true,
+        "lengthChange": false,
+        "info": false,
+        });
+    });
+</script>
+@endpush
 @endsection
