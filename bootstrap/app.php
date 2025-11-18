@@ -2,6 +2,7 @@
 
 use App\Http\Middleware\admin;
 use App\Http\Middleware\member;
+use App\Http\Middleware\StatusToko;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -20,6 +21,9 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->appendToGroup('member',[
             member::class,
         ]);
+            $middleware->appendToGroup('CekToko',[
+                StatusToko::class,
+            ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

@@ -46,6 +46,8 @@ use Illuminate\Support\Facades\Route;
 
         //Toko
         Route::get('/admin/toko',[AdminController::class, 'toko'])->name('admin-toko');
+        // Route::get('/admin/toko/approve', [TokoController::class, 'daftarToko']);
+        Route::post('/admin/toko/approve/{id}', [TokoController::class, 'approve'])->name('admin.toko.approve');
         // Route::get('/admin/toko/create',[TokoController::class, 'create'])->name('toko-create');
         // Route::post('/admin/toko/store',[TokoController::class, 'store'])->name('toko-store');
         Route::post('/admin/toko/delete/{id}',[TokoController::class, 'delete'])->name('toko-delete');
@@ -75,5 +77,7 @@ use Illuminate\Support\Facades\Route;
     // Route untuk menampilkan produk berdasarkan toko
     Route::get('/toko/produk/{id}', [ProdukController::class, 'produkByToko'])->name('produk.toko');
     Route::get('/toko',[TokoController::class, 'index'])->name('toko');
+    // Route::middleware(['auth','CekToko'])->group( function() {
+    // });
 
 

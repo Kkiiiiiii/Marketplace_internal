@@ -16,7 +16,9 @@ class TokoController extends Controller
     //
      public function index()
     {
+        // $toko = Toko::orderBy('status', 'asc')->get();
         $toko = Toko::all();
+        // $pendingToko = Toko::where('status', 'pending')->count();
         return view('toko.toko', compact('toko'));
     }
 
@@ -24,6 +26,22 @@ class TokoController extends Controller
     {
         return view('admin.toko.toko-create');
     }
+
+    // public function daftarToko()
+    // {
+    //     $toko = Toko::orderBy('status')->get();
+    //     return view('admin.toko.toko', compact('toko'));
+    // }
+
+    public function approve($id)
+    {
+        $toko = Toko::findOrFail($id);
+        $toko->status = 'aktif';
+        $toko->save();
+
+        return back()->with('success', 'Toko berhasil diaktifkan!');
+    }
+
 
     public function store(Request $request)
     {
@@ -41,6 +59,7 @@ class TokoController extends Controller
     }
 
     $validated['id_user'] = Auth::id();
+    $validated['status'] = 'pending';
 
     // Simpan ke database
     Toko::create($validated);
@@ -79,7 +98,7 @@ class TokoController extends Controller
         $toko->produk()->delete();
         $toko->delete();
 
-        return redirect()->route('admin-toko')->with('success', 'Kategori berhasil dihapus!');
+        return redirect()->route('admin-toko')->with('success', 'Toko berhasil dihapus!');
     }
 
     public function buat(Request $request)
@@ -98,10 +117,11 @@ class TokoController extends Controller
         }
 
         $validated['id_user'] = Auth::id();
+        $validated['status'] = 'pending';
 
         Toko::create($validated);
 
-        return redirect()->back()->with('success', 'Toko berhasil dibuat!');
+        return redirect()->route('toko')->with('success', 'Toko berhasil dibuat!');
     }
 
     public function buka(Request $request)

@@ -12,8 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('toko', function (Blueprint $table) {
-            //
-            $table->renameColumn('deskripi', 'deskripsi');
+            $table->enum('status', ['pending', 'aktif'])->default('pending')->after('alamat');
         });
     }
 
@@ -24,7 +23,6 @@ return new class extends Migration
     {
         Schema::table('toko', function (Blueprint $table) {
             //
-            $table->renameColumn('deskripi', 'deskripsi');
         });
     }
 };

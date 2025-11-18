@@ -42,5 +42,32 @@
         </div>
 
     </div>
+
+    <div class="row mt-4">
+        <!-- Kotak Approve Toko -->
+        <div class="col-md-3">
+    <div class="card text-white bg-warning mb-3">
+        <div class="card-body">
+            <h5 class="card-title">Toko Pending</h5>
+            <p class="card-text display-6">{{ $pendingToko }}</p>
+
+            <ul class="list-group list-group-flush">
+                @forelse($tokoPendingList as $toko)
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        {{ $toko->nama_toko }}
+                        <form action="{{ route('admin.toko.approve', $toko->id_toko) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-sm btn-light">Approve</button>
+                        </form>
+                    </li>
+                @empty
+                    <li class="list-group-item">Tidak ada toko pending</li>
+                @endforelse
+            </ul>
+
+        </div>
+    </div>
+</div>
+    </div>
 </div>
 @endsection

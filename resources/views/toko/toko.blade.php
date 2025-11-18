@@ -1,5 +1,13 @@
 @extends('layout')
 @section('content')
+@if(session('success'))
+    <div class="alert alert-success">{{ session('success') }}</div>
+@endif
+
+@if(session('warning'))
+    <div class="alert alert-warning">{{ session('warning') }}</div>
+@endif
+
 <section class="py-5 my-5">
     <div class="container">
         <h2>Toko</h2>
@@ -29,3 +37,33 @@
     </div>
 </section>
 @endsection
+
+{{-- @extends('layout')
+@section('content')
+<div class="container my-5">
+    <h2>Toko Saya</h2>
+
+    @if(session('success'))
+        <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
+
+    <div class="card mt-3 p-3">
+        <div class="row">
+            <div class="col-md-4">
+                @if($toko->gambar)
+                    <img src="{{ asset('storage/'.$toko->gambar) }}" alt="Gambar Toko" class="img-fluid rounded">
+                @else
+                    <img src="{{ asset('image/no_image.png') }}" alt="No Image" class="img-fluid rounded">
+                @endif
+            </div>
+            <div class="col-md-8">
+                <h3>{{ $toko->nama_toko }}</h3>
+                <p>{{ $toko->deskripsi }}</p>
+                <p><strong>Kontak:</strong> {{ $toko->kontak_toko }}</p>
+                <p><strong>Alamat:</strong> {{ $toko->alamat }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
+ --}}
