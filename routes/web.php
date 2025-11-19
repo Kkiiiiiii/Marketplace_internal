@@ -46,6 +46,7 @@ use Illuminate\Support\Facades\Route;
 
         //Toko
         Route::get('/admin/toko',[AdminController::class, 'toko'])->name('admin-toko');
+        Route::get('/admin/toko/edit/{id}',[TokoController::class, 'editA'])->name('toko-edit');
         // Route::get('/admin/toko/approve', [TokoController::class, 'daftarToko']);
         Route::post('/admin/toko/approve/{id}', [TokoController::class, 'approve'])->name('admin.toko.approve');
         // Route::get('/admin/toko/create',[TokoController::class, 'create'])->name('toko-create');

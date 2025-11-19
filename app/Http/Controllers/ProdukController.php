@@ -245,7 +245,7 @@ class ProdukController extends Controller
             }
         }
 
-        return redirect()->route('produk')
+        return redirect()->back()
             ->with('success', 'Produk berhasil diperbarui!');
     }
 
@@ -261,7 +261,7 @@ class ProdukController extends Controller
         }
         $produk->delete();
 
-        return redirect()->route('produk')
+        return redirect()->back()
             ->with('success', 'Produk berhasil dihapus!');
     }
 }

@@ -43,7 +43,7 @@
 
                     <div class="col-lg-6 ps-lg-4">
                         <div class="d-flex justify-content-between">
-                            <h1 class="fw-bold">{{ $produk->nama_produk }}</h1>
+                            <h2 class="fw-bold">{{ $produk->nama_produk }}</h2>
                             <a href="{{ route('wishlist') }}" onclick="toggleWishlist()">
                                 <i class="bi bi-heart text-danger" style="font-size: 20px"  id="wish"></i></a>
                         </div>
@@ -58,9 +58,9 @@
                         </div> --}}
 
                         <div class="d-flex align-items-center gap-3 mb-3">
-                            <h2 class="fw-bold text-success mb-0">
+                            <h3 class="fw-bold text-success mb-0">
                                 Rp {{ number_format($produk->harga, 0, ',', '.') }}
-                            </h2>
+                            </h3>
 
                             <div>
                                 @if($produk->stok > 10)
@@ -80,7 +80,7 @@
                         <h5 class="fw-semibold">Deskripsi</h5>
                         <p class="text-muted">{{ $produk->deskripsi }}</p>
 
-                        <h5 class="fw-semibold mt-4">Spesifikasi</h5>
+                        <h5 class="fw-semibold mt-4">Keterangan</h5>
 
                         <dl class="row">
 

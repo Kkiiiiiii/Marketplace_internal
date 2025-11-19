@@ -53,19 +53,18 @@ class TokoController extends Controller
         'gambar' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
     ]);
 
-    // Upload gambar ke storage/app/public/toko
     if ($request->hasFile('gambar')) {
         $validated['gambar'] = $request->file('gambar')->store('toko', 'public');
     }
 
     $validated['id_user'] = Auth::id();
-    $validated['status'] = 'pending';
+    // $validated['status'] = 'pending';
 
     // Simpan ke database
     Toko::create($validated);
 
     return redirect()->route('admin-toko')->with('success', 'Toko berhasil ditambahkan!');
-}
+    }
     public function edit(String $id)
     {
         $id = Crypt::decrypt($id);
@@ -73,6 +72,30 @@ class TokoController extends Controller
         return view('toko.edit-toko', compact('toko'));
     }
 
+    public function editA(String $id)
+    {
+        $id = Crypt::decrypt($id);
+        $toko = Toko::findOrFail($id);
+        return view('admin.toko.toko-edit', compact('toko'));
+    }
+
+    public function update(Request $request, String $id)
+    {
+        $request->validate([
+            'nama_toko' => 'required|string|max:255',
+            'kontak_toko' => 'required|string|max:255',
+            'alamat' => 'nullable|string',
+            'deskripsi' => 'nullable|string',
+        ]);
+           if ($request->hasFile('gambar')) {
+        $validated['gambar'] = $request->file('gambar')->store('toko', 'public');
+    }
+
+        $toko = Toko::findOrFail($id);
+        $toko->update($request->all());
+
+        return redirect()->route('toko')->with('success', 'Toko berhasil diperbarui!');
+    }
     public function update(Request $request, String $id)
     {
         $request->validate([
@@ -140,7 +163,7 @@ class TokoController extends Controller
         $toko->produk()->delete();
         $toko->delete();
 
-        return redirect()->route('toko')->with('success', 'Kategori berhasil dihapus!');
+        return redirect()->route('toko')->with('success', 'Toko berhasil dihapus!');
     }
 
 }
