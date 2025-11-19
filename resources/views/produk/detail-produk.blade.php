@@ -3,12 +3,9 @@
 <div class="container my-5 product-detail-page">
     <div class="row justify-content-center">
         <div class="col-lg-10">
-
             <div class="card shadow-sm p-4">
                 <div class="row">
-
                     <div class="col-lg-6 mb-4 mb-lg-0">
-
                         <div class="border rounded overflow-hidden">
                             @if($produk->gambarProduk->count() > 0)
                                 <div class="ratio ratio-4x3">
@@ -48,15 +45,15 @@
                                 <i class="bi bi-heart text-danger" style="font-size: 20px"  id="wish"></i></a>
                         </div>
 
-                        {{-- <div class="text-warning mb-2 d-flex align-items-center">
+                        <div class="text-warning mb-2 d-flex align-items-center">
                             <i class="bi bi-star-fill"></i>
                             <i class="bi bi-star-fill"></i>
                             <i class="bi bi-star-fill"></i>
                             <i class="bi bi-star-fill"></i>
                             <i class="bi bi-star-half"></i>
                             <span class="text-muted ms-1">(4.5) | 123 Terjual</span>
-                        </div> --}}
-
+                        </div>
+                        
                         <div class="d-flex align-items-center gap-3 mb-3">
                             <h3 class="fw-bold text-success mb-0">
                                 Rp {{ number_format($produk->harga, 0, ',', '.') }}

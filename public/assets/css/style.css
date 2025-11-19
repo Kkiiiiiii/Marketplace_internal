@@ -21,17 +21,11 @@ body.dark{
 }
 
 .bg-utama{
-    /* background-color: #485696; */
     background-color: #1b3b6f;
 }
 
 .bg-cust{
     background-color: #21295c;
-}
-
-.copyright-bar {
-    padding-top: 20px;
-    padding-bottom: 20px;
 }
 
 .animate-fade {
@@ -68,7 +62,6 @@ body.dark{
     margin: 0 10px;
     border-radius: 20%;
     background: linear-gradient(135deg, #1b3b6f,#f1f1f1);
-    /* text-emphasis-color: white; */
 }
 
 .footer-social-icon:hover {
@@ -77,16 +70,14 @@ body.dark{
 }
 
 .btn-utama{
-    /* background-color: #485696; */
     background-color: #1b3b6f;
     color: white;
 }
 
-/* Ubah warna background header tabel */
 .table-cust thead {
-    background-color: #21295c; /* Warna background header */
-    color: white; /* Warna teks header */
-    text-align: center; /* Meratakan teks ke tengah */
+    background-color: #21295c;
+    color: white;
+    text-align: center;
 }
 
 /* Atau jika ingin warna untuk setiap th (elemen kolom header) */
@@ -94,12 +85,12 @@ body.dark{
     background-color: #21295c;
     color: white;
     text-align: center;
-    padding: 15px; /* Padding agar lebih nyaman dilihat */
+    padding: 15px;
 }
 
 /* Warna latar belakang untuk baris tabel */
 .table-cust tbody tr {
-    background-color: #f8f9fa; /* Warna latar belakang baris */
+    background-color: #f8f9fa;
 }
 
 /* Mengubah warna baris yang dipilih */
@@ -117,15 +108,14 @@ body.dark{
 }
 /* Warna saat hover pada baris tabel */
 .table-cust tbody tr:hover {
-    background-color: #f1f1f1; /* Warna saat mouse hover */
+    background-color: #f1f1f1;
 }
 /* Memberikan border pada tabel */
 .table-cust {
-    border: 1px solid #ddd; /* Border untuk tabel */
+    border: 1px solid #ddd;
     border-collapse: collapse;
 }
 
-/* Memberikan border pada sel tabel */
 .table-cust th, .table-cust td {
     border: 1px solid #ddd; /* Border pada setiap cell */
     padding: 8px;

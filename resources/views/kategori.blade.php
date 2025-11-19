@@ -1,5 +1,4 @@
 @extends('layout')
-
 @section('content')
 <div class="row mt-5 animate">
     <h2 class="mb-4">Daftar Kategori</h2>

@@ -90,7 +90,7 @@ class NTokoConntoller extends Controller
         $toko = Toko::findOrFail($id);
         $toko->update($request->all());
 
-        return redirect()->route('toko')->with('success', 'Toko berhasil diperbarui!');
+        return redirect()->back()->with('success', 'Toko berhasil diperbarui!');
     }
 
     public function updateAdmin(Request $request, $id)
@@ -146,7 +146,7 @@ class NTokoConntoller extends Controller
 
         Toko::create($validated);
 
-        return redirect()->route('toko')->with('success', 'Toko berhasil dibuat!');
+        return redirect()->back()->with('success', 'Toko berhasil dibuat!');
     }
 
     public function buka(Request $request)
@@ -165,6 +165,6 @@ class NTokoConntoller extends Controller
         $toko->produk()->delete();
         $toko->delete();
 
-        return redirect()->route('toko')->with('success', 'Toko berhasil dihapus!');
+        return redirect()->back()->with('success', 'Toko berhasil dihapus!');
     }
 }

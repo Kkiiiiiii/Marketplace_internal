@@ -21,7 +21,7 @@
                             @endif
 
                             <h5 class="card-title mt-2">{{ $p->nama_produk }}</h5>
-                            <p class="card-text">Rp. {{ number_format($p->harga, 0, ',', '.') }}</p>
+                            <p class="card-text text-success fw-bolder">Rp. {{ number_format($p->harga, 0, ',', '.') }}</p>
                             <p class="card-text">{{ Str::limit($p->deskripsi, 50) }}</p>
                             <a href="{{ route('produk-detail', Crypt::encrypt($p->id_produk)) }}" class="btn btn-sm btn-primary d-grid">Beli</a>
                         </div>

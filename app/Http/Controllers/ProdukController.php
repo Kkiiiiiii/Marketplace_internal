@@ -64,40 +64,6 @@ class ProdukController extends Controller
         $data['toko'] = Toko::all();
         return view('admin.produk.produk-create',  $data);
     }
-
-//    public function store(Request $request)
-// {
-//     // Validasi
-//     $validated = $request->validate([
-//         'nama_produk' => 'required|string|max:255',
-//         'id_kategori' => 'required|exists:kategori,id_kategori',
-//         'id_toko' => 'required|exists:toko,id_toko',
-//         'harga' => 'required|numeric',
-//         'stok' => 'required|integer',
-//         'deskripsi' => 'nullable|string',
-//         'gambar_produk.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-//     ]);
-
-//     // Tambahkan tanggal upload
-//     $validated['tanggal_upload'] = now();
-
-//     $produk = Produk::create($validated);
-
-//     if ($request->hasFile('gambar_produk')) {
-//         foreach ($request->file('gambar_produk') as $gambar) {
-//             $namaFile = $gambar->store('gambar_produk', 'public');
-
-//             Gambar::create([
-//                 'id_produk' => $produk->id_produk,
-//                 'nama_gambar' => $namaFile,
-//             ]);
-//         }
-//     }
-
-//     return redirect()->route('admin-produk')
-//         ->with('success', 'Produk berhasil ditambahkan!');
-// }
-
      public function bproduk()
     {
         $data['kategori'] = Kategori::all();

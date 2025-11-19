@@ -80,7 +80,7 @@ use Illuminate\Support\Facades\Route;
     });
     // Route untuk menampilkan produk berdasarkan toko
     Route::get('/toko/produk/{id}', [ProdukController::class, 'produkByToko'])->name('produk.toko');
-    Route::get('/toko',[TokoController::class, 'index'])->name('toko');
+    Route::get('/toko',[NTokoConntoller::class, 'index'])->name('toko');
     // Route::middleware(['auth','CekToko'])->group( function() {
     // });
 

@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
     <html lang="en">
     <head>
     <meta charset="UTF-8">
@@ -92,15 +92,13 @@
     .sidebar .nav-link {
     display: flex;
     align-items: center;
-    gap: 12px; /* jarak antara icon dan teks */
+    gap: 12px;
     padding: 10px 15px;
 }
 
     </style>
     </head>
     <body>
-
-    <!-- Toggle Button (Mobile) -->
     <nav class="navbar navbar-light bg-light d-md-none">
         <div class="container-fluid">
             <button class="btn btn-outline-secondary" id="toggleSidebar">
@@ -142,8 +140,6 @@
                         <i class="fas fa-sign-out-alt"></i> Logout
                     </a>
                 </form>
-
-                <input type="checkbox" onclick="document.body.classList.toggle('dark')">
             </div>
 
             <!-- Content -->
@@ -172,3 +168,4 @@ toggleSidebarBtn?.addEventListener('click', function() {
     </script>
 
     @stack('scripts')
+

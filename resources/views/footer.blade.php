@@ -53,7 +53,7 @@
 
     </div>
     <hr>
-    <div class="container-fluid bg-cust copyright-bar">
+    <div class="container-fluid">
         <p class="m-0 small text-center py-3">
             <strong>Copyright</strong> © 2025 -
             <strong>Hak Cipta Dilindungi.</strong>

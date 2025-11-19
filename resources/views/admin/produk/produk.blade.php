@@ -1,5 +1,31 @@
 @extends('admin.layout')
 @section('content')
+<style>
+         table#produkTable thead th {
+            text-align: center;
+            /* rata tengah horizontal */
+            vertical-align: middle;
+            /* rata tengah vertikal */
+        }
+
+        /* Styling untuk badge oval di dalam tabel */
+        .circle-bg {
+            background-color: #111;
+            color: white;
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            min-width: 60px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            /* supaya teks tidak pecah ke baris baru */
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            /* efek sedikit shadow supaya naik */
+            transition: background-color 0.3s ease;
+        }
+</style>
 <div class="container mt-5">
     <h3 class="mb-4">📦 Daftar Produk</h3>
     <hr>
