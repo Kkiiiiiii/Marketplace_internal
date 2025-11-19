@@ -3,17 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Toko;
-use App\Models\User;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
-use Illuminate\Support\Facades\Request as FacadesRequest;
-use PhpParser\Node\Scalar\String_;
 
-class TokoController extends Controller
+class NTokoConntoller extends Controller
 {
-    //
      public function index()
     {
         // $toko = Toko::orderBy('status', 'asc')->get();
@@ -96,23 +92,29 @@ class TokoController extends Controller
 
         return redirect()->route('toko')->with('success', 'Toko berhasil diperbarui!');
     }
-    public function update(Request $request, String $id)
+
+    public function updateAdmin(Request $request, $id)
     {
+    {
+        try {
+            $id = Crypt::decrypt($id);  // Dekripsi ID yang dikirim dalam URL
+        } catch (\Exception $e) {
+            return redirect()->route('admin-toko')->with('error', 'ID toko tidak valid.');
+        }
+
         $request->validate([
             'nama_toko' => 'required|string|max:255',
             'kontak_toko' => 'required|string|max:255',
             'alamat' => 'nullable|string',
             'deskripsi' => 'nullable|string',
         ]);
-           if ($request->hasFile('gambar')) {
-        $validated['gambar'] = $request->file('gambar')->store('toko', 'public');
-    }
 
         $toko = Toko::findOrFail($id);
         $toko->update($request->all());
 
-        return redirect()->route('toko')->with('success', 'Toko berhasil diperbarui!');
+        return redirect()->route('admin-toko')->with('success', 'Toko berhasil diperbarui!');
     }
+}
 
     public function delete($id)
     {
@@ -140,7 +142,7 @@ class TokoController extends Controller
         }
 
         $validated['id_user'] = Auth::id();
-        $validated['status'] = 'pending';
+        // $validated['status'] = 'pending';
 
         Toko::create($validated);
 
@@ -165,5 +167,4 @@ class TokoController extends Controller
 
         return redirect()->route('toko')->with('success', 'Toko berhasil dihapus!');
     }
-
 }

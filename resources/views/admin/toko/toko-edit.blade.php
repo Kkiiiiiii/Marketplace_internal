@@ -3,7 +3,7 @@
 <div class="container mt-4">
     <h2>Edit Toko</h2>
 
-    <form action="{{ route('toko-update', Crypt::encrypt($toko->id_toko)) }}" method="POST" enctype="multipart/form-data" id="formToko">
+    <form action="{{ route('update-admin', Crypt::encrypt($toko->id_toko)) }}" method="POST" enctype="multipart/form-data" id="formToko">
         @csrf
 
         <div class="form-group">
@@ -25,7 +25,7 @@
             <label for="alamat">Alamat</label>
             <textarea name="alamat" id="alamat" class="form-control" rows="3" required>{{ $toko->alamat }}</textarea>
         </div>
-        
+
         <div class="form-group mt-3">
             <label for="gambar">Gambar</label>
             <img src="{{ asset('storage/' . $toko->gambar) }}" alt="{{ $toko->nama_toko }}" width="100" class="mb-2">

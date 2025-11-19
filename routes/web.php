@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\NTokoConntoller;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\TokoController;
 use App\Http\Controllers\UserController;
@@ -46,12 +47,13 @@ use Illuminate\Support\Facades\Route;
 
         //Toko
         Route::get('/admin/toko',[AdminController::class, 'toko'])->name('admin-toko');
-        Route::get('/admin/toko/edit/{id}',[TokoController::class, 'editA'])->name('toko-edit');
-        // Route::get('/admin/toko/approve', [TokoController::class, 'daftarToko']);
-        Route::post('/admin/toko/approve/{id}', [TokoController::class, 'approve'])->name('admin.toko.approve');
-        // Route::get('/admin/toko/create',[TokoController::class, 'create'])->name('toko-create');
-        // Route::post('/admin/toko/store',[TokoController::class, 'store'])->name('toko-store');
-        Route::post('/admin/toko/delete/{id}',[TokoController::class, 'delete'])->name('toko-delete');
+        Route::get('/admin/toko/edit/{id}',[NTokoConntoller::class, 'editA'])->name('toko-edit');
+        Route::post('/admin/toko/update-admin/{id}',[NTokoConntoller::class, 'updateAdmin'])->name('update-admin');
+        // Route::get('/admin/toko/approve', [NTokoConntoller::class, 'daftarToko']);
+        Route::post('/admin/toko/approve/{id}', [NTokoConntoller::class, 'approve'])->name('admin.toko.approve');
+        // Route::get('/admin/toko/create',[NTokoConntoller::class, 'create'])->name('toko-create');
+        // Route::post('/admin/toko/store',[NTokoConntoller::class, 'store'])->name('toko-store');
+        Route::post('/admin/toko/delete/{id}',[NTokoConntoller::class, 'delete'])->name('toko-delete');
     });
 
     Route::post('/admin/logout', [AuthController::class, 'Alogout'])->name('admin-logout');
@@ -64,10 +66,10 @@ use Illuminate\Support\Facades\Route;
 
 
     Route::middleware( ['member'])->group( function(){
-        Route::get('/toko/buat', [TokoController::class, 'buka'])->name('buka-toko');
-        Route::post('/toko/store', [TokoController::class,  'buat' ])->name('store-toko');
-        Route::get('/toko/edit/{id}',[TokoController::class, 'edit'])->name('toko-edit');
-        Route::post('/toko/update/{id}',[TokoController::class, 'update'])->name('toko-update');
+        Route::get('/toko/buat', [NTokoConntoller::class, 'buka'])->name('buka-toko');
+        Route::post('/toko/store', [NTokoConntoller::class,  'buat' ])->name('store-toko');
+        Route::get('/toko/edit/{id}',[NTokoConntoller::class, 'edit'])->name('toko-edit');
+        Route::post('/toko/update/{id}',[NTokoConntoller::class, 'update'])->name('toko-update');
 
         Route::get('/produk/buat',[ProdukController::class, 'bproduk'])->name('bproduk');
         Route::post('/produk/store', [ProdukController::class,  'sproduk' ])->name('Sproduk');
