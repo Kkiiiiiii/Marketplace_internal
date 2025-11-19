@@ -28,8 +28,9 @@
                 @endif
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">{{ $p->nama_produk }}</h5>
-                    <p class="card-text text-success"><strong> Rp {{ number_format($p->harga,0,',','.') }}</strong></p>
+                    <p class="card-text text-success fw-semibold"><strong> Rp {{ number_format($p->harga,0,',','.') }}</strong></p>
                     <p class="card-text"><strong>Stok:</strong> {{ $p->stok }}</p>
+                    <p><small class="text-base circle-info">{{ $p->kategori->nama_kategori }}</small></p>
                     <p class="card-text">{{ Str::limit($p->deskripsi, 80) }}</p>
                     <p class="card-text">
                         <small class="text-muted">

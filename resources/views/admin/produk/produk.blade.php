@@ -32,6 +32,7 @@
     <table id="produkTable" class="table table-bordered table-striped shadow-sm table-cust">
         <thead class="table-dark">
             <tr>
+                <th>No</th>
                 <th>Nama Produk</th>
                 <th>Deskripsi</th>
                 <th>Harga</th>
@@ -45,6 +46,7 @@
         <tbody>
             @forelse ($produk as $p)
                 <tr>
+                    <td>{{ $loop->iteration }}</td>
                     <td>{{ $p->nama_produk }}</td>
                     <td>{{ Str::limit($p->deskripsi, 50) }}</td>
                     <td>Rp.{{ number_format($p->harga,0,',','.') }}</td>

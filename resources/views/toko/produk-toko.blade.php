@@ -40,12 +40,12 @@
 
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title">{{ $p->nama_produk }}</h5>
+                        <p class="mb-1"><small class="text-white circle-info">{{ $p->kategori->nama_kategori }}</small></p>
                         <p class="text-success fw-bold mb-1">Rp. {{ number_format($p->harga, 0, ',', '.') }}</p>
                         <p class="text-muted mb-1">Stok: {{ $p->stok }}</p>
                         <p class="card-text text-truncate" style="max-height: 3.6em; overflow: hidden;">
                             {{ $p->deskripsi }}
                         </p>
-                        <p class="mb-1"><small class="text-muted">{{ $p->kategori->nama_kategori }}</small></p>
 
                 <div class="mt-auto d-flex flex-column gap-2 mb-4">
                     <a href="{{ route('produk-detail', Crypt::encrypt($p->id_produk)) }}" class="btn btn-success btn-sm w-auto">

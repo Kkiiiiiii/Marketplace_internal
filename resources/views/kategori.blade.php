@@ -1,8 +1,7 @@
 @extends('layout')
 @section('content')
-<div class="row mt-5 animate">
+<div class="row mt-5 animate mh-5">
     <h2 class="mb-4">Daftar Kategori</h2>
-
     @foreach($kategori as $k)
         <div class="col-md-3 mb-5">
             <a href="{{ route('kategori-show', Crypt::encrypt($k->id_kategori)) }}" class="text-decoration-none text-dark">

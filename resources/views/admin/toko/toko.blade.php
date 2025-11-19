@@ -39,7 +39,7 @@
     <table class="table table-striped table-cust" id="tableToko">
         <thead>
             <tr>
-                <th>ID Toko</th>
+                <th>No</th>
                 <th>Nama Toko</th>
                 <th>Deskripsi</th>
                 <th>Gambar</th>

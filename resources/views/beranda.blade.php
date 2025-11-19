@@ -62,7 +62,7 @@
                                         <div class="card-body d-flex flex-column">
                                             <h5 class="card-text">{{ $item->nama_produk }}</h5>
                                             <p class="card-text text-success fw-bold mb-1">Rp. {{ number_format($item->harga, 0, ',', '.') }}</p>
-                                            <p class="mb-1"><small class="text-base">{{ $item->kategori->nama_kategori }}</small></p>
+                                            <p class="mb-1"><small class="text-base circle-info">{{ $item->kategori->nama_kategori }}</small></p>
                                             <p class="mb-2"><small class="text-muted">{{ $item->toko->nama_toko }}</small></p>
                                             <a href="{{ route('produk.toko', Crypt::encrypt($item->id_toko)) }}" class="btn btn-primary btn-sm">
                                                  <i class="bi bi-eye"></i> Kunjungi Toko</a>

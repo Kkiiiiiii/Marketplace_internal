@@ -5,6 +5,9 @@
 .mw-5{
     margin-bottom: 250px;
 }
+.mh-5{
+    margin-bottom: 150px;
+}
 .animate {
     opacity: 0;
     transform: translateY(20px);
@@ -121,9 +124,24 @@ body.dark{
     padding: 8px;
     text-align: left;
 }
-
-
 .mt-10{
     margin-top: 117px;
     margin-bottom: 150px;
 }
+ .circle-info {
+            /* background-color: #1b3b6f; */
+            background-color: lightskyblue;
+            color: white;
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            min-width: 60px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.6rem;
+            white-space: nowrap;
+            /* supaya teks tidak pecah ke baris baru */
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            /* efek sedikit shadow supaya naik */
+            transition: background-color 0.3s ease;
+        }
