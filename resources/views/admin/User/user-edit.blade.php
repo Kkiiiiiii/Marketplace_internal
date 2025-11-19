@@ -3,7 +3,7 @@
 <div class="container mt-4">
     <h2 class="mb-4 text-center">✏️ Edit User</h2>
 
-    <form action="{{ route('user-update', Crypt::encrypt($user->id)) }}" method="POST">
+    <form action="{{ route('user-update', Crypt::encrypt($user->id_user))}}" method="POST">
         @csrf
         <div class="mb-3">
             <label>Nama</label>

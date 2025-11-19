@@ -1,6 +1,15 @@
 @extends('layout')
 @section('content')
+
 <div class="container mt-3 mb-5">
+
+    {{-- Tampilkan alert toko pending --}}
+    @if(session('toko_pending'))
+        <div class="alert alert-warning text-center">
+            Toko Anda masih pending. Harap tunggu persetujuan admin.
+        </div>
+    @endif
+
     <div class="d-flex mb-4 align-items-center flex-column text-center">
         @if (Auth::check() && Auth::id() == $toko->id_user)
             <h2>Toko Saya</h2>
@@ -24,7 +33,7 @@
 
     <div class="row g-4">
         @foreach($produk as $p)
-            <div class="col-md-3">
+         <div class="col-md-3">
                 <div class="card h-100 shadow-sm">
                     @if($p->gambarProduk->first())
                         <img src="{{ asset('storage/'.$p->gambarProduk->first()->nama_gambar) }}"
@@ -73,5 +82,4 @@
         @endforeach
     </div>
 </div>
-
 @endsection

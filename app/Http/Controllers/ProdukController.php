@@ -40,15 +40,22 @@ class ProdukController extends Controller
     }
 
     public function produkByToko($id)
-{
-    $id = Crypt::decrypt($id);
-    // Ambil toko berdasarkan ID
-    $toko = Toko::findOrFail($id);
-    // Ambil semua produk dari toko ini
-    $produk = Produk::where('id_toko', $id)->with('kategori', 'toko', 'gambarProduk')->get();
+    {
+        $id = Crypt::decrypt($id);
 
-    return view('toko.produk-toko', compact('produk', 'toko'));
-}
+        // Ambil toko berdasarkan ID
+        $toko = Toko::findOrFail($id);
+
+        // Ambil semua produk dari toko ini
+        $produk = Produk::where('id_toko', $id)->with('kategori', 'toko', 'gambarProduk')->get();
+
+        // Cek: user login & toko milik user login & status pending
+        if (Auth::check() && Auth::user()->toko && Auth::user()->toko->id == $toko->id && $toko->status == 'pending') {
+            session()->flash('toko_pending', true);
+        }
+
+        return view('toko.produk-toko', compact('produk', 'toko'));
+    }
 
 
     public function detail($id)
@@ -57,6 +64,7 @@ class ProdukController extends Controller
         $produk = Produk::with('gambarProduk')->findOrFail($id);
         return view('produk.detail-produk', compact('produk'));
     }
+
 
      public function create()
     {

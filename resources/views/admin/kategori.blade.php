@@ -26,7 +26,7 @@
             transition: background-color 0.3s ease;
         }
 </style>
-    <div class="container mt-4">
+    <div class="mt-4">
         <h2 class="mb-4"> Daftar Kategori</h2>
 
         @if (session('success'))

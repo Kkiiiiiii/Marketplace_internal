@@ -10,7 +10,7 @@
 
         /* Styling untuk badge oval di dalam tabel */
         .circle-bg {
-            background-color: #111;
+            background-color: green;
             color: white;
             display: inline-block;
             padding: 4px 12px;
@@ -18,7 +18,7 @@
             min-width: 60px;
             text-align: center;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 10px;
             white-space: nowrap;
             /* supaya teks tidak pecah ke baris baru */
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
@@ -26,7 +26,7 @@
             transition: background-color 0.3s ease;
         }
 </style>
-<div class="container mt-5">
+<div class="mt-5">
     <h3 class="mb-4">📦 Daftar Produk</h3>
     <hr>
     <table id="produkTable" class="table table-bordered table-striped shadow-sm table-cust">
@@ -40,7 +40,6 @@
                 <th>Kategori</th>
                 <th>Tanggal Upload</th>
                 <th>Gambar</th>
-                <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -51,7 +50,7 @@
                     <td>{{ Str::limit($p->deskripsi, 50) }}</td>
                     <td>Rp.{{ number_format($p->harga,0,',','.') }}</td>
                     <td>{{ $p->stok }}</td>
-                    <td>{{ $p->kategori->nama_kategori }}</td>
+                    <td><span class="circle-bg">{{ $p->kategori->nama_kategori }}</span></td>
                     <td>{{ $p->tanggal_upload }}</td>
                     <td>
                         @if($p->gambarProduk->count() > 0)
@@ -64,13 +63,6 @@
                         @else
                             <span class="text-muted">Tidak ada</span>
                         @endif
-                    </td>
-                    <td>
-                        <a href="{{ route('produk-edit', Crypt::encrypt($p->id_produk)) }}" class="btn btn-sm btn-warning">
-                            <i class="bi bi-pencil"></i> Edit</a>
-                        <a href="{{ route('produk-delete', Crypt::encrypt($p->id_produk)) }}" class="btn btn-sm btn-danger"
-                           onclick="return confirm('Yakin ingin menghapus produk ini?')">
-                            <i class="bi bi-trash"></i> Hapus</a>
                     </td>
                 </tr>
             @empty

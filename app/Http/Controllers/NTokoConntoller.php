@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Toko;
+use App\Models\User;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,7 +21,8 @@ class NTokoConntoller extends Controller
 
     public function create()
     {
-        return view('admin.toko.toko-create');
+        $user = User::all();
+        return view('admin.toko.toko-create', compact('user'));
     }
 
     // public function daftarToko()
@@ -97,7 +99,7 @@ class NTokoConntoller extends Controller
     {
     {
         try {
-            $id = Crypt::decrypt($id);  // Dekripsi ID yang dikirim dalam URL
+            $id = Crypt::decrypt($id);
         } catch (\Exception $e) {
             return redirect()->route('admin-toko')->with('error', 'ID toko tidak valid.');
         }

@@ -12,7 +12,7 @@ class Toko extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'nama_toko','deskripsi','gambar','kontak_toko','alamat','id_user'
+        'nama_toko','deskripsi','gambar','kontak_toko','alamat','id_user','status',
     ];
 
     public function produk()

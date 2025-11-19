@@ -14,6 +14,16 @@
             @enderror
         </div>
 
+            <div class="mb-3">
+                   <label for="id_user" class="form-label">User</label>
+                   <select name="id_user" id="id_user" class="form-control" required>
+                    <option value="">-- Pilih User --</option>
+                    @foreach($user as $u)
+                <option value="{{ $u->id_user }}">{{ $u->nama_user }}</option>
+            @endforeach
+        </select>
+        </div>
+
         <div class="form-group mt-3">
             <label for="deskripsi">Deskripsi</label>
             <textarea name="deskripsi" id="deskripsi" class="form-control" rows="4">{{ old('deskripsi') }}</textarea>

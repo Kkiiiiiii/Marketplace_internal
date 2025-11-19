@@ -78,50 +78,56 @@
             font-weight: 700;
         }
 
-        /* Hamburger button styling */
-        #toggleSidebar {
-            position: fixed;
-            top: 15px;
-            left: 15px;
-            z-index: 1100;
-            border-radius: 50%;
-            width: 45px;
-            height: 45px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #1b3b6f;
-            border: none;
-            color: white;
-            cursor: pointer;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-            transition: background-color 0.3s ease;
-        }
-        #toggleSidebar:hover {
-            background-color: #0d2755;
-        }
+       /* Hapus posisi fixed dari toggleSidebar */
+    #toggleSidebar {
+        position: static; /* dulu fixed */
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+        border: none;
+        background-color: #1b3b6f;
+        color: white;
+        cursor: pointer;
+    }
+    #toggleSidebar:hover {
+        background-color: #0d2755;
+    }
 
-        /* Content styling */
+    /* Content agar tidak tertutup header */
+    .content {
+        padding: 80px 20px 20px 20px; /* sesuai tinggi header */
+        margin-left: 0;
+        transition: margin-left 0.3s ease;
+    }
+    @media (min-width: 769px) {
         .content {
-            padding: 20px;
-            margin-left: 0;
-            transition: margin-left 0.3s ease;
+            margin-left: 250px;
         }
+    }
 
-        /* Desktop: push content right by sidebar width */
-        @media (min-width: 769px) {
-            .content {
-                margin-left: 250px;
-            }
-        }
     </style>
 </head>
 <body>
-
-    <!-- Hamburger Button -->
-    <button id="toggleSidebar" aria-label="Toggle sidebar">
+<div class="header-navbar d-flex justify-content-between align-items-center px-3" style="position: fixed; top:0; left:0; width:100%; z-index:1040; height:60px; background:#f8f9fa; box-shadow:0 2px 4px rgba(0,0,0,0.1);">
+    <button id="toggleSidebar" aria-label="Toggle sidebar" class="btn btn-primary btn-sm">
         <i class="fas fa-bars"></i>
     </button>
+    <h5 class="mb-0">@yield('title', 'MarketPlace SMK')</h5>
+    <div class="d-flex align-items-center gap-2">
+        <!-- Logout Button -->
+        <form id="logout-form" action="{{ route('admin-logout') }}" method="POST" style="margin:0;">
+            @csrf
+            <button type="submit" class="btn btn-danger btn-sm">
+                <i class="fas fa-sign-out-alt"></i>
+            </button>
+        </form>
+
+    </div>
+</div>
+
 
     <div class="sidebar" id="sidebar">
         <div class="brand-logo">

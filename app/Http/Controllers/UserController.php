@@ -14,7 +14,7 @@ class UserController extends Controller
     //
     public function create()
     {
-        return view('admin.User.user-create');
+        return view('admin.user.user-create');
     }
 
     public function store(Request $request)
@@ -24,7 +24,7 @@ class UserController extends Controller
             'kontak' => 'required|string|max:20',
             'username' => 'required|string|unique:users,username',
             'password' => 'required|confirmed|max:6',
-            'role' => 'required|in:admin,member', 
+            'role' => 'required|in:admin,member',
         ]);
 
         User::create([
@@ -39,37 +39,41 @@ class UserController extends Controller
     }
 
 
-    public function edit($id)
+    public function edit(String $id)
     {
         $id = Crypt::decrypt($id);
         $user = User::findOrFail($id);
-        return view('admin.User.user-edit', compact('user'));
+        return view('admin.user.user-edit', compact('user'));
     }
 
 
-    public function update(Request $request, $id)
-    {
+   public function update(Request $request, $id)
+{
+    $id = Crypt::decrypt($id);
+    $user = User::findOrFail($id);
 
-        $user = User::findOrFail($id);
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'kontak' => 'required|string|max:20',
-            'username' => 'required|string|unique:users,username,' . $user->id,
-            'password' => 'nullable|confirmed|min:6',
-        ]);
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'kontak' => 'required|string|max:20',
+        'username' => 'required|unique:users,username,' . $user->id_user . ',id_user',
+        'password' => 'nullable|confirmed|max:6',
+    ]);
 
-        $user->name = $request->name;
-        $user->kontak = $request->kontak;
-        $user->username = $request->username;
+    $user->name = $request->name;
+    $user->kontak = $request->kontak;
+    $user->username = $request->username;
 
-        if ($request->password) {
-            $user->password = bcrypt($request->password);
-        }
-
-        $user->save();
-
-        return redirect()->route('admin-user')->with('success', 'User berhasil diperbarui!');
+    if ($request->filled('password')) {
+        $user->password = bcrypt($request->password);
     }
+
+    $user->save();
+
+    return redirect()->route('admin-user')
+                     ->with('success', 'User berhasil diperbarui!');
+}
+
+
 
 
     public function delete($id)
@@ -79,7 +83,6 @@ class UserController extends Controller
          if ($user->toko) {
         // Hapus semua produk toko
         $user->toko->produk()->each(function ($produk) {
-            // Hapus gambar jika ada
             foreach ($produk->gambarProduk as $gambar) {
                 if (Storage::exists($gambar->nama_gambar)) {
                     Storage::delete($gambar->nama_gambar);
@@ -89,11 +92,9 @@ class UserController extends Controller
             $produk->delete();
         });
 
-        // Hapus tokonya
         $user->toko()->delete();
     }
 
-    // Hapus user
     $user->delete();
 
         return redirect()->route('admin-user')->with('success', 'User berhasil dihapus!');

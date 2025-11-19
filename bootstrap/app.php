@@ -21,9 +21,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->appendToGroup('member',[
             member::class,
         ]);
-            $middleware->appendToGroup('CekToko',[
-                StatusToko::class,
-            ]);
+         
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

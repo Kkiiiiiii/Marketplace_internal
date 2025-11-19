@@ -17,6 +17,7 @@
 @if(session('warning'))
     <div class="alert alert-warning">{{ session('warning') }}</div>
 @endif
+
 <section>
     <div class="container-fluid p-0">
         <div class="banner position-relative text-center text-white animate-fade"

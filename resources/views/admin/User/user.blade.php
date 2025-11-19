@@ -10,7 +10,7 @@
 
         /* Styling untuk badge oval di dalam tabel */
         .circle-bg {
-            background-color: #111;
+            background-color: green;
             color: white;
             display: inline-block;
             padding: 4px 12px;
@@ -18,7 +18,7 @@
             min-width: 60px;
             text-align: center;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.6rem;
             white-space: nowrap;
             /* supaya teks tidak pecah ke baris baru */
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
@@ -26,7 +26,7 @@
             transition: background-color 0.3s ease;
         }
 </style>
-<div class="container mt-4">
+<div class=" mt-4">
     <h3 class="mb-4">👤 Daftar User</h3>
     <hr>
 

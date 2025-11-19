@@ -23,6 +23,8 @@ use Illuminate\Support\Facades\Route;
 
     Route::middleware(['admin'])->group(function(){
         Route::get('/admin/dash',[AdminController::class, 'dash'])->name('dashboard');
+        Route::post('/admin/toko/{id}/approve', [AdminController::class, 'approveToko'])->name('admin.toko.approve');
+        Route::post('/admin/toko/{id}/reject', [AdminController::class, 'rejectToko'])->name('admin.toko.reject');
         //Produk
         Route::get('/admin/produk',[AdminController::class, 'produk'])->name('admin-produk');
         // Route::get('/admin/produk/create',[ProdukController::class, 'create'])->name('produk-create');
@@ -51,8 +53,8 @@ use Illuminate\Support\Facades\Route;
         Route::post('/admin/toko/update-admin/{id}',[NTokoConntoller::class, 'updateAdmin'])->name('update-admin');
         // Route::get('/admin/toko/approve', [NTokoConntoller::class, 'daftarToko']);
         Route::post('/admin/toko/approve/{id}', [NTokoConntoller::class, 'approve'])->name('admin.toko.approve');
-        // Route::get('/admin/toko/create',[NTokoConntoller::class, 'create'])->name('toko-create');
-        // Route::post('/admin/toko/store',[NTokoConntoller::class, 'store'])->name('toko-store');
+        Route::get('/admin/toko/create',[NTokoConntoller::class, 'create'])->name('toko-create');
+        Route::post('/admin/toko/store',[NTokoConntoller::class, 'store'])->name('toko-store');
         Route::post('/admin/toko/delete/{id}',[NTokoConntoller::class, 'delete'])->name('toko-delete');
     });
 

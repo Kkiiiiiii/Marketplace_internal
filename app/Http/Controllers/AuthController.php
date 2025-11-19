@@ -16,18 +16,25 @@ class AuthController extends Controller
     }
     public function login(Request $request)
     {
-          $validasi = $request->validate([
+        $validasi = $request->validate([
             'username' => 'required|string',
             'password' => 'required|string',
         ]);
 
-        // Cek login menggunakan Auth
         if (Auth::attempt($validasi)) {
-            // Redirect ke dashboard atau halaman yang sesuai
+            $user = Auth::user();
+
+            // Cek status toko jika role member
+            if ($user->role == 'member') {
+                $toko = $user->toko; // Pastikan relasi User -> Toko sudah ada
+                if ($toko && $toko->status == 'pending') {
+                     session()->flash('toko_pending', true);
+                }
+            }
+
             return redirect()->route('beranda');
         }
 
-        // Jika gagal login
         return redirect()->route('indexLog')->with('error', 'Username atau Password salah.');
     }
     public function register(Request $request)
@@ -37,6 +44,7 @@ class AuthController extends Controller
         'kontak' => 'required',
         'username' => 'required|unique:users',
         'password' => 'required|confirmed',
+        'status' => 'pending',
     ]);
 
     $user = User::create([
