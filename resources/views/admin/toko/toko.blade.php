@@ -33,13 +33,16 @@
         <i class="bi bi-plus-circle"></i> Tambah Toko</a>
 
     @if(session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
+        <div class="alert alert-success" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
     @endif
     @if(session('toko_pending'))
     <div class="alert alert-warning text-center">
         Toko Anda masih pending. Harap tunggu persetujuan admin.
     </div>
-    @endif  
+    @endif
 
     <table class="table table-striped table-cust" id="tableToko">
         <thead>

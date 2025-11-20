@@ -11,8 +11,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="{{ asset('image/logo_hd.png') }}">
 </head>
+
 <body>
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-utama">
         <div class="container">
             <a class="navbar-brand" href="{{ route('beranda') }}">
@@ -46,7 +46,6 @@
                             href="{{ route('kategori') }}">Kategori</a>
                     </li>
 
-                    <!-- DROPDOWN USER -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown"
                             role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -54,34 +53,60 @@
                         </a>
 
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                            <li>
-                            @if(Auth::check() && auth()->user()->toko)
-                                    <a class="dropdown-item" href="{{ route('produk.toko', Crypt::encrypt(auth()->user()->toko->id_toko)) }}">
-                                        <i class="bi bi-shop me-2"></i> Toko Saya
-                                    </a>
 
-                                @elseif(Auth::check() && !auth()->user()->toko)
-                                    <a class="dropdown-item" href="{{ route('buka-toko') }}">
-                                        <i class="bi bi-shop me-2"></i> Buka Toko
+                            {{-- Toko Saya / Buka Toko --}}
+                            @if (Auth::check())
+                                @if (auth()->user()->toko)
+                                    <li>
+                                        <a class="dropdown-item"
+                                            href="{{ route('produk.toko', Crypt::encrypt(auth()->user()->toko->id_toko)) }}">
+                                            <i class="bi bi-shop me-2"></i> Toko Saya
+                                        </a>
+                                    </li>
+                                @else
+                                    <li>
+                                        <a class="dropdown-item" href="{{ route('buka-toko') }}">
+                                            <i class="bi bi-shop me-2"></i> Buka Toko
+                                        </a>
+                                    </li>
+                                @endif
+                                @php
+                                    $toko = auth()->user()->toko;
+                                @endphp
+                                @if ($toko)
+                                    <li>
+                                        <a class="dropdown-item"
+                                            href="{{ route('bproduk', Crypt::encrypt($toko->id_toko)) }}">
+                                            <i class="bi bi-plus me-2"></i> Tambah Produk
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item"
+                                            href="{{ route('member.toko-edit', Crypt::encrypt($toko->id_toko)) }}">
+                                            <i class="bi bi-pencil me-2"></i> Edit Toko
+                                        </a>
+                                    </li>
+                                @endif
+
+                                <li>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                        @csrf
+                                        <button class="dropdown-item text-danger" type="submit">
+                                            <i class="bi bi-box-arrow-right me-2"></i> Logout
+                                        </button>
+                                    </form>
+                                </li>
+                            @else
+                                {{-- Guest --}}
+                                <li>
+                                    <a href="{{ route('indexLog') }}" class="dropdown-item">
+                                        <i class="bi bi-door-open-fill me-2"></i> Login
                                     </a>
                                 </li>
-                                @endif
-                            @if(Auth::check())
-                            <li>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                                    @csrf
-                                    <button class="dropdown-item text-danger" type="submit">
-                                        <i class="bi bi-box-arrow-right me-2"></i> Logout
-                                    </button>
-                                </form>
-                                @endif
-                                @guest
-                                <a href="{{ route('indexLog') }}" class="dropdown-item">
-                                <i class="bi bi-door-open-fill"></i> Login</a>
-                                @endguest
-                            </li>
+                            @endif
 
                         </ul>
+
                     </li>
                 </ul>
             </div>
@@ -95,19 +120,22 @@
     @include('footer')
     <script src="{{ asset('assets/bootstrap/js/bootstrap.bundle.js') }}"></script>
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(ent => {
-            if (ent.isIntersecting) {
-                ent.target.classList.add('show');
-            }
-        });
-    }, { threshold: 0.2 });
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(ent => {
+                    if (ent.isIntersecting) {
+                        ent.target.classList.add('show');
+                    }
+                });
+            }, {
+                threshold: 0.2
+            });
 
-    document.querySelectorAll('.animate').forEach(el => observer.observe(el));
-});
-</script>
-@stack('scripts')
+            document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+        });
+    </script>
+    @stack('scripts')
 </body>
+
 </html>

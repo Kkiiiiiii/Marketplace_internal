@@ -2,7 +2,7 @@
 @section('content')
 <div class="container mb-5">
     <h2>Edit Produk</h2>
-    <form action="{{ route('pUpdate', $produk->id_produk) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('pUpdate', Crypt::encrypt($produk->id_produk)) }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
             @if($produk->gambarProduk->count() > 0)

@@ -107,7 +107,7 @@ class ProdukController extends Controller
         }
     }
 
-    return redirect()->route('produk')
+    return redirect()->route('produk.toko', Crypt::encrypt($produk->id_toko))
         ->with('success', 'Produk berhasil ditambahkan!');
     }
 
@@ -187,41 +187,42 @@ class ProdukController extends Controller
     }
 
     public function pUpdate(Request $request, $id)
-    {
-        $validasi = $request->validate([
-            'nama_produk' => 'required|string|max:255',
-            'id_kategori' => 'required|exists:kategori,id_kategori',
-            'id_toko' => 'required|exists:toko,id_toko',
-            'harga' => 'required|numeric',
-            'stok' => 'required|integer',
-            'deskripsi' => 'nullable|string',
-            'gambar_produk.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
+{
+    $id = Crypt::decrypt($id);
 
-        $produk = Produk::findOrFail($id);
-        $produk->update($validasi);
+    $validasi = $request->validate([
+        'nama_produk' => 'required|string|max:255',
+        'id_kategori' => 'required|exists:kategori,id_kategori',
+        'id_toko' => 'required|exists:toko,id_toko',
+        'harga' => 'required|numeric',
+        'stok' => 'required|integer',
+        'deskripsi' => 'nullable|string',
+        'gambar_produk.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+    ]);
 
-        if ($request->hasFile('gambar_produk')) {
-            foreach ($produk->gambarProduk as $gambar) {
-                Storage::disk('public')->delete($gambar->nama_gambar);
-                // Hapus data di database
-                $gambar->delete();
-            }
+    $produk = Produk::findOrFail($id);
+    $produk->update($validasi);
 
-            // Simpan gambar baru
-            foreach ($request->file('gambar_produk') as $gambar) {
-                $namaFile = $gambar->store('gambar_produk', 'public');
-
-                Gambar::create([
-                    'id_produk' => $produk->id_produk,
-                    'nama_gambar' => $namaFile,
-                ]);
-            }
+    if ($request->hasFile('gambar_produk')) {
+        foreach ($produk->gambarProduk as $gambar) {
+            Storage::disk('public')->delete($gambar->nama_gambar);
+            $gambar->delete();
         }
 
-        return redirect()->back()
-            ->with('success', 'Produk berhasil diperbarui!');
+        foreach ($request->file('gambar_produk') as $gambar) {
+            $namaFile = $gambar->store('gambar_produk', 'public');
+
+            Gambar::create([
+                'id_produk' => $produk->id_produk,
+                'nama_gambar' => $namaFile,
+            ]);
+        }
     }
+
+    return redirect()->route('produk.toko', Crypt::encrypt($produk->id_toko))
+        ->with('success', 'Produk berhasil diperbarui!');
+}
+
 
     public function pDelete($id)
     {

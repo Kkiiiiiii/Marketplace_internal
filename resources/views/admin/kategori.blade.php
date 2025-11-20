@@ -30,7 +30,10 @@
         <h2 class="mb-4"> Daftar Kategori</h2>
 
         @if (session('success'))
-            <div class="alert alert-success">{{ session('success') }}</div>
+            <div class="alert alert-success" role="alert">
+                {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
         @endif
 
         {{-- Form Tambah Kategori --}}

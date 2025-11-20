@@ -79,6 +79,11 @@ class NTokoConntoller extends Controller
 
     public function update(Request $request, String $id)
     {
+           try {
+            $id = Crypt::decrypt($id);
+        } catch (\Exception $e) {
+            return redirect()->route('produk.toko')->with('error', 'ID toko tidak valid.');
+        }
         $request->validate([
             'nama_toko' => 'required|string|max:255',
             'kontak_toko' => 'required|string|max:255',
@@ -92,7 +97,7 @@ class NTokoConntoller extends Controller
         $toko = Toko::findOrFail($id);
         $toko->update($request->all());
 
-        return redirect()->back()->with('success', 'Toko berhasil diperbarui!');
+        return redirect()->route('produk.toko',Crypt::encrypt($toko->id_toko))->with('success', 'Toko berhasil diperbarui!');
     }
 
     public function updateAdmin(Request $request, $id)

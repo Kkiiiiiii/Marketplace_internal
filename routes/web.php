@@ -70,7 +70,7 @@ use Illuminate\Support\Facades\Route;
     Route::middleware( ['member'])->group( function(){
         Route::get('/toko/buat', [NTokoConntoller::class, 'buka'])->name('buka-toko');
         Route::post('/toko/store', [NTokoConntoller::class,  'buat' ])->name('store-toko');
-        Route::get('/toko/edit/{id}',[NTokoConntoller::class, 'edit'])->name('toko-edit');
+        Route::get('/toko/edit/{id}',[NTokoConntoller::class, 'edit'])->name('member.toko-edit');
         Route::post('/toko/update/{id}',[NTokoConntoller::class, 'update'])->name('toko-update');
 
         Route::get('/produk/buat',[ProdukController::class, 'bproduk'])->name('bproduk');
