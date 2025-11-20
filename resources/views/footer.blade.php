@@ -33,14 +33,16 @@
         <div class="row text-start mt-4">
             <div class="col-md-6 mb-4">
                 <h6 class="fw-bold">Informasi Singkat</h6>
-                <p class="small">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum nihil perferendis
-                    nisi recusandae nulla saepe, omnis sed voluptate enim iure beatae? Id, quisquam
-                    autem fuga saepe illo debitis similique.
+                   <p class="small">
+                    Marketplace SMK adalah platform jual beli khusus untuk warga sekolah.
+                    Di sini, siswa, guru, dan staf dapat membuka toko, memasarkan produk,
+                    dan melakukan transaksi dengan mudah dan aman. Tujuan utama Marketplace SMK
+                    adalah memfasilitasi pembelajaran kewirausahaan dan meningkatkan kreativitas
+                    ekonomi bagi komunitas sekolah.
                 </p>
             </div>
 
-            <div class="col-md-6 mb-4">
+            <div class="col-md-6 mb-4 text-md-end">
                 <h6 class="fw-bold">Kontak</h6>
                 <p class="small mb-1">Telp: 02186868677</p>
                 <p class="small mb-3">Email: info@smpn02.sch.id</p>
