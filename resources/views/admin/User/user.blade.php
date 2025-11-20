@@ -26,12 +26,12 @@
             transition: background-color 0.3s ease;
         }
 </style>
-<div class=" mt-4">
+<div class="container my-5">
     <h3 class="mb-4">👤 Daftar User</h3>
     <hr>
 
     @if(session('success'))
-        <div class="alert alert-success" role="alert">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
             {{ session('success') }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>

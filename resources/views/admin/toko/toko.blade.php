@@ -26,23 +26,23 @@
             transition: background-color 0.3s ease;
         }
 </style>
-<div class="mt-4">
+<div class="container my-5">
     <h2 class="mb-4">Tabel Toko</h2>
     <hr>
     <a href="{{ route('toko-create') }}" class="btn btn-primary mb-3">
         <i class="bi bi-plus-circle"></i> Tambah Toko</a>
 
     @if(session('success'))
-        <div class="alert alert-success" role="alert">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
             {{ session('success') }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
-    @if(session('toko_pending'))
+    {{-- @if(session('toko_pending'))
     <div class="alert alert-warning text-center">
         Toko Anda masih pending. Harap tunggu persetujuan admin.
     </div>
-    @endif
+    @endif --}}
 
     <table class="table table-striped table-cust" id="tableToko">
         <thead>

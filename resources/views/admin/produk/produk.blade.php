@@ -26,8 +26,8 @@
             transition: background-color 0.3s ease;
         }
 </style>
-<div class="mt-5">
-    <h3 class="mb-4">📦 Daftar Produk</h3>
+<div class="container my-5">
+    <h3 class="mb-4 mt-5">📦 Daftar Produk</h3>
     <hr>
     <table id="produkTable" class="table table-bordered table-striped shadow-sm table-cust">
         <thead class="table-dark">

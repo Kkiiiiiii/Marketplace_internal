@@ -35,16 +35,27 @@
     </style>
 </head>
 <body>
-           @if (session('success'))
-            <div class="alert alert-success">{{ session('success') }}</div>
-        @endif
-    <div class="d-flex justify-content-center align-items-center vh-100">
-        <div class="login-box">
-            <h2>Marketplace SMK</h2>
-            <div class="logo text-center rounded mx-auto">
-                <i class="bi bi-door-open-fill"  style="font-size: 50px"></i>
-            </div>
-            <form action="{{ route('login') }}" method="POST">
+      <div class="d-flex justify-content-center align-items-center vh-100">
+          <div class="login-box">
+              @if(session('success'))
+                  <div class="alert alert-success alert-dismissible fade show" role="alert">
+                      {{ session('success') }}
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+              @endif
+
+              {{-- Error message --}}
+              @if(session('error'))
+                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                      {{ session('error') }}
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+              @endif
+              <h2>Marketplace SMK</h2>
+              <div class="logo text-center rounded mx-auto">
+                  <i class="bi bi-door-open-fill"  style="font-size: 50px"></i>
+                </div>
+                <form action="{{ route('login') }}" method="POST">
                 @csrf
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>

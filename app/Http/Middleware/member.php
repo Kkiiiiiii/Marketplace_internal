@@ -22,6 +22,8 @@ class member
             }
             return redirect('/');
         }
-        return redirect('/login/tampil');
+        return redirect()->back()
+        ->withInput($request->only('username'))
+        ->withErrors(['login' => 'Username atau password salah!']);
     }
 }
