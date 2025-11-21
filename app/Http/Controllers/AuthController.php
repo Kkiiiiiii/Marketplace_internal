@@ -57,7 +57,7 @@ class AuthController extends Controller
 
     Auth::login($user);
 
-    return redirect()->route('indexLog')->with('error','Registrasi gagal, isi form Dengan Lengkap!');
+    return redirect()->route('indexLog')->with('success','Registrasi Berhasil, Silahkan Login!');
     }
 
     public function regis()

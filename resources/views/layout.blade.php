@@ -71,9 +71,10 @@
                                     </li>
                                 @endif
                                 @php
-                                    $toko = auth()->user()->toko;
+                                    $toko = auth()->user()->toko ?? null;
                                 @endphp
-                                @if ($toko)
+
+                                @if ($toko && $toko->status === 'disetujui')
                                     <li>
                                         <a class="dropdown-item"
                                             href="{{ route('bproduk', Crypt::encrypt($toko->id_toko)) }}">
