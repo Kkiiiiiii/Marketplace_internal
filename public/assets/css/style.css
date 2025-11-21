@@ -65,11 +65,13 @@ body.dark{
     margin: 0 10px;
     border-radius: 20%;
     background: linear-gradient(135deg, #1b3b6f,#f1f1f1);
+
+    transition: all 0.10s ease-in-out;
 }
 
 .footer-social-icon:hover {
     background: linear-gradient(135deg,  #ffff,#1b3b6f);
-
+    transform: scale(1.1);
 }
 
 .btn-utama{
