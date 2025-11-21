@@ -45,7 +45,7 @@
             <div class="col-md-6 mb-4 text-md-end">
                 <h6 class="fw-bold">Kontak</h6>
                 <p class="small mb-1">Telp: 02186868677</p>
-                <p class="small mb-3">Email: info@smpn02.sch.id</p>
+                <p class="small mb-3">Email: info@smkypc.sch.id</p>
 
                 <h6 class="fw-bold">Informasi Tambahan</h6>
                 <p class="small mb-1">Tempat Jual Beli Bagi Warga Sekolah</p>

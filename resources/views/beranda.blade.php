@@ -51,7 +51,6 @@
                 @for ($i = 0; $i < $totalSlides; $i++)
                     <div class="carousel-item {{ $i == 0 ? 'active' : '' }}">
                         <div class="row g-3 justify-content-center">
-                            {{-- Menampilkan produk per-slide --}}
                             @foreach ($produk->slice($i * $perSlide, $perSlide) as $item)
                                 <div class="col-6 col-md-3 d-flex">
                         {{-- ketika di tampilan lebih kecil atau di hp akan responsive(Menyesuaikan Tampilan) --}}
