@@ -55,6 +55,7 @@
               <div class="logo text-center rounded mx-auto">
                   <i class="bi bi-door-open-fill"  style="font-size: 50px"></i>
                 </div>
+                <p class="text-muted text-center mt-2">Silahkan Login Untuk Melanjutkan</p>
                 <form action="{{ route('login') }}" method="POST">
                 @csrf
                 <div class="mb-3">
