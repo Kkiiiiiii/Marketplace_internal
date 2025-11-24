@@ -56,11 +56,11 @@
 
     </div>
     <div class="row mt-4">
-    <!-- Kotak Approve Toko -->
+    {{-- Kotak --}}
     <div class="col-12">
         <div class="card shadow-sm rounded">
             <div class="card-header bg-warning text-white d-flex justify-content-between align-items-center">
-                <h5 class="mb-0">Toko Pending ({{ $pendingToko }})</h5>
+                <h5 class="mb-0">Pengajuan Toko ({{ $pendingToko }})</h5>
             </div>
             <div class="card-body p-0">
                 <table class="table table-hover mb-0">
@@ -81,17 +81,17 @@
                                 <td>
                                     <form action="{{ route('admin.toko.approve', $toko->id_toko) }}" method="POST" style="display:inline;">
                                         @csrf
-                                        <button type="submit" class="btn btn-success btn-sm" onclick="return confirm('Setujui toko ini?')">Approve</button>
+                                        <button type="submit" class="btn btn-success btn-sm" onclick="return confirm('Setujui toko ini?')">Setujui</button>
                                     </form>
                                     <form action="{{ route('admin.toko.reject', $toko->id_toko) }}" method="POST" style="display:inline;">
                                         @csrf
-                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Tolak toko ini?')">Reject</button>
+                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Tolak toko ini?')">Tolak</button>
                                     </form>
                                 </td>
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="4" class="text-center">Tidak ada toko pending</td>
+                                <td colspan="4" class="text-center">Belum Ada Pengajuan</td>
                             </tr>
                         @endforelse
                     </tbody>
@@ -100,6 +100,5 @@
         </div>
     </div>
 </div>
-
 </div>
 @endsection
