@@ -174,14 +174,6 @@
         <i class="fas fa-bars"></i>
     </button>
     <h5 class="mb-0">@yield('title', 'MarketPlace SMK')</h5>
-    <div class="d-flex align-items-center gap-2">
-        <form id="logout-form" action="{{ route('admin-logout') }}" method="POST" style="margin:0;">
-            @csrf
-            <button type="submit" class="btn btn-danger btn-sm">
-                <i class="fas fa-sign-out-alt"></i>
-            </button>
-        </form>
-    </div>
 </div>
 
 <div class="content">

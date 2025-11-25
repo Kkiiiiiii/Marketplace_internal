@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kategori;
 use App\Models\Produk;
+use App\Models\Toko;
 use App\Models\Wishlist;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
@@ -15,6 +16,7 @@ class BerandaController extends Controller
     //
     public function index()
     {
+        $data['toko'] = Toko::orderBy('id_toko')->take(10)->get();
         $data['kategori'] = Kategori::with('produk')->get();
         $data['produk'] = Produk::orderBy('id_produk', 'desc')->take(8)->get();
         return view('beranda', $data);

@@ -31,7 +31,28 @@
         </div>
     </div>
 </section>
-<section class="produk-sect my-5 py-4 bg-light animate" id="produk-terbaru">
+
+<section class="py-2 my-5 animate">
+    <div class="container-fluid bg-light rounded" id="kategori">
+        <h2 class="mb-5 text-center ma-2 animate">Kategori</h2>
+        <div class="row g-4 justify-content-center">
+            @foreach($kategori as $k)
+            <div class="col-6 col-md-3 text-center animate-fade">
+                <a href="{{ route('kategori-show', Crypt::encrypt($k->id_kategori)) }}" class="text-decoration-none text-dark">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <i class="bi bi-box-seam fs-1"></i>
+                            <h5 class="card-title">{{ $k->nama_kategori }}</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+
+<section class="produk-sect my-5 py-4 animate" id="produk-terbaru">
     <div class="container">
         <h2 class="section-title mb-4 text-center">
             <a href="{{ route('produk') }}" class="text-decoration-none text-dark">Produk Terbaru</a>
@@ -42,9 +63,8 @@
 
                 @php
                     $perSlide = 4; // Agar Menampilkan 4 Menu Produk per-slide
-                    $tProduk = $produk->count(); // Menghitung total guru
+                    $tProduk = $produk->count();
                     $totalSlides = ceil($tProduk / $perSlide); // Untuk Membulatkan ke atas jumlah slide yang dibutuhkan
-
                 @endphp
 
                 {{-- Carousel Item --}}
@@ -94,23 +114,45 @@
     </div>
 </section>
 
-<section class="py-2 my-5">
-    <div class="container rounded" id="kategori">
-        <h2 class="mb-5 text-center ma-2 animate">Kategori</h2>
+<section class="py-2 my-5 animate" id="DaftarToko">
+    <div class="container-fluid bg-light">
+          <h2 class="section-title mb-4 text-center">
+            <a href="{{ route('toko') }}" class="text-decoration-none text-dark">Daftar Toko</a>
+        </h2>
         <div class="row g-4 justify-content-center">
-            @foreach($kategori as $k)
-            <div class="col-6 col-md-3 text-center animate-fade">
-                <a href="{{ route('kategori-show', Crypt::encrypt($k->id_kategori)) }}" class="text-decoration-none text-dark">
-                    <div class="card h-100 shadow-sm">
-                        <div class="card-body">
-                            <i class="bi bi-box-seam fs-1"></i>
-                            <h5 class="card-title">{{ $k->nama_kategori }}</h5>
-                        </div>
+            @foreach ($toko as $t)
+            <div class="col-md-3 col-sm-6 mb-4">
+                <div class="card shadow-sm h-100 text-center">
+                    <div class="p-3">
+                        <img src="{{ asset('storage/' . $t->gambar) }}"
+                             alt="Gambar Toko"
+                             class="rounded-circle border"
+                             style="width: 140px; height: 140px; object-fit: cover;">
                     </div>
-                </a>
+
+                    <div class="card-body">
+
+                        <h5 class="card-title fw-bold">{{ $t->nama_toko }}</h5>
+
+                        <p class="card-text text-muted" style="font-size: 14px;">
+                            {{ Str::limit($t->deskripsi, 80) }}
+                        </p>
+
+                        <span class="badge bg-success mb-3" style="font-size: 14px;">
+                            {{ $t->produk->count() }} Produk
+                        </span>
+
+                        <a href="{{ route('produk.toko', Crypt::encrypt($t->id_toko)) }}"
+                           class="btn btn-sm btn-primary w-100">
+                            Lihat Produk
+                        </a>
+
+                    </div>
+                </div>
             </div>
             @endforeach
         </div>
     </div>
 </section>
+
 @endsection
