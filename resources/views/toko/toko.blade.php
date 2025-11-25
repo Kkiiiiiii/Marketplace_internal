@@ -45,7 +45,7 @@
 
                             <div class="col-6">
                                 <p class="mb-1">
-                                    <i class="fa fa-map-marker"></i>
+                                    <i class="bi bi-geo-fill"></i>
                                     {{ Str::limit($t->alamat, 35) }}
                                 </p>
                             </div>
@@ -65,7 +65,6 @@
             </div>
             @endforeach
         </div>
-
     </div>
 </section>
 
