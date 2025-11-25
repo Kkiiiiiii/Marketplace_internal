@@ -67,7 +67,6 @@
                     $totalSlides = ceil($tProduk / $perSlide); // Untuk Membulatkan ke atas jumlah slide yang dibutuhkan
                 @endphp
 
-                {{-- Carousel Item --}}
                 @for ($i = 0; $i < $totalSlides; $i++)
                     <div class="carousel-item {{ $i == 0 ? 'active' : '' }}">
                         <div class="row g-3 justify-content-center">
@@ -75,7 +74,6 @@
                                 <div class="col-6 col-md-3 d-flex">
                         {{-- ketika di tampilan lebih kecil atau di hp akan responsive(Menyesuaikan Tampilan) --}}
                                     <div class="card h-100 w-100 shadow-sm">
-                                        {{-- Untuk Berpindah ke hal produk ketika klik gambar --}}
                                         <a href="{{ route('produk') }}">
                                             <img src="{{ asset('storage/' . $item->gambarProduk->first()->nama_gambar) }}" class="card-img-top" alt="{{ $item->nama_produk }}" style="height: 200px; object-fit: cover;">
                                         </a>
