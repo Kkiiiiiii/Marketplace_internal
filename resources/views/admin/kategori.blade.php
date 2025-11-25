@@ -1,7 +1,7 @@
 @extends('admin.layout')
 @section('content')
-<style>
-         table#kategoriTable thead th {
+    <style>
+        table#kategoriTable thead th {
             text-align: center;
             /* rata tengah horizontal */
             vertical-align: middle;
@@ -25,14 +25,14 @@
             /* efek sedikit shadow supaya naik */
             transition: background-color 0.3s ease;
         }
-</style>
+    </style>
     <div class="container my-5">
         <h2 class="mb-4"> Daftar Kategori</h2>
 
         @if (session('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 {{ session('success') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
 
@@ -69,12 +69,10 @@
                         @foreach ($kategori as $k)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-
-                                {{-- Nama Kategori / Input Edit --}}
                                 <td>
                                     <span class="kategori-nama">{{ $k->nama_kategori }}</span>
-                                    <form action="{{ route('kategori-update',  Crypt::encrypt($k->id_kategori))  }}" method="POST"
-                                        class="d-none edit-form">
+                                    <form action="{{ route('kategori-update', Crypt::encrypt($k->id_kategori)) }}"
+                                        method="POST" class="d-none edit-form">
                                         @csrf
 
                                         <div class="input-group">
@@ -87,12 +85,12 @@
                                     </form>
                                 </td>
 
-                                {{-- Aksi --}}
                                 <td>
                                     <button type="button" class="btn btn-warning btn-sm edit-btn">
                                         <i class="bi bi-pencil"></i> Edit</button>
-                                    <form action="{{ route('kategori-delete',  Crypt::encrypt($k->id_kategori)) }}" method="POST"
-                                        style="display:inline;" onsubmit="return confirm('Yakin ingin hapus?')">
+                                    <form action="{{ route('kategori-delete', Crypt::encrypt($k->id_kategori)) }}"
+                                        method="POST" style="display:inline;"
+                                        onsubmit="return confirm('Yakin ingin hapus?')">
                                         @csrf
                                         <button type="submit" class="btn btn-danger btn-sm">
                                             <i class="bi bi-trash"></i> Hapus</button>

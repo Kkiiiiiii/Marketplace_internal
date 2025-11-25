@@ -114,18 +114,25 @@
             transition: margin-left 0.3s ease;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .header-navbar {
-                left: 0;
-            }
-            .content {
-                margin-left: 0;
-            }
-            .sidebar {
-                transform: translateX(-260px);
-            }
+       @media (max-width: 768px) {
+        .header-navbar {
+            left: 0;
         }
+        .content {
+            margin-left: 0;
+        }
+
+        .sidebar {
+            transform: translateX(-260px);
+            width: 250px;
+        }
+
+        /* JIKA sidebar TIDAK hide → tampil */
+        .sidebar:not(.hide) {
+            transform: translateX(0);
+        }
+    }
+
     </style>
 </head>
 <body>

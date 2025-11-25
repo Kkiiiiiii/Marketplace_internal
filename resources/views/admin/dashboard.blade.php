@@ -48,8 +48,8 @@
                     <h6 class="text-muted mb-1">Total User</h6>
                     <h2 class="mb-0">{{ $user->count() }}</h2>
                 </div>
-                <div class="text-warning">
-                    <i class="bi bi-user" style="font-size: 55px;"></i>
+                <div class="text-danger">
+                    <i class="bi bi-people-fill" style="font-size: 55px;"></i>
                 </div>
             </div>
         </div>
