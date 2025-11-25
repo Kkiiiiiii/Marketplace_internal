@@ -7,8 +7,6 @@
             vertical-align: middle;
             /* rata tengah vertikal */
         }
-
-        /* Styling untuk badge oval di dalam tabel */
         .circle-bg {
             background-color: #111;
             color: white;
@@ -35,8 +33,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
-
-        {{-- Form Tambah Kategori --}}
+        
         <div class="card mb-4 shadow-sm">
             <div class="card-body">
                 <form action="{{ route('kategori-store') }}" method="POST" class="row g-3">
@@ -54,7 +51,6 @@
             </div>
         </div>
 
-        {{-- Tabel Kategori --}}
         <div class="card shadow-sm">
             <div class="card-body">
                 <table class="table table-bordered table-striped table-cust" id="kategoriTable">
