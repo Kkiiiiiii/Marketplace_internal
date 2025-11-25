@@ -12,7 +12,6 @@
 <section class="py-5 my-5">
     <div class="container">
         <h2 class="mb-4">Toko</h2>
-
         <div class="row">
             @foreach ($toko as $t)
             <div class="col-md-3 col-sm-6 mb-4">

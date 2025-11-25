@@ -19,18 +19,6 @@ class NTokoConntoller extends Controller
         return view('toko.toko', compact('toko'));
     }
 
-    public function create()
-    {
-        $user = User::all();
-        return view('admin.toko.toko-create', compact('user'));
-    }
-
-    // public function daftarToko()
-    // {
-    //     $toko = Toko::orderBy('status')->get();
-    //     return view('admin.toko.toko', compact('toko'));
-    // }
-
     public function approve($id)
     {
         $toko = Toko::findOrFail($id);
@@ -40,29 +28,6 @@ class NTokoConntoller extends Controller
         return back()->with('success', 'Toko berhasil diaktifkan!');
     }
 
-
-    public function store(Request $request)
-    {
-    $validated = $request->validate([
-        'nama_toko' => 'required|string|max:255',
-        'deskripsi' => 'nullable|string',
-        'kontak_toko' => 'required|string|max:50',
-        'alamat' => 'nullable|string',
-        'gambar' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-    ]);
-
-    if ($request->hasFile('gambar')) {
-        $validated['gambar'] = $request->file('gambar')->store('toko', 'public');
-    }
-
-    $validated['id_user'] = Auth::id();
-    // $validated['status'] = 'pending';
-
-    // Simpan ke database
-    Toko::create($validated);
-
-    return redirect()->route('admin-toko')->with('success', 'Toko berhasil ditambahkan!');
-    }
     public function edit(String $id)
     {
         $id = Crypt::decrypt($id);
@@ -81,7 +46,7 @@ class NTokoConntoller extends Controller
     {
            try {
             $id = Crypt::decrypt($id);
-        } catch (\Exception $e) {
+        } catch (DecryptException $e) {
             return redirect()->route('produk.toko')->with('error', 'ID toko tidak valid.');
         }
         $request->validate([
@@ -149,7 +114,6 @@ class NTokoConntoller extends Controller
         }
 
         $validated['id_user'] = Auth::id();
-        // $validated['status'] = 'pending';
 
         Toko::create($validated);
 
