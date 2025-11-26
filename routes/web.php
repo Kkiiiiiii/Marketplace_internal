@@ -52,6 +52,7 @@ use Illuminate\Support\Facades\Route;
         Route::get('/admin/toko/edit/{id}',[NTokoConntoller::class, 'editA'])->name('toko-edit');
         Route::post('/admin/toko/update-admin/{id}',[NTokoConntoller::class, 'updateAdmin'])->name('update-admin');
         Route::post('/admin/toko/approve/{id}', [NTokoConntoller::class, 'approve'])->name('admin.toko.approve');
+        Route::post('/admin/toko/reject/{id}', [NTokoConntoller::class, 'rejectToko'])->name('admin.toko.reject');
         Route::post('/admin/toko/store',[NTokoConntoller::class, 'store'])->name('toko-store');
         Route::post('/admin/toko/delete/{id}',[NTokoConntoller::class, 'delete'])->name('toko-delete');
     });

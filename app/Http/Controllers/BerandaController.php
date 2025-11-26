@@ -24,7 +24,7 @@ class BerandaController extends Controller
 
     public function wish()
     {
-        $wishlist = Wishlist::with('produk.gambarProduk', 'produk.kategori') // preload relasi
+        $wishlist = Wishlist::with('produk.gambarProduk', 'produk.kategori') 
             ->where('id_user', Auth::id())
             ->get();
 

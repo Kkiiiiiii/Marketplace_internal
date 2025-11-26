@@ -54,40 +54,52 @@
 
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
 
-                            {{-- Toko Saya / Buka Toko --}}
                             @if (Auth::check())
-                                @if (auth()->user()->toko)
-                                    <li>
-                                        <a class="dropdown-item"
-                                            href="{{ route('produk.toko', Crypt::encrypt(auth()->user()->toko->id_toko)) }}">
-                                            <i class="bi bi-shop me-2"></i> Toko Saya
-                                        </a>
-                                    </li>
-                                @else
+                                @php
+                                    $toko = auth()->user()->toko ?? null;
+                                @endphp
+
+                                {{-- Belum punya toko --}}
+                                @if (!$toko)
                                     <li>
                                         <a class="dropdown-item" href="{{ route('buka-toko') }}">
                                             <i class="bi bi-shop me-2"></i> Buka Toko
                                         </a>
                                     </li>
-                                @endif
-                                @php
-                                    $toko = auth()->user()->toko ?? null;
-                                @endphp
 
-                                @if ($toko && $toko->status === 'disetujui')
+                                   
+                                @elseif ($toko->status === 'pending')
+                                    <li>
+                                        <a class="dropdown-item"
+                                            href="{{ route('produk.toko', Crypt::encrypt($toko->id_toko)) }}">
+                                            <i class="bi bi-shop me-2"></i> Toko Saya (Menunggu Persetujuan)
+                                        </a>
+                                    </li>
+
+
+                                @elseif ($toko->status === 'disetujui')
+                                    <li>
+                                        <a class="dropdown-item"
+                                            href="{{ route('produk.toko', Crypt::encrypt($toko->id_toko)) }}">
+                                            <i class="bi bi-shop me-2"></i> Toko Saya
+                                        </a>
+                                    </li>
+
                                     <li>
                                         <a class="dropdown-item"
                                             href="{{ route('bproduk', Crypt::encrypt($toko->id_toko)) }}">
                                             <i class="bi bi-plus me-2"></i> Tambah Produk
                                         </a>
                                     </li>
+
                                     <li>
                                         <a class="dropdown-item"
-                                            href="{{ route('member.toko-edit', Crypt::encrypt($toko->id_toko)) }}">
+                                            href="{{ route('toko-edit', Crypt::encrypt($toko->id_toko)) }}">
                                             <i class="bi bi-pencil me-2"></i> Edit Toko
                                         </a>
                                     </li>
                                 @endif
+
 
                                 <li>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST">
@@ -98,7 +110,6 @@
                                     </form>
                                 </li>
                             @else
-                                {{-- Guest --}}
                                 <li>
                                     <a href="{{ route('indexLog') }}" class="dropdown-item">
                                         <i class="bi bi-door-open-fill me-2"></i> Login
@@ -107,8 +118,8 @@
                             @endif
 
                         </ul>
-
                     </li>
+
                 </ul>
             </div>
         </div>

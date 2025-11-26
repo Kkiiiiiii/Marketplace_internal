@@ -8,6 +8,7 @@ use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Validation\Rules\Exists;
 
 class NTokoConntoller extends Controller
 {
@@ -27,6 +28,37 @@ class NTokoConntoller extends Controller
 
         return back()->with('success', 'Toko berhasil diaktifkan!');
     }
+
+      public function rejectToko($id)
+    {
+        $toko = Toko::findOrFail($id);
+        if (method_exists($toko, 'produk')) {
+            $toko->produk->delete();
+        }
+        $toko->status = 'ditolak';
+        $toko->forceDelete  ();
+
+        return redirect()->back()->with('success', 'Toko berhasil ditolak!');
+    }
+
+    // public function updateStatus(Request $request, $id)
+    // {
+    // $toko = Toko::findOrFail($id);
+
+    // $status = $request->status;
+
+    // if ($status === 'ditolak') {
+    //     $toko->forceDelete();
+
+    //     return redirect()->back()->with('success', 'Toko ditolak dan sudah dihapus.');
+    // }
+
+    // $toko->status = $status;
+    // $toko->save();
+
+    // return redirect()->back()->with('success', 'Status toko berhasil diperbarui.');
+    // }
+
 
     public function edit(String $id)
     {

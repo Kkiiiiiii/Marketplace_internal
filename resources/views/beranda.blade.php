@@ -34,7 +34,7 @@
 
 <section class="py-2 my-5 animate">
     <div class="container-fluid bg-light rounded" id="kategori">
-        <h2 class="mb-5 text-center ma-2 animate">Kategori</h2>
+        <h2 class="mb-5 text-center ma-2 animate pt-2">Kategori</h2>
         <div class="row g-4 justify-content-center">
             @foreach($kategori as $k)
             <div class="col-6 col-md-3 text-center animate-fade">
@@ -114,7 +114,7 @@
 
 <section class="py-2 my-5 animate" id="DaftarToko">
     <div class="container-fluid bg-light">
-          <h2 class="section-title mb-4 text-center">
+          <h2 class="section-title mb-4 text-center pt-2">
             <a href="{{ route('toko') }}" class="text-decoration-none text-dark">Daftar Toko</a>
         </h2>
         <div class="row g-4 justify-content-center">

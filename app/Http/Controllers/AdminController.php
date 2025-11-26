@@ -36,16 +36,22 @@ class AdminController extends Controller
     public function rejectToko($id)
     {
         $toko = Toko::findOrFail($id);
-        $toko->status = 'ditolak';
-        $toko->save();
 
-        return redirect()->back()->with('success', 'Toko berhasil ditolak!');
+        if ($toko->produk->count() > 0) {
+            foreach ($toko->produk as $produk) {
+                $produk->delete();
+            }
+        }
+
+        $toko->forceDelete();
+
+        return redirect()->back()->with('success', 'Toko berhasil ditolak dan dihapus!');
     }
 
     public function produk()
     {
-        $data ['produk'] = Produk::all();
-        $data ['kategori'] = Kategori::all();
+        $data['produk'] = Produk::all();
+        $data['kategori'] = Kategori::all();
 
         return view('admin.produk.produk', $data);
     }
